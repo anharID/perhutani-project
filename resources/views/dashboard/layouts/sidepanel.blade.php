@@ -1,43 +1,38 @@
-      <!-- Left Panel -->
-
-      <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Dashboard
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Master</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tree"></i></div>
+                        KPH
+                    </a>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Categories
+                    </a>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Users
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Asset</div>
+                    <a class="nav-link" href="charts.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Data Assets
+                    </a>
+                    <a class="nav-link" href="tables.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-handshake"></i></div>
+                        Approve
+                    </a>
+                </div>
             </div>
-
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
-                    </li>
-                    <h3 class="menu-title">MASTER</h3><!-- /.menu-title -->
-                    <li>
-                        <a href="#"> <i class="menu-icon fa fa-tree"></i>KPH</a>
-                    </li>
-                    <li>
-                        <a href="#" > <i class="menu-icon fa fa-users"></i>Superuser</a>
-                    </li>
-
-                    <h3 class="menu-title">ASSET</h3><!-- /.menu-title -->
-
-                    <li>
-                        <a href="#"> <i class="menu-icon fa fa-tasks"></i>Kategori Asset</a>
-                    </li>
-                    <li>
-                        <a href="#"> <i class="menu-icon ti-email"></i>Data Asset </a>
-                    </li>
-                    <li>
-                        <a href="#"> <i class="menu-icon fa fa-bar-chart"></i>Approve</a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
+            <div class="sb-sidenav-footer">
+                <div class="small">Logged in as:</div>
+                Start Bootstrap
+            </div>
         </nav>
-    </aside><!-- /#left-panel -->
-
-    <!-- Left Panel -->
+    </div>

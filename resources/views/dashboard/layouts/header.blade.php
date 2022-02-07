@@ -1,60 +1,25 @@
-<!-- Header-->
-<header id="header" class="header">
-
-    <div class="header-menu">
-
-        <div class="col-sm-7">
-            <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-            <div class="header-left">
-                <button class="search-trigger"><i class="fa fa-search"></i></button>
-                <div class="form-inline">
-                    <form class="search-form">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                        <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                    </form>
-                </div>
-            </div>
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
         </div>
-
-        <div class="col-sm-5">
-            <div class="user-area dropdown float-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
-                </a>
-
-                <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
-
-                        <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
-                </div>
-            </div>
-
-            <div class="language-select dropdown" id="language-select">
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-                    <i class="flag-icon flag-icon-us"></i>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="language" >
-                    <div class="dropdown-item">
-                        <span class="flag-icon flag-icon-fr"></span>
-                    </div>
-                    <div class="dropdown-item">
-                        <i class="flag-icon flag-icon-es"></i>
-                    </div>
-                    <div class="dropdown-item">
-                        <i class="flag-icon flag-icon-us"></i>
-                    </div>
-                    <div class="dropdown-item">
-                        <i class="flag-icon flag-icon-it"></i>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</header><!-- /header -->
-<!-- Header-->
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#!">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
