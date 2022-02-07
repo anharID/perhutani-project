@@ -20,11 +20,11 @@
                         Users
                     </a>
                     <div class="sb-sidenav-menu-heading">Asset</div>
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Data Assets
                     </a>
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-handshake"></i></div>
                         Approve
                     </a>
