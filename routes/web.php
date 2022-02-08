@@ -15,8 +15,10 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', '/login');
+
+Route::get('/login', function () {
+    return view('auth.login');
 });
 
 Auth::routes();
