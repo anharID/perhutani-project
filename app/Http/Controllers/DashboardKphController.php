@@ -42,6 +42,10 @@ class DashboardKphController extends Controller
             'lu_coordinate' => 'required',
             'ls_coordinate' => 'required',
         ]);
+
+        Kph::create($validateData);
+
+        return redirect('/dashboard/kph')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
