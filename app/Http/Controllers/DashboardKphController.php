@@ -24,7 +24,7 @@ class DashboardKphController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.kph.create');
     }
 
     /**
@@ -35,7 +35,13 @@ class DashboardKphController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'code' => 'required|unique:kphs|min:3|max:5',
+            'name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'lu_coordinate' => 'required',
+            'ls_coordinate' => 'required',
+        ]);
     }
 
     /**

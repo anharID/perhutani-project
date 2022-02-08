@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
+
 @section('container')
-<div class="d-grid gap-2 d-md-block">
-    <button class="btn btn-primary" type="button">Button</button>
-  </div>
+<h1>ini adalah halaman untuk KPH</h1>
+<a href="/dashboard/kph/create" class="btn btn-primary mb-3">New</a>
     
 @endsection

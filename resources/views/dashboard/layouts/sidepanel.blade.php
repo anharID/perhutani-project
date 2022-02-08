@@ -7,7 +7,7 @@
                         Dashboard
                     </a>
                     <div class="sb-sidenav-menu-heading">Master</div>
-                    <a class="nav-link {{ Request::is('/dashboard/kph') ? 'active' : '' }}" href="/dashboard/kph" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link {{ Request::is('dashboard/kph*') ? 'active' : '' }}" href="{{ route('kph') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tree"></i></div>
                         KPH
                     </a>
