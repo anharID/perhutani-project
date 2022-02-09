@@ -10,7 +10,26 @@
         </div>
 
     </form>
-        
+    
+    @if (session()->has('success'))
+      <div class="alert alert-success" role="alert">
+      {{ session('success') }}
+    </div>
+  @endif
+    <table class="table table-striped table-bordered table-sm table-hover">
+      <thead>
+        <th>No.</th>
+        <th>Nama</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Bangunan</td>
+        </tr>
+            
+      </tbody>
+      
+    </table>
 
 </div>
     
