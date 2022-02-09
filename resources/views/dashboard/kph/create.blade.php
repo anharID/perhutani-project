@@ -43,8 +43,8 @@
                 @enderror
               </div>
             <div class="col-md-6">
-              <label for="lu_coordinate" class="form-label">Koordinasi LU</label>
-              <input type="text" name="lu_coordinate" class="form-control @error('lu_coordinate') is-invalid @enderror" id="lu_coordinate" placeholder="Inputkan koordinasi LU" required value="{{ old('code') }}">
+              <label for="lu_coordinate" class="form-label">Koordinat LU</label>
+              <input type="text" name="lu_coordinate" class="form-control @error('lu_coordinate') is-invalid @enderror" id="lu_coordinate" placeholder="Inputkan koordinat LU" required value="{{ old('code') }}">
               @error('lu_coordinate')
                     <div class="invalid-feedback">
                       {{ 'Form tidak boleh kosong!' }}
@@ -52,8 +52,8 @@
                 @enderror
             </div>
             <div class="col-md-6">
-              <label for="ls_coordinate" class="form-label">Koordinasi LS</label>
-              <input type="text" name="ls_coordinate" class="form-control @error('ls_coordinate') is-invalid @enderror" id="ls_coordinate" placeholder="Inputkan Koordinasi LS" required value="{{ old('code') }}">
+              <label for="ls_coordinate" class="form-label">Koordinat LS</label>
+              <input type="text" name="ls_coordinate" class="form-control @error('ls_coordinate') is-invalid @enderror" id="ls_coordinate" placeholder="Inputkan Koordinat LS" required value="{{ old('code') }}">
               @error('ls_coordinate')
                     <div class="invalid-feedback">
                       {{ 'Form tidak boleh kosong!' }}

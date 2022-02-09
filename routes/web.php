@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardKphController;
+use App\Http\Controllers\DashboardCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::get('/dashboard', function(){
 })->middleware('auth');
 
 Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('auth');
+Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'category')->middleware('auth');

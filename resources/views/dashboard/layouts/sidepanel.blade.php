@@ -11,7 +11,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tree"></i></div>
                         KPH
                     </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                    <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : '' }}" href="{{ route('category') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Categories
                     </a>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kph;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class DashboardKphController extends Controller
+class DashboardCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class DashboardKphController extends Controller
      */
     public function index()
     {
-        return view('dashboard.kph.index', [
-            'kphs' => Kph::all()
-        ]);
+        return view('dashboard.category.index');
     }
 
     /**
@@ -26,7 +24,7 @@ class DashboardKphController extends Controller
      */
     public function create()
     {
-        return view('dashboard.kph.create');
+        //
     }
 
     /**
@@ -37,26 +35,16 @@ class DashboardKphController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'code' => 'required|unique:kphs|min:3|max:5',
-            'name' => 'required|max:255',
-            'address' => 'required|max:255',
-            'lu_coordinate' => 'required',
-            'ls_coordinate' => 'required',
-        ]);
-
-        Kph::create($validateData);
-
-        return redirect('/dashboard/kph')->with('success', 'Data berhasil ditambahkan!');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kph  $kph
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Kph $kph)
+    public function show(Category $category)
     {
         //
     }
@@ -64,10 +52,10 @@ class DashboardKphController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kph  $kph
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kph $kph)
+    public function edit(Category $category)
     {
         //
     }
@@ -76,10 +64,10 @@ class DashboardKphController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kph  $kph
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kph $kph)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -87,10 +75,10 @@ class DashboardKphController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kph  $kph
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kph $kph)
+    public function destroy(Category $category)
     {
         //
     }
