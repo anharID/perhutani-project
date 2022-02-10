@@ -1,148 +1,92 @@
 @extends('dashboard.layouts.main')
 @section('container')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="no_karyawan" class="col-md-4 col-form-label text-md-end">{{ __('Nomor Induk Karyawan') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="no_karyawan" type="text" class="form-control @error('no_karyawan') is-invalid @enderror" name="no_karyawan" value="{{ old('no_karyawan') }}" required autocomplete="no_karyawan" autofocus>
-
-                                @error('no_karyawan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="no_hp" class="col-md-4 col-form-label text-md-end">{{ __('No. HP') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') }}" required autocomplete="no_hp" autofocus>
-
-                                @error('no_hp')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="alamat" class="col-md-4 col-form-label text-md-end">{{ __('Alamat') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" required autocomplete="alamat" autofocus>
-
-                                @error('alamat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
-
-                                @error('role')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<h1 class="mb-4">Tambah Data User</h1>
+        <form class="row g-3" action="/dashboard/user" method="POST">
+          @csrf
+            <div class="col-12">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Inputkan username" required value="{{ old('username') }}">
+                @error('username')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+              </div>
+              <div class="col-12">
+                <label for="name" class="form-label">Nama</label>
+                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Inputkan nama" required value="{{ old('code') }}">
+                @error('name')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Inputkan email" required value="{{ old('code') }}">
+                @error('email')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+              </div>
+              <div class="col-12">
+                <label for="no_karyawan" class="form-label">No. Karyawan</label>
+                <input type="text" name="no_karyawan" class="form-control @error('no_karyawan') is-invalid @enderror" id="no_karyawan" placeholder="Inputkan no_karyawan" required value="{{ old('code') }}">
+                @error('no_karyawan')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+              </div>
+              <div class="col-12">
+                <label for="no_hp" class="form-label">No. Hp</label>
+                <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Inputkan no_hp" required value="{{ old('code') }}">
+                @error('no_hp')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+              </div>
+              <div class="col-12">
+                <label for="alamat" class="form-label">Alamat</label>
+                <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="Inputkan alamat" required value="{{ old('code') }}">
+                @error('alamat')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+              </div>
+              <div class="col-12">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select">
+                <option selected>Inputkan role</option>
+                <option value="1">Admin</option>
+                <option value="2">Supervisor</option>
+                <option value="3">Operator</option>
+                </select>
             </div>
-        </div>
-    </div>
-</div>
+            <div class="col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Inputkan password" required value="{{ old('code') }}">
+              @error('password')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+              <label for="confirm_password" class="form-label">Konfirmasi Password</label>
+              <input type="password" name="confirm_password" class="form-control @error('confirm_password') is-invalid @enderror" id="confirm_password" placeholder="Inputkan konfirmasi password" required value="{{ old('code') }}">
+              @error('confirm_password')
+                    <div class="invalid-feedback">
+                      {{ 'Form tidak boleh kosong!' }}
+                    </div>
+                @enderror
+            </div>
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Tambah User</button>
+            </div>
+      </form>
     
 @endsection

@@ -10,7 +10,7 @@
     </div>
   @endif
   
-  <a href="/dashboard/users/create" class="btn btn-primary mb-3">Tambah user</a>
+  <a href="/dashboard/users/create" class="btn btn-primary mb-3">Tambah User</a>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm table-hover">
       <thead>
