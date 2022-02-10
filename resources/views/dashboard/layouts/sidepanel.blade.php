@@ -15,7 +15,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Categories
                     </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                    <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }} " href="{{ route('user') }}" >
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Users
                     </a>

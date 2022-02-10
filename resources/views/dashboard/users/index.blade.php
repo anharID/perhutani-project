@@ -2,7 +2,7 @@
 
 @section('container')
 
-  <h1 class="mb-4">Data KPH</h1>
+  <h1 class="mb-4">Data Users</h1>
   
   @if (session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -10,27 +10,30 @@
     </div>
   @endif
   
-  <a href="/dashboard/kph/create" class="btn btn-primary mb-3">Tambah data</a>
+  <a href="/dashboard/users/create" class="btn btn-primary mb-3">Tambah user</a>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm table-hover">
       <thead>
         <th>No.</th>
-        <th>Code</th>
-        <th>Nama KPH</th>
-        <th>Alamat KPH</th>
-        <th>Koordinat LU</th>
-        <th>Koordinat LS</th>
-        <th>Action</th>
+        <th>Username</th>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>No. Karyawan</th>
+        <th>No. Hp</th>
+        <th>Alamat</th>
+        <th>Role</th>
       </thead>
       <tbody>
-        @foreach ($kphs as $kph)
+        {{-- @foreach ($users as $user)
         <tr>
           <td>{{ $loop->iteration }}</td>
-          <td>{{ $kph->code }}</td>
-          <td>{{ $kph->name }}</td>
-          <td>{{ $kph->address }}</td>
-          <td>{{ $kph->lu_coordinate }}</td>
-          <td>{{ $kph->ls_coordinate }}</td>
+          <td>{{ $user->username }}</td>
+          <td>{{ $user->name }}</td>
+          <td>{{ $user->email }}</td>
+          <td>{{ $user->no_karyawan }}</td>
+          <td>{{ $user->no_hp }}</td>
+          <td>{{ $user->alamat }}</td>
+          <td>{{ $user->role }}</td>
           <td>
             <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
@@ -38,10 +41,11 @@
           </td>
         </tr>
             
-        @endforeach
+        @endforeach --}}
       </tbody>
       
     </table>
   </div>
+</div>
     
 @endsection

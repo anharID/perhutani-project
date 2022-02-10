@@ -16,7 +16,7 @@
            @include('dashboard.layouts.sidepanel')
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
+                    <div class="container-fluid p-5">
                         @yield('container')
                     </div>
                 </main>

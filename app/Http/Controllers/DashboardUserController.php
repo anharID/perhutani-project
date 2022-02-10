@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardCategoryController extends Controller
+class DashboardUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class DashboardCategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.category.index',[
-            'categories' => Category::all()
-        ]);
+        return view('dashboard.users.index');
     }
 
     /**
@@ -26,7 +24,7 @@ class DashboardCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.users.create');
     }
 
     /**
@@ -37,22 +35,16 @@ class DashboardCategoryController extends Controller
      */
     public function store(Request $request)
     {
-
-        $category = new Category;
-        $category->name = $request->name;
-
-        $category->save();
-
-        return redirect('/dashboard/category')->with('success', 'Data berhasil ditambahkan!');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(User $user)
     {
         //
     }
@@ -60,10 +52,10 @@ class DashboardCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(User $user)
     {
         //
     }
@@ -72,10 +64,10 @@ class DashboardCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -83,10 +75,10 @@ class DashboardCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(User $user)
     {
         //
     }
