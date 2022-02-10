@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardKphController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardCategoryController;
+use App\Http\Controllers\DashboardAssetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,4 @@ Route::get('/dashboard', function(){
 Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('auth');
 Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'category')->middleware('auth');
 Route::resource('/dashboard/users', DashboardUserController::class)->name('index', 'user')->middleware('auth');
+Route::resource('/dashboard/asset', DashboardAssetController::class)->name('index', 'asset')->middleware('auth');
