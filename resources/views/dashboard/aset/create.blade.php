@@ -59,7 +59,7 @@
               </div>
               <div class="col-12">
                 <label for="description" class="form-label">Deskripsi</label>
-                <input type="textarea" name="description" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Inputkan deskripsi" required value="{{ old('code') }}">
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="3" placeholder="Inputkan deskripsi" required value="{{ old('code') }}"></textarea>
                 @error('description')
                     <div class="invalid-feedback">
                       {{ 'Form tidak boleh kosong!' }}
