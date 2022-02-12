@@ -20,11 +20,11 @@ use App\Http\Controllers\DashboardAssetController;
 |
 */
 
-Route::redirect('/', '/login');
+Route::redirect('/', '/login')->middleware('guest');
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->middleware('guest');
 
 Auth::routes();
 

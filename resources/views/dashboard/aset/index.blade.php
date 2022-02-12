@@ -20,18 +20,19 @@
         <th>Nilai Buku</th>
         <th>Penyusutan Barang</th>
         <th>Deskripsi</th>
+        <th>Action</th>
       </thead>
       <tbody>
-        {{-- @foreach ($asets as $aset)
+        @foreach ($assets as $asset)
         <tr>
           <td>{{ $loop->iteration }}</td>
-          <td>{{ $aset->code }}</td>
-          <td>{{ $aset->name }}</td>
-          <td>{{ $aset->category }}</td>
-          <td>{{ $aset->price }}</td>
-          <td>{{ $aset->book_value }}</td>
-          <td>{{ $aset->depreciation }}</td>
-          <td>{{ $aset->description }}</td>
+          <td>{{ $asset->code }}</td>
+          <td>{{ $asset->name }}</td>
+          <td>{{ $asset->category->name }}</td>
+          <td>{{ $asset->price }}</td>
+          <td>{{ $asset->book_value }}</td>
+          <td>{{ $asset->depreciation }}</td>
+          <td>{{ $asset->description }}</td>
           <td>
             <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
@@ -39,7 +40,7 @@
           </td>
         </tr>
             
-        @endforeach --}}
+        @endforeach
       </tbody>
       
     </table>

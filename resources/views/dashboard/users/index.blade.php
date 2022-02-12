@@ -22,9 +22,10 @@
         <th>No. Hp</th>
         <th>Alamat</th>
         <th>Role</th>
+        <th>Action</th>
       </thead>
       <tbody>
-        {{-- @foreach ($users as $user)
+        @foreach ($users as $user)
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $user->username }}</td>
@@ -41,11 +42,10 @@
           </td>
         </tr>
             
-        @endforeach --}}
+        @endforeach
       </tbody>
       
     </table>
   </div>
-</div>
     
 @endsection

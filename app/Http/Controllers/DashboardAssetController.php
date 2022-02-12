@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class DashboardAssetController extends Controller
@@ -14,7 +15,9 @@ class DashboardAssetController extends Controller
      */
     public function index()
     {
-        return view('dashboard.aset.index');
+        return view('dashboard.aset.index',[
+            'assets'=>Asset::all()
+        ]);
     }
 
     /**
@@ -24,7 +27,8 @@ class DashboardAssetController extends Controller
      */
     public function create()
     {
-        return view('dashboard.aset.create');
+        $categories = Category::all();
+        return view('dashboard.aset.create', compact('categories'));
     }
 
     /**
@@ -35,7 +39,29 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'code' => 'required|min:3|max:10',
+            'name' => 'required|max:255',
+            'category' => 'required',
+            'price' => 'required|numeric|max:255',
+            'book_value' => 'required|numeric|max:255',
+            'depreciation' => 'required|numeric|max:255',
+            'description' => 'required'
+        ]);
+
+        Asset::create([
+            'category_id' => $request->category,
+            'user_id' => auth()->user()->id,
+            'code' => $request->code,
+            'name' => $request->name,
+            'price' => $request->price,
+            'book_value' => $request->book_value,
+            'depreciation' => $request->depreciation,
+            'description' => $request->description
+        ]);
+
+        return redirect('/dashboard/asset')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**

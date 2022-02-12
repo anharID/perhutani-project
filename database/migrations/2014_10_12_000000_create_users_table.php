@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('no_karyawan')->nullable()->unique();
             $table->string('no_hp')->unique();
             $table->string('alamat');
-            $table->enum('role',['admin','supervisor','operator','user']);
+            $table->enum('role',['Admin','Supervisor','Operator','User']);
             $table->rememberToken();
             $table->timestamps();
         });
