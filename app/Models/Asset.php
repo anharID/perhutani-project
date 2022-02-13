@@ -27,4 +27,9 @@ class Asset extends Model
     public function users(){
         return $this->belongsTo(User::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

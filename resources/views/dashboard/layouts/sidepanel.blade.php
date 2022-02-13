@@ -20,7 +20,7 @@
                         Users
                     </a>
                     <div class="sb-sidenav-menu-heading">Asset</div>
-                    <a class="nav-link {{ Request::is('dashboard/asset*') ? 'active' : '' }}" href="{{ route('asset') }}">
+                    <a class="nav-link {{ Request::is('dashboard/assets*') ? 'active' : '' }}" href="{{ route('assets') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Data Assets
                     </a>

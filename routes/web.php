@@ -38,5 +38,5 @@ Route::get('/dashboard', function(){
 Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('auth');
 Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'category')->middleware('auth');
 Route::resource('/dashboard/users', DashboardUserController::class)->name('index', 'user')->middleware('auth');
-Route::resource('/dashboard/asset', DashboardAssetController::class)->name('index', 'asset')->middleware('auth');
+Route::resource('/dashboard/assets', DashboardAssetController::class)->name('index', 'assets')->middleware('auth');
 Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('auth');

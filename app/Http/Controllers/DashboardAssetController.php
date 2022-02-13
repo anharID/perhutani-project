@@ -72,7 +72,7 @@ class DashboardAssetController extends Controller
      */
     public function show(Asset $asset)
     {
-        //
+        return view('dashboard.aset.show',['asset'=>$asset]);
     }
 
     /**
@@ -83,7 +83,10 @@ class DashboardAssetController extends Controller
      */
     public function edit(Asset $asset)
     {
-        //
+        return view('dashboard.aset.edit',[
+            'asset' =>$asset,
+            'categories'=>Category::all()
+        ]);
     }
 
     /**
@@ -95,7 +98,30 @@ class DashboardAssetController extends Controller
      */
     public function update(Request $request, Asset $asset)
     {
-        //
+        $rules=[
+            'code' => 'required|min:3|max:10',
+            'name' => 'required|max:255',
+            'category' => 'required',
+            'price' => 'required|numeric|max:255',
+            'book_value' => 'required|numeric|max:255',
+            'depreciation' => 'required|numeric|max:255',
+            'description' => 'required'
+        ];
+
+        $request->validate($rules);
+
+        Asset::where('id', $asset->id)->update([
+            'category_id' => $request->category,
+            'user_id' => auth()->user()->id,
+            'code' => $request->code,
+            'name' => $request->name,
+            'price' => $request->price,
+            'book_value' => $request->book_value,
+            'depreciation' => $request->depreciation,
+            'description' => $request->description
+        ]);
+
+        return redirect('/dashboard/assets')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -106,6 +132,7 @@ class DashboardAssetController extends Controller
      */
     public function destroy(Asset $asset)
     {
-        //
+        Asset::destroy($asset->id);
+        return redirect('/dashboard/assets')->with('success', 'Data berhasil dihapus!');
     }
 }
