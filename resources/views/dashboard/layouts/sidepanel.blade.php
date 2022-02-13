@@ -24,7 +24,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Data Assets
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ Request::is('dashboard/approve*') ? 'active' : '' }}" href="{{ route('approve') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-handshake"></i></div>
                         Approve
                     </a>

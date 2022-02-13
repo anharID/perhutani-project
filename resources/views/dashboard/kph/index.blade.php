@@ -15,10 +15,10 @@
     <table class="table table-striped table-bordered table-sm table-hover">
       <thead>
         <th>No.</th>
-        <th>Code</th>
+        <th>Kode</th>
         <th>Nama KPH</th>
         <th>Alamat KPH</th>
-        <th>Action</th>
+        <th>Aksi</th>
       </thead>
       <tbody>
         @foreach ($kphs as $kph)

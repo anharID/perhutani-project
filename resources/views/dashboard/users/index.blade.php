@@ -22,7 +22,7 @@
         <th>No. Hp</th>
         <th>Alamat</th>
         <th>Role</th>
-        <th>Action</th>
+        <th>Aksi</th>
       </thead>
       <tbody>
         @foreach ($users as $user)

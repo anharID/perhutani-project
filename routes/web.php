@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardKphController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardAssetController;
+use App\Http\Controllers\DashboardApproveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,4 @@ Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 
 Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'category')->middleware('auth');
 Route::resource('/dashboard/users', DashboardUserController::class)->name('index', 'user')->middleware('auth');
 Route::resource('/dashboard/asset', DashboardAssetController::class)->name('index', 'asset')->middleware('auth');
+Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('auth');
