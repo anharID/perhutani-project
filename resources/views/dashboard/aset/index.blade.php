@@ -34,7 +34,7 @@
           <td>{{ $asset->depreciation }}</td>
           <td>{{ $asset->description }}</td>
           <td>
-            <a href="/dashboard/assets/{{ $asset->id }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
+            <a href="/dashboard/assets/{{ $asset->slug }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="/dashboard/assets/{{ $asset->slug}}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>
             <form action="/dashboard/assets/{{ $asset->slug }}" method="post" class="d-inline">
               @method('delete')
