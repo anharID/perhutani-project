@@ -72,7 +72,7 @@
                 @enderror
               </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Input Data</button>
+                <button type="submit" class="btn btn-primary">Edit Data</button>
             </div>
       </form>
     

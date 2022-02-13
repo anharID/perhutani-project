@@ -61,7 +61,7 @@ class DashboardAssetController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('/dashboard/asset')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/dashboard/assets')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
