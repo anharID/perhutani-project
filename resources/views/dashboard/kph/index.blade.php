@@ -18,8 +18,6 @@
         <th>Code</th>
         <th>Nama KPH</th>
         <th>Alamat KPH</th>
-        <th>Koordinat LU</th>
-        <th>Koordinat LS</th>
         <th>Action</th>
       </thead>
       <tbody>
@@ -29,12 +27,14 @@
           <td>{{ $kph->code }}</td>
           <td>{{ $kph->name }}</td>
           <td>{{ $kph->address }}</td>
-          <td>{{ $kph->lu_coordinate }}</td>
-          <td>{{ $kph->ls_coordinate }}</td>
           <td>
             <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
-            <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
-            <a href="#" class="badge bg-danger"><i class="fas fa-times-circle"></i></a>
+            <a href="/dashboard/kph/{{ $kph->id }}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>
+            <form action="/dashboard/kph/{{ $kph->id }}" method="post" class="d-inline">
+              @method('delete')
+              @csrf
+              <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-times-circle"></i></button>
+            </form>
           </td>
         </tr>
             

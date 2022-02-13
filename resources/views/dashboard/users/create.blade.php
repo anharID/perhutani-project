@@ -32,7 +32,7 @@
               </div>
               <div class="col-12">
                 <label for="no_karyawan" class="form-label">No. Karyawan</label>
-                <input type="text" name="no_karyawan" class="form-control @error('no_karyawan') is-invalid @enderror" id="no_karyawan" placeholder="Inputkan no_karyawan" required value="{{ old('no_karyawan') }}">
+                <input type="text" name="no_karyawan" class="form-control @error('no_karyawan') is-invalid @enderror" id="no_karyawan" placeholder="Inputkan nomor karyawan" required value="{{ old('no_karyawan') }}">
                 @error('no_karyawan')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -41,7 +41,7 @@
               </div>
               <div class="col-12">
                 <label for="no_hp" class="form-label">No. Hp</label>
-                <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Inputkan no_hp" required value="{{ old('no_hp') }}">
+                <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Inputkan nomor hp" required value="{{ old('no_hp') }}">
                 @error('no_hp')
                     <div class="invalid-feedback">
                       {{ $message }}

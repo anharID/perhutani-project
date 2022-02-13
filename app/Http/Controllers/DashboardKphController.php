@@ -69,7 +69,7 @@ class DashboardKphController extends Controller
      */
     public function edit(Kph $kph)
     {
-        //
+        return view('dashboard.kph.edit', ['kph'=> $kph]);
     }
 
     /**
@@ -92,6 +92,7 @@ class DashboardKphController extends Controller
      */
     public function destroy(Kph $kph)
     {
-        //
+        Kph::destroy($kph->id);
+        return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
     }
 }
