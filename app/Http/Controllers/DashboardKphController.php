@@ -81,7 +81,19 @@ class DashboardKphController extends Controller
      */
     public function update(Request $request, Kph $kph)
     {
-        //
+        $rules=[
+            'code' => 'required|unique:kphs|min:3|max:5',
+            'name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'lu_coordinate' => 'required',
+            'ls_coordinate' => 'required',
+        ];
+        $validateData = $request->validate($rules);
+    
+        Kph::where('id', $kph->id)
+            ->update($validateData);
+
+        return redirect('/dashboard/kph')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
