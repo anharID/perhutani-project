@@ -10,7 +10,7 @@
     </div>
   @endif
   
-  <a href="/dashboard/assets/delete" class="btn btn-danger mb-3">Delete all</a>
+  <a href="/dashboard/assets/delete" class="btn btn-danger mb-3" onclick="return confirm('Anda yakin ingin menghapus?')">Delete all</a>
   <a href="/dashboard/assets/restore" class="btn btn-info mb-3">Restore all</a>
   <a href="/dashboard/assets/" class="btn btn-secondary mb-3">Back</a>
   <div class="table-responsive">
@@ -38,13 +38,8 @@
           <td>{{ $asset->depreciation }}</td>
           <td>{{ $asset->description }}</td>
           <td>
-            <a href="/dashboard/assets/delete/{{ $asset->slug }}" class="badge bg-danger"><i class="fas fa-trash"></i></a>
+            <a href="/dashboard/assets/delete/{{ $asset->slug }}" class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-trash"></i></a>
             <a href="/dashboard/assets/restore/{{ $asset->slug}}" class="badge bg-info"><i class="fas fa-undo"></i></a>
-            {{-- <form action="/dashboard/assets/{{ $asset->slug }}" method="post" class="d-inline">
-              @method('delete')
-              @csrf
-              <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-times-circle"></i></button>
-            </form> --}}
           </td>
         </tr>
             

@@ -39,7 +39,7 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->file('image')->store('post-images');
+        // return $request->file('image')->store('post-images');
 
         // dd($request);
         $request->validate([
@@ -165,8 +165,17 @@ class DashboardAssetController extends Controller
          return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di restore!');
     }
 
-    public function delete()
+    public function delete($slug = null)
     {
-         
+        if ($slug != null)
+         {
+             Asset::onlyTrashed()->where('slug', $slug)->forceDelete();
+         }
+         else
+         {
+            Asset::onlyTrashed()->forceDelete();
+         }
+
+         return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di delete permanent!');    
     }
 }
