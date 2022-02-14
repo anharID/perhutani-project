@@ -23,7 +23,8 @@ class CreateAssetsTable extends Migration
             $table->string('price');
             $table->string('book_value');
             $table->string('depreciation');
-            $table->string('description');
+            $table->text('description');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

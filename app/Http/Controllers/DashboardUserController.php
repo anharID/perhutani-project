@@ -50,7 +50,7 @@ class DashboardUserController extends Controller
 
         $request->validate([
             'username' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             // 'password' => ['required', 'string', 'min:8'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -64,7 +64,7 @@ class DashboardUserController extends Controller
         // $validatedData['password']=Hash::make($validatedData['password']);
         User::create([
             'username' => $request->username,
-            'name' => $request->name,
+            'nama' => $request->nama,
             'email' =>$request->email,
             'password' => Hash::make($request->password),
             'alamat' => $request->alamat,

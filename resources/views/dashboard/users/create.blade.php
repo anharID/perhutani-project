@@ -13,9 +13,9 @@
                 @enderror
               </div>
               <div class="col-12">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Inputkan nama" required value="{{ old('name') }}">
-                @error('name')
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Inputkan nama" required value="{{ old('nama') }}">
+                @error('nama')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>

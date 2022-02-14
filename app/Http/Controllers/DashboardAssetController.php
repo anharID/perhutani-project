@@ -44,9 +44,9 @@ class DashboardAssetController extends Controller
             'code' => 'required|min:3|max:10',
             'name' => 'required|max:255',
             'category' => 'required',
-            'price' => 'required|numeric|max:255',
-            'book_value' => 'required|numeric|max:255',
-            'depreciation' => 'required|numeric|max:255',
+            'price' => 'required|numeric',
+            'book_value' => 'required|numeric',
+            'depreciation' => 'required|numeric',
             'description' => 'required'
         ]);
 
@@ -102,9 +102,9 @@ class DashboardAssetController extends Controller
             'code' => 'required|min:3|max:10',
             'name' => 'required|max:255',
             'category' => 'required',
-            'price' => 'required|numeric|max:255',
-            'book_value' => 'required|numeric|max:255',
-            'depreciation' => 'required|numeric|max:255',
+            'price' => 'required|numeric',
+            'book_value' => 'required|numeric',
+            'depreciation' => 'required|numeric',
             'description' => 'required'
         ];
 
@@ -134,5 +134,37 @@ class DashboardAssetController extends Controller
     {
         Asset::destroy($asset->id);
         return redirect('/dashboard/assets')->with('success', 'Data berhasil dihapus!');
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trash()
+    {
+        return view('dashboard.aset.trash',
+        [
+            'assets'=>Asset::onlyTrashed()->get()
+        ]);   
+    }
+
+    public function restore($slug = null)
+    {
+         if ($slug != null)
+         {
+             Asset::onlyTrashed()->where('slug', $slug)->restore();
+         }
+         else
+         {
+            Asset::onlyTrashed()->restore();
+         }
+
+         return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di restore!');
+    }
+
+    public function delete()
+    {
+         
     }
 }

@@ -29,7 +29,7 @@
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $user->username }}</td>
-          <td>{{ $user->name }}</td>
+          <td>{{ $user->nama }}</td>
           <td>{{ $user->email }}</td>
           <td>{{ $user->no_karyawan }}</td>
           <td>{{ $user->no_hp }}</td>
