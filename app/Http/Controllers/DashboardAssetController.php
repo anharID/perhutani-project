@@ -39,6 +39,8 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
+        return $request->file('image')->store('post-images');
+
         // dd($request);
         $request->validate([
             'code' => 'required|min:3|max:10',

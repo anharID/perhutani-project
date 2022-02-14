@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <h1 class="mb-4">Tambah Asset</h1>
-        <form class="row g-3" action="/dashboard/assets" method="POST">
+        <form class="row g-3" action="/dashboard/assets" method="POST" enctype="multipart/form-data">
           @csrf
             <div class="col-12">
                 <label for="code" class="form-label">Code</label>
@@ -58,17 +58,22 @@
                 @enderror
               </div>
               <div class="col-12">
-                <label for="description" class="form-label">Deskripsi</label>
-                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3" placeholder="Inputkan deskripsi" required value="{{ old('description') }}"></textarea>
-                @error('description')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                @enderror
+                <label for="image" class="form-label">Gambar Asset</label>
+                <input class="form-control" type="file" id="image" name="image">
               </div>
-            <div class="col-12">
+              <div class="col-12">
+                <label for="description" class="form-label">Deskripsi</label>
+                <input id="description" type="hidden" name="description">
+                <trix-editor input="description"></trix-editor>
+              </div>
+              <div class="col-12">
                 <button type="submit" class="btn btn-primary">Input Data</button>
-            </div>
+              </div>
       </form>
+      <script>
+        document.addEventListener('trix-file-accept', function(e){
+          e.preventDefault();
+        })
+      </script>
     
 @endsection

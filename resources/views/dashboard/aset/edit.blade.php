@@ -64,16 +64,17 @@
               </div>
               <div class="col-12">
                 <label for="description" class="form-label">Deskripsi</label>
-                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3" placeholder="Inputkan deskripsi" required>{{ old('description', $asset->description) }}</textarea>
-                @error('description')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                @enderror
+                <input id="description" type="hidden" name="description">
+                <trix-editor input="description">{{ old('description', $asset->description) }}</trix-editor>
               </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Edit Data</button>
             </div>
       </form>
+      <script>
+        document.addEventListener('trix-file-accept', function(e){
+          e.preventDefault();
+        })
+      </script>
     
 @endsection
