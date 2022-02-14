@@ -63,6 +63,15 @@
                 @enderror
               </div>
               <div class="col-12">
+                <label for="image" class="form-label">Gambar Asset</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                @error('image')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                @enderror
+              </div>
+              <div class="col-12">
                 <label for="description" class="form-label">Deskripsi</label>
                 <input id="description" type="hidden" name="description">
                 <trix-editor input="description">{{ old('description', $asset->description) }}</trix-editor>

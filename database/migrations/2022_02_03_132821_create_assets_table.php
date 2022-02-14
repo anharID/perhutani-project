@@ -20,6 +20,7 @@ class CreateAssetsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('slug');
+            $table->string('image')->nullable();
             $table->string('price');
             $table->string('book_value');
             $table->string('depreciation');

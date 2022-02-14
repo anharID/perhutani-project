@@ -15,6 +15,7 @@ class DashboardAssetController extends Controller
      */
     public function index()
     {
+
         return view('dashboard.aset.index',[
             'assets'=>Asset::all()
         ]);
@@ -39,7 +40,7 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->file('image')->store('post-images');
+        return $request->file('image')->store('post-images');
 
         // dd($request);
         $request->validate([
@@ -49,8 +50,14 @@ class DashboardAssetController extends Controller
             'price' => 'required|numeric',
             'book_value' => 'required|numeric',
             'depreciation' => 'required|numeric',
+            'image' => 'image|file|max:10240',
             'description' => 'required'
         ]);
+
+        if($request->file('image'))
+        {
+            $request->file('image')->store('asset-images');
+        }
 
         Asset::create([
             'category_id' => $request->category,
@@ -60,6 +67,7 @@ class DashboardAssetController extends Controller
             'price' => $request->price,
             'book_value' => $request->book_value,
             'depreciation' => $request->depreciation,
+            'image' => $request->image,
             'description' => $request->description
         ]);
 
@@ -107,8 +115,14 @@ class DashboardAssetController extends Controller
             'price' => 'required|numeric',
             'book_value' => 'required|numeric',
             'depreciation' => 'required|numeric',
+            'image' => 'image|file|max:10240',
             'description' => 'required'
         ];
+
+        if($request->file('image'))
+        {
+            $request->file('image')->store('asset-images');
+        }
 
         $request->validate($rules);
 
@@ -120,6 +134,7 @@ class DashboardAssetController extends Controller
             'price' => $request->price,
             'book_value' => $request->book_value,
             'depreciation' => $request->depreciation,
+            'image' => $request->image,
             'description' => $request->description
         ]);
 
