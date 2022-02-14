@@ -6,6 +6,8 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
+
+                    @can('admin')
                     <div class="sb-sidenav-menu-heading">Master</div>
                     <a class="nav-link {{ Request::is('dashboard/kph*') ? 'active' : '' }}" href="{{ route('kph') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tree"></i></div>
@@ -19,6 +21,8 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Users
                     </a>
+                    @endcan
+
                     <div class="sb-sidenav-menu-heading">Asset</div>
                     <a class="nav-link {{ Request::is('dashboard/assets*') ? 'active' : '' }}" href="{{ route('assets') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -32,7 +36,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                {{ auth()->user()->name }}
+                {{ auth()->user()->nama }}
                 {{-- <span>{{ auth()->user()->role }}</span> --}}
             </div>
         </nav>

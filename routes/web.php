@@ -39,12 +39,12 @@ Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash']
 Route::get('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
 Route::get('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
 
-Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('auth');
+Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('role');
 
-Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'category')->middleware('auth');
+Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'category')->middleware('role');
 
-Route::resource('/dashboard/users', DashboardUserController::class)->name('index', 'user')->middleware('auth');
+Route::resource('/dashboard/users', DashboardUserController::class)->name('index', 'user')->middleware('role');
 
 Route::resource('/dashboard/assets', DashboardAssetController::class)->name('index', 'assets')->middleware('auth');
 
-Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('auth');
+Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('role');
