@@ -40,7 +40,7 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->file('image')->store('post-images');
+        // return $request->file('image')->store('asset-images');
 
         // dd($request);
         $request->validate([
@@ -54,10 +54,7 @@ class DashboardAssetController extends Controller
             'description' => 'required'
         ]);
 
-        if($request->file('image'))
-        {
-            $request->file('image')->store('asset-images');
-        }
+        $images= $request->file('image')->store('asset-images');
 
         Asset::create([
             'category_id' => $request->category,
@@ -67,7 +64,7 @@ class DashboardAssetController extends Controller
             'price' => $request->price,
             'book_value' => $request->book_value,
             'depreciation' => $request->depreciation,
-            'image' => $request->image,
+            'image' => $images,
             'description' => $request->description
         ]);
 
@@ -82,7 +79,7 @@ class DashboardAssetController extends Controller
      */
     public function show(Asset $asset)
     {
-        return view('dashboard.aset.show',['asset'=>$asset]);
+        return view('dashboard.aset.show',['assets'=>$asset]);
     }
 
     /**
@@ -134,7 +131,7 @@ class DashboardAssetController extends Controller
             'price' => $request->price,
             'book_value' => $request->book_value,
             'depreciation' => $request->depreciation,
-            'image' => $request->image,
+            'image' => $request->file('image'),
             'description' => $request->description
         ]);
 
