@@ -2,11 +2,11 @@
 @section('container')
     <h1 class="mb-4">Data Kategori</h1>
     
-    @if (session()->has('success'))
+    {{-- @if (session()->has('success'))
       <div class="alert alert-success" role="alert">
       {{ session('success') }}
       </div>
-    @endif
+    @endif --}}
 
     <form class="col-lg-4" action="/dashboard/category" method="POST">
       @csrf

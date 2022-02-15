@@ -2,11 +2,11 @@
 @section('container')
 <h1 class="mb-4">Data Asset</h1>
   
-  @if (session()->has('success'))
+  {{-- @if (session()->has('success'))
       <div class="alert alert-success" role="alert">
       {{ session('success') }}
     </div>
-  @endif
+  @endif --}}
   
   <a href="/dashboard/assets/create" class="btn btn-primary mb-3">Tambah Asset</a>
   <a href="{{ route('trash') }}" class="btn btn-danger mb-3">Trash</a>
