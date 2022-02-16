@@ -33,7 +33,7 @@
             <form action="/dashboard/kph/{{ $kph->id }}" method="post" class="d-inline">
               @method('delete')
               @csrf
-              <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-times-circle"></i></button>
+              <a href="#" class="badge bg-danger border-0" data-id="{{ $kph->id }}"><i class="fas fa-times-circle"></i></a>
             </form>
           </td>
         </tr>
@@ -43,5 +43,7 @@
       
     </table>
   </div>
+
     
 @endsection
+
