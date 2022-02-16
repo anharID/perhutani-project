@@ -36,8 +36,8 @@
           <td>{{ $user->alamat }}</td>
           <td>{{ $user->role }}</td>
           <td>
-            <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
-            <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
+            <a href="/dashboard/users/{{ $user->username }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
+            <a href="/dashboard/users/{{ $user->username }}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>
             <a href="#" class="badge bg-danger"><i class="fas fa-times-circle"></i></a>
           </td>
         </tr>

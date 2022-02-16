@@ -90,7 +90,9 @@ class DashboardUserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('dashboard.users.show',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -101,7 +103,9 @@ class DashboardUserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('dashboard.users.edit',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -113,7 +117,28 @@ class DashboardUserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $rules=[
+            'nama' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'alamat' => ['required', 'string', 'max:255'],
+            'no_karyawan' => ['required', 'numeric'],
+            'no_hp' => ['required', 'numeric'],
+            'alamat' => ['required', 'string', 'max:255'],
+        ];
+
+        $request->validate($rules);
+
+        // dd($request);
+        User::where('id',$user->id)->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'no_karyawan' => $request->no_karyawan,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+        ]);
+
+
+        return redirect('/dashboard/users')->with('success', 'Data berhasil diupdate!');
     }
 
     /**

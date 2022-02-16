@@ -42,4 +42,9 @@ class User extends Authenticatable
     public function assets(){
         return $this->hasMany(Asset::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 }

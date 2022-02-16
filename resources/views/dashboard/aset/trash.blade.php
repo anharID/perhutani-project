@@ -4,11 +4,11 @@
 
 <h1 class="mb-4">Asset Terhapus</h1>
   
-  @if (session()->has('success'))
+  {{-- @if (session()->has('success'))
       <div class="alert alert-success" role="alert">
       {{ session('success') }}
     </div>
-  @endif
+  @endif --}}
   
   <a href="/dashboard/assets/delete" class="btn btn-danger mb-3" onclick="return confirm('Anda yakin ingin menghapus?')">Delete all</a>
   <a href="/dashboard/assets/restore" class="btn btn-info mb-3">Restore all</a>
