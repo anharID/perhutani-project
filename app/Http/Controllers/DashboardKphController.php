@@ -102,9 +102,25 @@ class DashboardKphController extends Controller
      * @param  \App\Models\Kph  $kph
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kph $kph)
+    // public function destroy(Kph $kph)
+    // {
+    //     Kph::destroy($kph->id);
+    //     return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
+    // }
+
+    public function confirm($id)
     {
-        Kph::destroy($kph->id);
+
+        alert()->question('Are you Sure?','Tindakan ini akan menghapus data')
+                ->showConfirmButton('<a href="/dashboard/kph/' . $id . '/delete" method="POST" class="text-white" style="text-decoration:none">Hapus</a>', '#ff0000')->toHtml()
+                ->showCancelButton('Cancel', '#aaa')->reverseButtons();
+
+        return redirect('/dashboard/kph');
+    }
+
+    public function delete($id)
+    {
+        Kph::destroy($id);
         return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
     }
 }
