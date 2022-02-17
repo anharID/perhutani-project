@@ -33,4 +33,5 @@ class Asset extends Model
     {
         return 'slug';
     }
+
 }
