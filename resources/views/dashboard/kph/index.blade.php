@@ -30,20 +30,56 @@
           <td>
             <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="/dashboard/kph/{{ $kph->id }}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>
-            <form action="/dashboard/kph/{{ $kph->id }}" method="post" class="d-inline">
-              @method('delete')
+            <a href="/dashboard/kph/{{ $kph->id }}/confirm" class="badge bg-danger"><i class="fas fa-times-circle"></i></a>
+            {{-- <form class="d-inline">
+              @method('DELETE')
               @csrf
-              <a href="#" class="badge bg-danger border-0" data-id="{{ $kph->id }}"><i class="fas fa-times-circle"></i></a>
-            </form>
+              <button 
+              class="badge bg-danger border-0 confirm" 
+              data-id="{{ $kph->id }}"  --}}
+              {{-- onclick="return @stack('sweetalert') " --}}
+              {{-- >
+                <i class="fas fa-times-circle"></i>
+              </button> --}}
+
+              {{-- <a href="#" class="badge bg-danger border-0" data-id="{{ $kph->id }}"><i class="fas fa-times-circle"></i></a> --}}
+
+              
+            {{-- </form> --}}
           </td>
         </tr>
-            
         @endforeach
       </tbody>
-      
     </table>
   </div>
 
-    
 @endsection
+
+{{-- @section('sweetalertconfirm')
+<script>
+  $('.confirm').click( function(){
+      var deleteconfirm = $(this).attr('data-id');
+      swal({
+      title: "Apakah Anda yakin?",
+      text: "Anda akan menghapus data ini!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+  })
+  .then((willDelete) => {
+      if (willDelete) {
+          window.location = "/dashboard/kph/"+deleteconfirm+""
+          swal("Data berhasil dihapus!", {
+              icon: "success",
+          });
+      } else {
+          swal("Data tidak jadi dihapus!");
+      }
+  });
+
+  });
+  
+  
+</script>
+ @endsection  --}}
 
