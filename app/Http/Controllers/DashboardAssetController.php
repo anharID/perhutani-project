@@ -116,10 +116,8 @@ class DashboardAssetController extends Controller
             'description' => 'required'
         ];
 
-        if($request->file('image'))
-        {
-            $request->file('image')->store('asset-images');
-        }
+        
+        $image = $request->file('image')->store('asset-images');
 
         $request->validate($rules);
 
@@ -131,7 +129,7 @@ class DashboardAssetController extends Controller
             'price' => $request->price,
             'book_value' => $request->book_value,
             'depreciation' => $request->depreciation,
-            'image' => $request->file('image'),
+            'image' => $image,
             'description' => $request->description
         ]);
 

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <h1 class="mb-4">Edit Asset</h1>
-        <form class="row g-3" action="/dashboard/assets/{{ $asset->slug }}" method="POST">
+        <form class="row g-3" action="/dashboard/assets/{{ $asset->slug }}" method="POST" enctype="multipart/form-data">
           @method('put')
           @csrf
             <div class="col-12">
