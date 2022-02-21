@@ -112,7 +112,18 @@ class DashboardKphController extends Controller
     {
 
         alert()->question('Are you Sure?','Tindakan ini akan menghapus data')
-                ->showConfirmButton('<a href="/dashboard/kph/' . $id . '/delete" method="POST" class="text-white" style="text-decoration:none">Hapus</a>', '#ff0000')->toHtml()
+                ->showConfirmButton(
+                    '
+                    <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline">
+                    @@method("post")
+                    @@csrf
+                    Hapus
+                    ',
+
+                    // '<a href="/dashboard/kph/' . $id . '/delete" method="post" class="text-white" style="text-decoration:none">Hapus</a>', 
+                    
+                    '#ff0000')->toHtml()
+
                 ->showCancelButton('Batal', '#aaa')->reverseButtons();
 
         return redirect('/dashboard/kph');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asset;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardAssetController extends Controller
@@ -17,7 +18,9 @@ class DashboardAssetController extends Controller
     {
 
         return view('dashboard.aset.index',[
-            'assets'=>Asset::all()
+            // 'assets'=>Asset::where('status', true)->get()
+            'users' => User::all(),
+            'assets'=>Asset::all(),
         ]);
     }
 

@@ -21,6 +21,7 @@
         <th>Nilai Buku</th>
         <th>Penyusutan Barang</th>
         <th>Deskripsi</th>
+        {{-- <th>Ditambahkan oleh</th> --}}
         <th>Action</th>
       </thead>
       <tbody>
@@ -34,6 +35,7 @@
           <td>{{ $asset->book_value }}</td>
           <td>{{ $asset->depreciation }}</td>
           <td>{{ $asset->description }}</td>
+          {{-- <td>{{ $asset->users->name }}</td> --}}
           <td>
             <a href="/dashboard/assets/{{ $asset->slug }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="/dashboard/assets/{{ $asset->slug}}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>

@@ -31,11 +31,17 @@
             <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="/dashboard/kph/{{ $kph->id }}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>
             {{-- <a href="/dashboard/kph/{{ $kph->id }}/confirm" class="badge bg-danger"><i class="fas fa-times-circle"></i></a> --}}
-            <form action="/dashboard/kph/{{ $kph->id }}/confirm" method="POST" class="d-inline">
-              @method('post')
+            <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline">
+              @method('delete')
               @csrf
               <button 
               class="badge bg-danger border-0"
+              onclick= "return confirm('Yakin ingin menghapus data?')"
+              {{-- " return 
+            {{  alert()->question('Are you Sure?','Tindakan ini akan menghapus data')
+              ->showConfirmButton('Ya','#ff0000')
+              ->showCancelButton('Batal', '#aaa')->reverseButtons()}}
+              " --}}
               >
                 <i class="fas fa-times-circle"></i>
               </button>
