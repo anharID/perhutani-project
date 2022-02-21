@@ -17,10 +17,6 @@
         <th>Code</th>
         <th>Nama Asset</th>
         <th>Kategori</th>
-        <th>Harga</th>
-        <th>Nilai Buku</th>
-        <th>Penyusutan Barang</th>
-        <th>Deskripsi</th>
         <th>Ditambahkan oleh</th>
         <th>Action</th>
       </thead>
@@ -31,10 +27,6 @@
           <td>{{ $asset->code }}</td>
           <td>{{ $asset->name }}</td>
           <td>{{ $asset->category->name }}</td>
-          <td>{{ $asset->price }}</td>
-          <td>{{ $asset->book_value }}</td>
-          <td>{{ $asset->depreciation }}</td>
-          <td>{{ $asset->description }}</td>
           <td>{{ $asset->user->nama }}</td>
           <td>
             <a href="/dashboard/assets/{{ $asset->slug }}" class="badge bg-info"><i class="fas fa-eye"></i></a>

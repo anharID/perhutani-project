@@ -73,8 +73,8 @@
               </div>
               <div class="col-12">
                 <label for="description" class="form-label">Deskripsi</label>
-                <input id="description" type="hidden" name="description">
-                <trix-editor input="description">{{ old('description', $asset->description) }}</trix-editor>
+                <input id="description" type="hidden" name="description" value="{{ old('description', $asset->description) }}">
+                <trix-editor input="description"></trix-editor>
               </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Edit Data</button>

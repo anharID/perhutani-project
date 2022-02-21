@@ -15,7 +15,7 @@
                 <img src="{{ asset('storage/' . $assets->image) }}" class="card-img-top p-2" alt="{{ $assets->name }}">
                 <div class="card-body">
                   
-                  <p class="card-text">{{ $assets->description }}</p>
+                  <p class="card-text">{!! $assets->description !!}</p>
                 </div>
                 <div class="list-group list-group-flush">
                     <div class="list-group-item">
