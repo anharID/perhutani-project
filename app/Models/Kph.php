@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kph extends Model
 {
     protected $guarded = [];
+
+    public function assets(){
+        return $this->hasMany(Kph::class);
+    }
 }

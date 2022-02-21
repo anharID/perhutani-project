@@ -12,7 +12,11 @@
     <h1 class="text-center mb-3">{{ $assets->name }}</h1>
     <div class="row justify-content-center">
             <div class="card shadow-sm col-md-8">
-                <img src="{{ asset('storage/' . $assets->image) }}" class="card-img-top p-2" alt="{{ $assets->name }}">
+                @if ($assets->image)
+                    <img src="{{ asset('storage/' . $assets->image) }}" class="card-img-top p-2" alt="{{ $assets->name }}">
+                @else
+                    <img src="{{ asset('assets/img/no-image.png') }}" alt="Tidak ada gambar">
+                @endif
                 <div class="card-body">
                   
                   <p class="card-text">{!! $assets->description !!}</p>
@@ -21,6 +25,10 @@
                     <div class="list-group-item">
                         <h5>Kode</h5>
                         {{ $assets->code }}
+                    </div>
+                    <div class="list-group-item">
+                        <h5>Kepemilikan</h5>
+                        {{ $assets->kph->name }}
                     </div>
                     <div class="list-group-item">
                         <h5>Kategori</h5>

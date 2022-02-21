@@ -21,7 +21,7 @@ use App\Http\Controllers\DashboardApproveController;
 |
 */
 
-Route::redirect('/', '/login');
+Route::redirect('/', '/dashboard');
 
 Route::get('/login', function () {
     return view('auth.login');

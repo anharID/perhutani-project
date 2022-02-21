@@ -17,6 +17,7 @@ class CreateAssetsTable extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->foreignId('user_id');
+            $table->foreignId('kph_id');
             $table->string('code')->unique();
             $table->string('name');
             $table->string('slug');

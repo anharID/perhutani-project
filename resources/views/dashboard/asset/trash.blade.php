@@ -20,10 +20,6 @@
         <th>Code</th>
         <th>Nama Asset</th>
         <th>Kategori</th>
-        <th>Harga</th>
-        <th>Nilai Buku</th>
-        <th>Penyusutan Barang</th>
-        <th>Deskripsi</th>
         <th>Action</th>
       </thead>
       <tbody>
@@ -33,10 +29,6 @@
           <td>{{ $asset->code }}</td>
           <td>{{ $asset->name }}</td>
           <td>{{ $asset->category->name }}</td>
-          <td>{{ $asset->price }}</td>
-          <td>{{ $asset->book_value }}</td>
-          <td>{{ $asset->depreciation }}</td>
-          <td>{{ $asset->description }}</td>
           <td>
             <a href="/dashboard/assets/delete/{{ $asset->slug }}" class="badge bg-danger" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-trash"></i></a>
             <a href="/dashboard/assets/restore/{{ $asset->slug}}" class="badge bg-info"><i class="fas fa-undo"></i></a>

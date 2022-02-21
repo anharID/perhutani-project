@@ -36,7 +36,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                            <div class="text-muted">Copyright &copy; Perhutani Divre Semarang 2022</div>
                             {{-- <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
@@ -56,8 +56,6 @@
         <script src="{{ asset('js/scripts.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
-
-        @yield('sweetalertconfirm')
         
     </body>
 

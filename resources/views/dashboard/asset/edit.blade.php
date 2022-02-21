@@ -2,7 +2,7 @@
 @section('container')
 <h1 class="mb-4">Edit Asset</h1>
         <form class="row g-3" action="/dashboard/assets/{{ $asset->slug }}" method="POST" enctype="multipart/form-data">
-          @method('put')
+          @method('PUT')
           @csrf
             <div class="col-12">
                 <label for="code" class="form-label">Code</label>
@@ -23,9 +23,20 @@
                 @enderror
               </div>
               <div class="col-12">
+                <label for="kph" class="form-label">Kepemilikan</label>
+                <select name="kph_id" class="form-select" required>
+                  @foreach ($kphs as $kph)
+                  @if (old('category', $asset->kph_id) == $kph->id)
+                    <option value="{{ $kph->id }}" selected>{{ $kph->name }}</option>
+                  @else
+                    <option value="{{ $kph->id }}">{{ $kph->name }}</option>
+                  @endif
+                @endforeach
+                </select>
+              </div>
+              <div class="col-12">
                 <label for="category" class="form-label">Kategori</label>
                 <select name="category" class="form-select">
-                <option selected>Inputkan kategori</option>
                 @foreach ($categories as $category)
                   @if (old('category', $asset->category_id) == $category->id)
                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>

@@ -26,8 +26,8 @@ class DashboardUserController extends Controller
 
         return view('dashboard.users.index',[
             'users' => User::all()
-            ->whereNotNull('last_seen')
-            ->sortBy('last_seen', false)
+            // ->whereNotNull('last_seen')
+            // ->sortBy('last_seen', false)
             ->except(auth()->user()->id)
         ]);
     }

@@ -5,7 +5,7 @@
           @csrf
             <div class="col-12">
                 <label for="code" class="form-label">Code</label>
-                <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" id="code" placeholder="Inputkan code" required value="{{ old('code') }}">
+                <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" id="code" placeholder="Inputkan code" required autofocus value="{{ old('code') }}">
                 @error('code')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -22,15 +22,22 @@
                 @enderror
               </div>
               <div class="col-12">
-                <label for="category" class="form-label">Kategori</label>
-                <select name="category" class="form-select">
-                <option selected>Inputkan kategori</option>
-                @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <label for="kph" class="form-label">Kepemilikan</label>
+                <select name="kph_id" class="form-select" required>
+                @foreach ($kphs as $kph)
+                  <option value="{{ $kph->id }}">{{ $kph->name }}</option>
                 @endforeach
                 </select>
-            </div>
-            <div class="col-12">
+              </div>
+              <div class="col-12">
+                <label for="category_id" class="form-label">Pilih Kategori</label>
+                <select name="category_id" class="form-select" required>
+                @foreach ($categories as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+                </select>
+              </div>
+              <div class="col-12">
                 <label for="price" class="form-label">Harga</label>
                 <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Inputkan harga" required value="{{ old('price') }}">
                 @error('price')
@@ -68,7 +75,7 @@
               </div>
               <div class="col-12">
                 <label for="description" class="form-label">Deskripsi</label>
-                <input id="description" type="hidden" name="description">
+                <input id="description" type="hidden" name="description" value="{{ old('description') }}">
                 <trix-editor input="description"></trix-editor>
               </div>
               <div class="col-12">

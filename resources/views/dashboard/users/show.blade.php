@@ -8,7 +8,11 @@
     <div class="row">
         <div class="card col-md-3 me-5">
             <div class="card-header text-center">
-                <img src="{{ asset('assets/img/foto_profile.png') }}" class="rounded" width="200px" style="border-radius: 100px; -moz-border-radius: 100px;">
+                @if ($user->foto)
+                    <img src="{{ asset('storage/' . $user->foto) }}" class="rounded" width="200px" style="border-radius: 100px; -moz-border-radius: 100px;">
+                @else
+                    <img src="{{ asset('assets/img/foto_profile.png') }}" class="rounded" width="200px" style="border-radius: 100px; -moz-border-radius: 100px;">
+                @endif
             </div>
             <div class="list-group list-group-flush">
                 <div class="list-group-item">

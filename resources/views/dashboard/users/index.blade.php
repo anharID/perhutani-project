@@ -29,7 +29,13 @@
           <td>{{ $user->username }}</td>
           <td>{{ $user->nama }}</td>
           <td>{{ $user->role }}</td>
-          <td>{{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</td>
+          <td>
+            @if ($user->last_seen)
+              {{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}
+            @else
+              {{ __('Belum pernah login') }}
+            @endif
+          </td>
           <td>
             @if (Cache::has('user-is-online' . $user->id))
               <span class="text-success">Online</span>
