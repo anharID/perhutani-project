@@ -8,8 +8,9 @@
     <br>
     {{ $assets->description }} --}}
     
+    <a href="/dashboard/assets" class="btn btn-primary">Kembali</a>
+    <h1 class="text-center mb-3">{{ $assets->name }}</h1>
     <div class="row justify-content-center">
-            <h1 class="text-center mb-3">{{ $assets->name }}</h1>
             <div class="card shadow-sm col-md-8">
                 <img src="{{ asset('storage/' . $assets->image) }}" class="card-img-top p-2" alt="{{ $assets->name }}">
                 <div class="card-body">
