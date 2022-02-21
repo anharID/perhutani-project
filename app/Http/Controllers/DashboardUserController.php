@@ -59,6 +59,7 @@ class DashboardUserController extends Controller
             'no_hp' => ['required', 'numeric'],
             'alamat' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255'],
+            // 'image' => 'image|file|max:10240'
         ]);
         
         // $validatedData['password']=Hash::make($validatedData['password']);
@@ -71,7 +72,8 @@ class DashboardUserController extends Controller
             'no_karyawan' => $request->no_karyawan,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
-            'role' => $request->role
+            'role' => $request->role,
+            // 'image' => $images
         ]);
 
         
@@ -124,6 +126,7 @@ class DashboardUserController extends Controller
             'no_karyawan' => ['required', 'numeric'],
             'no_hp' => ['required', 'numeric'],
             'alamat' => ['required', 'string', 'max:255'],
+            // 'image' => ['image|file|max:10240']
         ];
 
         $request->validate($rules);
@@ -135,6 +138,7 @@ class DashboardUserController extends Controller
             'no_karyawan' => $request->no_karyawan,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
+            // 'image' => $image
         ]);
 
 

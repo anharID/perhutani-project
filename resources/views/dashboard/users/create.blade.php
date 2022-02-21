@@ -84,6 +84,15 @@
                     </div>
                 @enderror
             </div>
+            <div class="col-12">
+              <label for="image" class="form-label">Gambar User</label>
+              <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+              @error('image')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+              @enderror
+            </div>
             <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-primary">Tambah User</button>
             </div>
