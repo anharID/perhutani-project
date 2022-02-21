@@ -38,7 +38,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                {{ auth()->user()->nama }}
+                {{ auth()->user()->role }}
                 {{-- <span>{{ auth()->user()->role }}</span> --}}
             </div>
         </nav>

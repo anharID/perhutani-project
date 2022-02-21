@@ -68,7 +68,7 @@ class DashboardAssetController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('/dashboard/assets')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/dashboard/assets')->with('toast_success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -133,7 +133,7 @@ class DashboardAssetController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('/dashboard/assets')->with('success', 'Data berhasil diupdate!');
+        return redirect('/dashboard/assets')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**

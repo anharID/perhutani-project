@@ -102,11 +102,11 @@ class DashboardKphController extends Controller
      * @param  \App\Models\Kph  $kph
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Kph $kph)
-    // {
-    //     Kph::destroy($kph->id);
-    //     return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
-    // }
+    public function destroy(Kph $kph)
+    {
+        Kph::destroy($kph->id);
+        return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
+    }
 
     public function confirm($id)
     {
