@@ -58,7 +58,7 @@ class DashboardKphController extends Controller
      */
     public function show(Kph $kph)
     {
-        //
+        return view('dashboard.kph.show', ['kph'=> $kph]);
     }
 
     /**
@@ -107,31 +107,31 @@ class DashboardKphController extends Controller
         Kph::destroy($kph->id);
         return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
     }
-
-    public function confirm($id)
-    {
-
-        alert()->question('Are you Sure?','Tindakan ini akan menghapus data')
-                ->showConfirmButton(
-                    '
-                    <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline">
-                    @@method("post")
-                    @@csrf
-                    Hapus
-                    ',
-
-                    // '<a href="/dashboard/kph/' . $id . '/delete" method="post" class="text-white" style="text-decoration:none">Hapus</a>', 
-                    
-                    '#ff0000')->toHtml()
-
-                ->showCancelButton('Batal', '#aaa')->reverseButtons();
-
-        return redirect('/dashboard/kph');
-    }
-
-    public function delete($id)
-    {
-        Kph::destroy($id);
-        return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
-    }
 }
+
+//     public function confirm($id)
+//     {
+
+//         alert()->question('Are you Sure?','Tindakan ini akan menghapus data')
+//                 ->showConfirmButton(
+//                     '
+//                     <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline">
+//                     @@method("post")
+//                     @@csrf
+//                     Hapus
+//                     ',
+
+//                     // '<a href="/dashboard/kph/' . $id . '/delete" method="post" class="text-white" style="text-decoration:none">Hapus</a>', 
+                    
+//                     '#ff0000')->toHtml()
+
+//                 ->showCancelButton('Batal', '#aaa')->reverseButtons();
+
+//         return redirect('/dashboard/kph');
+//     }
+
+//     public function delete($id)
+//     {
+//         Kph::destroy($id);
+//         return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
+//     }

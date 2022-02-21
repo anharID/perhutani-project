@@ -20,11 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('foto');
             $table->string('no_karyawan')->nullable()->unique();
             $table->string('no_hp')->unique();
             $table->string('alamat');
             $table->enum('role',['Admin','Supervisor','Operator','User']);
             $table->rememberToken();
+            $table->timestamp('last_seen')->nullable();
             $table->timestamps();
         });
     }

@@ -35,6 +35,8 @@ Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
 
+Route::get('online-user', [DashboardUserController::class, 'index']);
+
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::get('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
 Route::get('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
@@ -49,4 +51,4 @@ Route::resource('/dashboard/users', DashboardUserController::class)->name('index
 
 Route::resource('/dashboard/assets', DashboardAssetController::class)->name('index', 'assets')->middleware('auth');
 
-Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware(['admin','supervisor']);
+Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('supervisor');

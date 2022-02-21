@@ -28,7 +28,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Data Assets
                     </a>
-                    @can(['admin'])
+                    @can('supervisor')
                     <a class="nav-link {{ Request::is('dashboard/approve*') ? 'active' : '' }}" href="{{ route('approve') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-handshake"></i></div>
                         Approve

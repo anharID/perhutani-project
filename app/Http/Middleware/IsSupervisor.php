@@ -16,7 +16,7 @@ class IsSupervisor
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check() || auth()->user()->role === 'Supervisor' || auth()->user()->role === 'Admin' )
+        if(auth()->user()->role === 'Supervisor' || auth()->user()->role === 'Admin' )
         {
                 return $next($request);
         }

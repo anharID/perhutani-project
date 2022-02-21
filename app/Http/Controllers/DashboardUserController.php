@@ -20,8 +20,15 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
+        // $users = User::select("*")
+        //                     ->whereNotNull('last_seen')
+        //                     ->orderBy('last_seen', 'DESC');
+
         return view('dashboard.users.index',[
-            'users' => User::all()->except(auth()->user()->id)
+            'users' => User::all()
+            ->whereNotNull('last_seen')
+            ->sortBy('last_seen', false)
+            ->except(auth()->user()->id)
         ]);
     }
 

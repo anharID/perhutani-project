@@ -17,11 +17,9 @@
         <th>No.</th>
         <th>Username</th>
         <th>Nama</th>
-        <th>Email</th>
-        <th>No. Karyawan</th>
-        <th>No. Hp</th>
-        <th>Alamat</th>
         <th>Role</th>
+        <th>Last Seen</th>
+        <th>Status</th>
         <th>Aksi</th>
       </thead>
       <tbody>
@@ -30,11 +28,15 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $user->username }}</td>
           <td>{{ $user->nama }}</td>
-          <td>{{ $user->email }}</td>
-          <td>{{ $user->no_karyawan }}</td>
-          <td>{{ $user->no_hp }}</td>
-          <td>{{ $user->alamat }}</td>
           <td>{{ $user->role }}</td>
+          <td>{{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</td>
+          <td>
+            @if (Cache::has('user-is-online' . $user->id))
+              <span class="text-success">Online</span>
+            @else
+              <span class="text-secondary">Offline</span>
+            @endif
+          </td>
           <td>
             <a href="/dashboard/users/{{ $user->username }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="/dashboard/users/{{ $user->username }}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>

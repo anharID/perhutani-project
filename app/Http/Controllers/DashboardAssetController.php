@@ -16,12 +16,13 @@ class DashboardAssetController extends Controller
      */
     public function index()
     {
-
-        return view('dashboard.aset.index',[
+        $users = User::all();
+        $assets = Asset::all();
+        return view('dashboard.aset.index',compact('users', 'assets')
             // 'assets'=>Asset::where('status', true)->get()
-            'users' => User::all(),
-            'assets'=>Asset::all(),
-        ]);
+            // 'users' =>User::all(),
+            // 'assets'=>Asset::all(),
+        );
     }
 
     /**

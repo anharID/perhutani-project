@@ -26,6 +26,7 @@ class CreateAssetsTable extends Migration
             $table->string('depreciation');
             $table->text('description');
             $table->boolean('status')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
