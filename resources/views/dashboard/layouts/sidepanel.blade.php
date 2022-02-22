@@ -5,8 +5,8 @@
                   <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
                   <span class="fs-4">Sidebar</span>
                 </a> --}}
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
+                
+                <ul class="nav nav-pills flex-column mb-auto mx-2">
                   <li class="nav-item">
                     <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -45,7 +45,7 @@
                     @endcan
                   </li>
                 </ul>
-                <hr>
+                
               </div>
 
 
