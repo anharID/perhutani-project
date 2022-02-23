@@ -82,6 +82,7 @@
                 <button type="submit" class="btn btn-primary">Input Data</button>
               </div>
       </form>
+      
       <script>
         document.addEventListener('trix-file-accept', function(e){
           e.preventDefault();

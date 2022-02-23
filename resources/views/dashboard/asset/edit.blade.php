@@ -2,11 +2,11 @@
 @section('container')
 <h1 class="mb-4">Edit Asset</h1>
         <form class="row g-3" action="/dashboard/assets/{{ $asset->slug }}" method="POST" enctype="multipart/form-data">
-          @method('PUT')
+          @method('PATCH')
           @csrf
-            <div class="col-12">
+              <div class="col-12">
                 <label for="code" class="form-label">Code</label>
-                <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" id="code" placeholder="Inputkan code" required value="{{ old('code', $asset->code)  }}">
+                <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" id="code" placeholder="Inputkan code" required value="{{ old('code', $asset->code) }}">
                 @error('code')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -24,7 +24,7 @@
               </div>
               <div class="col-12">
                 <label for="kph" class="form-label">Kepemilikan</label>
-                <select name="kph_id" class="form-select" required>
+                <select name="kph_id" class="form-select">
                   @foreach ($kphs as $kph)
                   @if (old('category', $asset->kph_id) == $kph->id)
                     <option value="{{ $kph->id }}" selected>{{ $kph->name }}</option>
@@ -36,7 +36,7 @@
               </div>
               <div class="col-12">
                 <label for="category" class="form-label">Kategori</label>
-                <select name="category" class="form-select">
+                <select name="category_id" class="form-select">
                 @foreach ($categories as $category)
                   @if (old('category', $asset->category_id) == $category->id)
                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -45,8 +45,8 @@
                   @endif
                 @endforeach
                 </select>
-            </div>
-            <div class="col-12">
+              </div>
+              <div class="col-12">
                 <label for="price" class="form-label">Harga</label>
                 <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price" placeholder="Inputkan harga" required value="{{ old('price', $asset->price) }}">
                 @error('price')
@@ -75,7 +75,8 @@
               </div>
               <div class="col-12">
                 <label for="image" class="form-label">Gambar Asset</label>
-                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                <input type="hidden" name="oldImage" value="{{ $asset->image }}">
+                <input class="form-control @error('image') is-invalid @enderror" type="file" accept="image/*" id="image" name="image">
                 @error('image')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -87,10 +88,11 @@
                 <input id="description" type="hidden" name="description" value="{{ old('description', $asset->description) }}">
                 <trix-editor input="description"></trix-editor>
               </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Edit Data</button>
-            </div>
+              <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Edit Data Asset</button>
+              </div>
       </form>
+
       <script>
         document.addEventListener('trix-file-accept', function(e){
           e.preventDefault();

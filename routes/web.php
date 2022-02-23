@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardAssetController;
 use App\Http\Controllers\DashboardApproveController;
+use App\Http\Controllers\DashboardAssetTrashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,10 +39,10 @@ Route::get('/dashboard', function(){
 Route::get('online-user', [DashboardUserController::class, 'index']);
 
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
-Route::get('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
-Route::get('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
-Route::post('/dashboard/kph/{id}/confirm', [DashboardKphController::class, 'confirm'])->name('confirm')->middleware('admin');
-Route::post('/dashboard/kph/{id}/delete', [DashboardKphController::class, 'delete'])->name('delete')->middleware('admin');
+Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
+Route::post('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
+// Route::post('/dashboard/kph/{id}/confirm', [DashboardKphController::class, 'confirm'])->name('confirm')->middleware('admin');
+// Route::post('/dashboard/kph/{id}/delete', [DashboardKphController::class, 'delete'])->name('delete')->middleware('admin');
 
 Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('admin');
 

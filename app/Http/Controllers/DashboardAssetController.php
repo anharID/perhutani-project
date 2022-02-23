@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Kph;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Testing\Assert;
 
 class DashboardAssetController extends Controller
 {
@@ -21,8 +23,6 @@ class DashboardAssetController extends Controller
         $assets = Asset::all();
         return view('dashboard.asset.index',compact('users', 'assets')
             // 'assets'=>Asset::where('status', true)->get()
-            // 'users' =>User::all(),
-            // 'assets'=>Asset::all(),
         );
     }
 
@@ -46,10 +46,6 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->file('image')->store('asset-images');
-
-        // dd($request);
-        
        $validatedData = $request->validate([
             'code' => 'required|min:3|max:10',
             'name' => 'required|max:255',
@@ -70,21 +66,8 @@ class DashboardAssetController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
 
         Asset::create($validatedData);
-        
 
-        // Asset::create([
-        //     'category_id' => $request->category,
-        //     'user_id' => auth()->user()->id,
-        //     'code' => $request->code,
-        //     'name' => $request->name,
-        //     'price' => $request->price,
-        //     'book_value' => $request->book_value,
-        //     'depreciation' => $request->depreciation,
-        //     'image' => $images,
-        //     'description' => $request->description
-        // ]);
-
-        return redirect('/dashboard/assets')->with('toast_success', 'Data berhasil ditambahkan!');
+        return redirect('/dashboard/assets')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -122,19 +105,7 @@ class DashboardAssetController extends Controller
      */
     public function update(Request $request, Asset $asset)
     {
-        // $rules=[
-        //     'code' => 'required|min:3|max:10',
-        //     'name' => 'required|max:255',
-        //     'kph_id' => 'required',
-        //     'category_id' => 'required',
-        //     'price' => 'required|numeric',
-        //     'book_value' => 'required|numeric',
-        //     'depreciation' => 'required|numeric',
-        //     'image' => 'image|file|max:10240',
-        //     'description' => 'required'
-        // ];
-
-       $validatedData = $request->validate([
+       $data = $request->validate([
         'code' => 'required|min:3|max:10',
         'name' => 'required|max:255',
         'kph_id' => 'required',
@@ -144,35 +115,21 @@ class DashboardAssetController extends Controller
         'depreciation' => 'required|numeric',
         'image' => 'image|file|max:1024',
         'description' => 'required'
-    ]);
-
-        // $image = $request->file('image')->store('asset-images');
+        ]);
         
-        if ($request->file('image'))
+        if ($request->hasFile('image'))
         {
-            $validatedData['image']= $request->file('image')->store('asset-images'); 
+            if ($request->oldImage){
+                Storage::delete($request->oldImage);
+            } 
+            $data['image'] = $request->file('image')->store('asset-images'); 
         }
 
-        $validatedData['user_id'] = auth()->user()->id;
+        $data['user_id'] = auth()->user()->id;
 
-        Asset::where('id', $asset->id)
-        ->update($validatedData);
+        Asset::where('id', $asset->id)->update($data);
 
-        return redirect('/dashboard/assets')->with('toast_success', 'Data berhasil diupdate!');
-
-        // Asset::where('id', $asset->id)->update([
-        //     'category_id' => $request->category,
-        //     'user_id' => auth()->user()->id,
-        //     'code' => $request->code,
-        //     'name' => $request->name,
-        //     'price' => $request->price,
-        //     'book_value' => $request->book_value,
-        //     'depreciation' => $request->depreciation,
-        //     'image' => $image,
-        //     'description' => $request->description
-        // ]);
-
-        // return redirect('/dashboard/assets')->with('toast_success', 'Data berhasil diupdate!');
+        return redirect('/dashboard/assets')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -183,15 +140,14 @@ class DashboardAssetController extends Controller
      */
     public function destroy(Asset $asset)
     {
+        // dd($asset->all());
+
+        Storage::move($asset->image, 'trash/');
+        
         Asset::destroy($asset->id);
         return redirect('/dashboard/assets')->with('success', 'Data berhasil dihapus!');
     }
     
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function trash()
     {
         return view('dashboard.asset.trash',
@@ -217,12 +173,17 @@ class DashboardAssetController extends Controller
     public function delete($slug = null)
     {
         if ($slug != null)
-         {
-             Asset::onlyTrashed()->where('slug', $slug)->forceDelete();
+        {
+             $delete = Asset::onlyTrashed()->where('slug', $slug)->first();
+             if ($delete->image){
+                 Storage::delete($delete->image);
+             }
+             $delete->forceDelete();
          }
          else
          {
-            Asset::onlyTrashed()->forceDelete();
+            $deleteAll = Asset::onlyTrashed();
+            $deleteAll->forceDelete();
          }
 
          return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di delete permanent!');    
