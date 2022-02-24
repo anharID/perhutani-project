@@ -10,13 +10,16 @@
     </div>
   @endif --}}
   
-  <a href="/dashboard/assets/delete" class="btn btn-danger mb-3" onclick="return confirm('Anda yakin ingin menghapus?')">Delete all</a>
   <form action="/dashboard/assets/delete" method="post" class="d-inline">
     @method('post')
     @csrf
     <button class="btn btn-danger mb-3" onclick="return confirm('Anda yakin ingin menghapus?')">Hapus Semua</button>
   </form>
-  <a href="/dashboard/assets/restore" class="btn btn-info mb-3">Restore all</a>
+  {{-- <form action="/dashboard/assets/restore" method="post" class="d-inline">
+    @method('post')
+    @csrf
+    <button class="btn btn-primary mb-3">Restore Semua</button>
+  </form> --}}
   <a href="/dashboard/assets/" class="btn btn-secondary mb-3">Back</a>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm table-hover">

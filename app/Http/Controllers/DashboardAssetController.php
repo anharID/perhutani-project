@@ -141,8 +141,9 @@ class DashboardAssetController extends Controller
     public function destroy(Asset $asset)
     {
         // dd($asset->all());
-
-        Storage::move($asset->image, 'trash/');
+        if ($asset->image){
+            Storage::move($asset->image, 'trash/' . $asset->image);
+        }
         
         Asset::destroy($asset->id);
         return redirect('/dashboard/assets')->with('success', 'Data berhasil dihapus!');
@@ -160,12 +161,21 @@ class DashboardAssetController extends Controller
     {
          if ($slug != null)
          {
-             Asset::onlyTrashed()->where('slug', $slug)->restore();
+             $restore = Asset::onlyTrashed()->where('slug', $slug)->first();
+             if ($restore->image){
+                 Storage::move('trash/' . $restore->image, $restore->image);
+             }
+             $restore->restore();
          }
-         else
-         {
-            Asset::onlyTrashed()->restore();
-         }
+        //  else
+        //  {
+        //     $imageFiles = Storage::files('trash/asset-images');
+        //     foreach ($imageFiles as $imageFile){
+        //         Storage::move($imageFile, 'asset-images/');
+        //     }
+        //     $restoreAll = Asset::onlyTrashed();
+        //     $restoreAll->restore();
+        //  }
 
          return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di restore!');
     }
@@ -176,14 +186,14 @@ class DashboardAssetController extends Controller
         {
              $delete = Asset::onlyTrashed()->where('slug', $slug)->first();
              if ($delete->image){
-                 Storage::delete($delete->image);
+                 Storage::delete('trash/' . $delete->image);
              }
              $delete->forceDelete();
          }
          else
          {
-            $deleteAll = Asset::onlyTrashed();
-            $deleteAll->forceDelete();
+            Storage::deleteDirectory('trash');
+            Asset::onlyTrashed()->forceDelete();
          }
 
          return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di delete permanent!');    
