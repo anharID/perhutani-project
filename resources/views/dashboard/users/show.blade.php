@@ -5,6 +5,8 @@
     <a href="/dashboard/users" class="btn btn-primary mb-3">Kembali</a>
     <h1 class="mb-4">Detail User</h1>
 
+    <div class="card shadow">
+    <div class="p-3 mb-2">
     <div class="container">
         <div class="main-body">
               <div class="row gutters-sm">
@@ -48,15 +50,6 @@
                             <hr>
                             <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Nama</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->nama }}
-                            </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                            <div class="col-sm-3">
                                 <h6 class="mb-0">No. Karyawan</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
@@ -79,15 +72,6 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {{ $user->alamat }}
-                            </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Role</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->role }}
                             </div>
                             </div>
                             <hr>

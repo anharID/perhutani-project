@@ -1,6 +1,8 @@
 @extends('dashboard.layouts.main')
 @section('container')
     <h1 class="mb-4">Data Kategori</h1>
+    <div class="card shadow">
+    <div class="p-3"> 
     
     {{-- @if (session()->has('success'))
       <div class="alert alert-success" role="alert">

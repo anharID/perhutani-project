@@ -2,15 +2,22 @@
 
 @section('container')
 <body>
-    {{-- <img src="{{ asset('storage/' . $assets->image) }}" alt="{{ $assets->name }} " class="img-fluid mt-3" width="200px" height="200px">
-    <br>
-    <a href="{{ asset('storage/' . $assets->image) }}"> lihat gambar</a>
-    <br>
-    {{ $assets->description }} --}}
-    
     <a href="/dashboard/assets" class="btn btn-primary">Kembali</a>
     <h1 class="text-center mb-3">{{ $assets->name }}</h1>
     <div class="row justify-content-center">
+    <div class="card shadow-sm col-md-8" style="width: 18rem;">
+        @if ($assets->image)
+                    <img src="{{ asset('storage/' . $assets->image) }}" class="card-img-top p-2" alt="{{ $assets->name }}">
+                @else
+                    <img src="{{ asset('assets/img/no-image.png') }}" alt="Tidak ada gambar">
+                @endif
+        <div class="card-body">
+          <p class="card-text">{!! $assets->description !!}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+    {{-- <div class="row justify-content-center">
             <div class="card shadow-sm col-md-8">
                 @if ($assets->image)
                     <img src="{{ asset('storage/' . $assets->image) }}" class="card-img-top p-2" alt="{{ $assets->name }}">
@@ -49,6 +56,6 @@
                 </div>
               </div>
 
-        </div>
+        </div> --}}
     </body>
 @endsection

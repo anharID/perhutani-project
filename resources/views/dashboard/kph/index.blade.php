@@ -10,7 +10,11 @@
     </div>
   @endif --}}
   
-  <a href="/dashboard/kph/create" class="btn btn-primary mb-3">Tambah Data</a>
+  <div class="card shadow">
+  <div class="p-3"> 
+  <div class="col-12">
+    <a href="/dashboard/kph/create" class="btn btn-primary mb-3">Tambah Data</a>
+  </div>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm table-hover">
       <thead>
@@ -51,6 +55,8 @@
         @endforeach
       </tbody>
     </table>
+  </div>
+  </div>   
   </div>
 
 @endsection

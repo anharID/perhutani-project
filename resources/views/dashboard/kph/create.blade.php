@@ -1,7 +1,8 @@
 @extends('dashboard.layouts.main')
 @section('container')     
       <h1 class="mb-4">Tambah Data KPH</h1>
-        <form class="row g-3" action="/dashboard/kph" method="POST">
+      <div class="card shadow">
+        <form class="row g-3 p-3 " action="/dashboard/kph" method="POST">
           @csrf
             <div class="col-12">
                 <label for="code" class="form-label">Code</label>
@@ -52,4 +53,5 @@
                 <button type="submit" class="btn btn-primary">Input Data</button>
             </div>
       </form>
+      </div>
 @endsection

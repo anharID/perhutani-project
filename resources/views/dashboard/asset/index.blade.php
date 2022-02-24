@@ -8,6 +8,8 @@
     </div>
   @endif --}}
   
+  <div class="card shadow">
+  <div class="p-3"> 
   <a href="/dashboard/assets/create" class="btn btn-primary mb-3">Tambah Asset</a>
   <a href="{{ route('trash') }}" class="btn btn-danger mb-3">Trash</a>
   <div class="table-responsive">

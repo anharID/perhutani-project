@@ -1,7 +1,8 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <h1 class="mb-4">Tambah Data User</h1>
-        <form class="row g-3" action="{{ route('user') }}" method="POST" enctype="multipart/form-data">
+<div class="card shadow">
+        <form class="row g-3 p-3" action="{{ route('user') }}" method="POST" enctype="multipart/form-data">
           @csrf
             <div class="col-12">
                 <label for="username" class="form-label">Username</label>

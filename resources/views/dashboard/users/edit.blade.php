@@ -1,7 +1,8 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <h1 class="mb-4">Edit Data User</h1>
-        <form class="row g-3" action="/dashboard/users/{{ $user->username }}" method="POST" enctype="multipart/form-data">
+<div class="card shadow">
+        <form class="row g-3 p-3" action="/dashboard/users/{{ $user->username }}" method="POST" enctype="multipart/form-data">
           @method('put')
           @csrf
             <div class="col-12">
