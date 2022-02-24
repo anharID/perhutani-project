@@ -8,7 +8,6 @@ use App\Models\Kph;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Testing\Assert;
 
 class DashboardAssetController extends Controller
 {
@@ -46,6 +45,8 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->file('image'));
+
        $validatedData = $request->validate([
             'code' => 'required|min:3|max:10',
             'name' => 'required|max:255',

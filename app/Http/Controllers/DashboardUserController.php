@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardUserController extends Controller
 {
@@ -53,39 +54,28 @@ class DashboardUserController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
 
-        $request->validate([
-            'username' => ['required', 'string', 'max:255'],
-            'nama' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'password' => ['required', 'string', 'min:8'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'alamat' => ['required', 'string', 'max:255'],
-            'no_karyawan' => ['required', 'numeric'],
-            'no_hp' => ['required', 'numeric'],
-            'alamat' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:255'],
-            // 'image' => 'image|file|max:10240'
-        ]);
-        
-        // $validatedData['password']=Hash::make($validatedData['password']);
-        User::create([
-            'username' => $request->username,
-            'nama' => $request->nama,
-            'email' =>$request->email,
-            'password' => Hash::make($request->password),
-            'alamat' => $request->alamat,
-            'no_karyawan' => $request->no_karyawan,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            'role' => $request->role,
-            // 'image' => $images
+        $validatedData = $request->validate([
+            'username' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'alamat' => 'required|string|max:255',
+            'no_karyawan' => 'required|numeric',
+            'no_hp' => 'required|numeric',
+            'alamat' => 'required|string|max:255',
+            'role' => 'required',
+            'foto' => 'image|file|max:1024'
         ]);
 
+        if ($request->file('foto'))
+        {
+            $validatedData['foto'] = $request->file('foto')->store('user-photos'); 
+        }
+
+        $validatedData['password']=Hash::make($validatedData['password']);
         
-        // dd('berhasil');
-        // User::create($validatedData);
+        User::create($validatedData);
 
         return redirect('dashboard/users')->with('success', 'Data berhasil ditambahkan!');
         
@@ -126,29 +116,24 @@ class DashboardUserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $rules=[
-            'nama' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'alamat' => ['required', 'string', 'max:255'],
-            'no_karyawan' => ['required', 'numeric'],
-            'no_hp' => ['required', 'numeric'],
-            'alamat' => ['required', 'string', 'max:255'],
-            // 'image' => ['image|file|max:10240']
-        ];
-
-        $request->validate($rules);
-
-        // dd($request);
-        User::where('id',$user->id)->update([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'no_karyawan' => $request->no_karyawan,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            // 'image' => $image
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+            'no_karyawan' => 'required|numeric',
+            'no_hp' => 'required|numeric',
+            'alamat' => 'required|string|max:255',
+            'foto' => 'image|file|max:1024'
         ]);
 
+        if ($request->hasFile('foto')){
+            if ($request->oldImage){
+                Storage::delete($request->oldImage);
+            } 
+            $validatedData['foto'] = $request->file('foto')->store('user-photos'); 
+        }
 
+        User::where('id', $user->id)->update($validatedData);
+        
         return redirect('/dashboard/users')->with('success', 'Data berhasil diupdate!');
     }
 

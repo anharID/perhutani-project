@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <h1 class="mb-4">Tambah Data User</h1>
-        <form class="row g-3" action="{{ route('user') }}" method="POST">
+        <form class="row g-3" action="{{ route('user') }}" method="POST" enctype="multipart/form-data">
           @csrf
             <div class="col-12">
                 <label for="username" class="form-label">Username</label>
@@ -58,13 +58,26 @@
                 @enderror
               </div>
               <div class="col-12">
-                <label for="role" class="form-label">Role</label>
+                <label for="role" class="form-label">Pilih Role</label>
+                <input name="role" type="hidden" class="form-control @error('alamat') is-invalid @enderror">
                 <select name="role" class="form-select">
-                  <option selected>Inputkan role</option>
+                  <option disabled selected>Inputkan role</option>
                   <option value="Admin">Admin</option>
                   <option value="Supervisor">Supervisor</option>
                   <option value="Operator">Operator</option>
                 </select>
+                @error('role')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="col-12">
+              <label for="foto" class="form-label">Foto User</label>
+              <input class="form-control @error('foto') is-invalid @enderror" type="file" accept="image/*" id="foto" name="foto">
+              @error('foto')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+              @enderror
             </div>
             <div class="col-md-6">
               <label for="password" class="form-label">Password</label>
@@ -83,15 +96,6 @@
                       {{ $message }}
                     </div>
                 @enderror
-            </div>
-            <div class="col-12">
-              <label for="image" class="form-label">Gambar User</label>
-              <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
-              @error('image')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
             </div>
             <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-primary">Tambah User</button>

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <h1 class="mb-4">Edit Data User</h1>
-        <form class="row g-3" action="/dashboard/users/{{ $user->username }}" method="POST">
+        <form class="row g-3" action="/dashboard/users/{{ $user->username }}" method="POST" enctype="multipart/form-data">
           @method('put')
           @csrf
             <div class="col-12">
@@ -58,15 +58,16 @@
                     </div>
                 @enderror
               </div>
-              {{-- <div class="col-12">
-                <label for="image" class="form-label">Gambar User</label>
-                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
-                @error('image')
+              <div class="col-12">
+                <label for="foto" class="form-label">Foto User</label>
+                <input type="hidden" name="oldImage" value="{{ $user->foto }}">
+                <input class="form-control @error('foto') is-invalid @enderror" type="file" accept="image/*" id="foto" name="foto">
+                @error('foto')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
                 @enderror
-              </div> --}}
+              </div>
             
             <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-primary">Edit Data User</button>
