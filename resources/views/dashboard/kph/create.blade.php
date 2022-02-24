@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.main')
-@section('container')
+@section('container')     
       <h1 class="mb-4">Tambah Data KPH</h1>
         <form class="row g-3" action="/dashboard/kph" method="POST">
           @csrf
