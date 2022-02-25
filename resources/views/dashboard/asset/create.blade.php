@@ -1,8 +1,12 @@
 @extends('dashboard.layouts.main')
 @section('container')
+
 <h1 class="mb-3">Tambah Asset</h1>
 {{ Breadcrumbs::render('assets.create') }}
         <form class="row g-3" action="/dashboard/assets" method="POST" enctype="multipart/form-data">
+
+<div class="card shadow">
+        <form class="row g-3 p-3" action="/dashboard/assets" method="POST" enctype="multipart/form-data">
           @csrf
             <div class="col-12">
                 <label for="code" class="form-label">Code</label>
