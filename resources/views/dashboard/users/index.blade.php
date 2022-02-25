@@ -11,11 +11,12 @@
     </div>
   @endif --}}
   
-  <div class="card shadow">
-  <div class="p-3"> 
-  <a href="/dashboard/users/create" class="btn btn-primary mb-3">Tambah User</a>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-sm table-hover">
+  <div class="card shadow"> 
+  <div class="table-responsive p-3">
+  <div class="col-12">
+    <a href="/dashboard/users/create" class="btn btn-primary mb-4">Tambah User</a>
+  </div>
+    <table id="example" class="table table-striped table-bordered table-sm table-hover">
       <thead>
         <th>No.</th>
         <th>Username</th>

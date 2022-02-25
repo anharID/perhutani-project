@@ -10,11 +10,12 @@
   @endif --}}
   
   <div class="card shadow">
-  <div class="p-3"> 
-  <a href="/dashboard/assets/create" class="btn btn-primary mb-3">Tambah Asset</a>
-  <a href="{{ route('trash') }}" class="btn btn-danger mb-3">Trash</a>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-sm table-hover">
+  <div class="table-responsive p-3">
+  <div class="col-12">
+    <a href="/dashboard/assets/create" class="btn btn-primary mb-4">Tambah Asset</a>
+    <a href="{{ route('trash') }}" class="btn btn-danger mb-4">Trash</a>
+  </div>
+    <table id="example" class="table table-striped table-bordered table-sm table-hover">
       <thead>
         <th>No.</th>
         <th>Code</th>

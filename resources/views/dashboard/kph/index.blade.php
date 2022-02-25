@@ -12,12 +12,12 @@
   @endif --}}
   
   <div class="card shadow">
-  <div class="p-3"> 
-  <div class="col-12">
-    <a href="/dashboard/kph/create" class="btn btn-primary mb-3">Tambah Data</a>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-sm table-hover">
+  <div class="table-responsive p-3">
+    <div class="col-12">
+      <a href="/dashboard/kph/create" class="btn btn-primary mb-4">Tambah Data</a>
+    </div>
+    <table id="example" class="table table-striped table-bordered table-sm table-hover">
+      
       <thead>
         <th>No.</th>
         <th>Kode</th>
@@ -39,15 +39,7 @@
             <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline">
               @method('delete')
               @csrf
-              <button 
-              class="badge bg-danger border-0"
-              onclick= "return confirm('Yakin ingin menghapus data?')"
-              {{-- " return 
-            {{  alert()->question('Are you Sure?','Tindakan ini akan menghapus data')
-              ->showConfirmButton('Ya','#ff0000')
-              ->showCancelButton('Batal', '#aaa')->reverseButtons()}}
-              " --}}
-              >
+              <button class="badge bg-danger border-0" onclick= "return confirm('Yakin ingin menghapus data?')">
                 <i class="fas fa-times-circle"></i>
               </button>
             </form>
@@ -57,7 +49,6 @@
       </tbody>
     </table>
   </div>
-  </div>   
   </div>
 
 @endsection

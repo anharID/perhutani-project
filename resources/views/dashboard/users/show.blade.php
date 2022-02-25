@@ -6,8 +6,6 @@
     <h1 class="mb-3">Detail User</h1>
     {{ Breadcrumbs::render('user.show', $user) }}
 
-    <div class="card shadow">
-    <div class="p-3 mb-2">
     <div class="container">
         <div class="main-body">
               <div class="row gutters-sm">
@@ -15,11 +13,11 @@
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex flex-column align-items-center text-center">
-                        @if ($user->foto)
-                            <img src="{{ asset('storage/' . $user->foto) }}" class="img-responsive img-circle" width="200px" style="border-radius: 100px; -moz-border-radius: 100px;">
-                        @else
-                            <img src="{{ asset('assets/img/foto_profile.png') }}" class="img-responsive img-circle" width="200px" style="border-radius: 100px; -moz-border-radius: 100px;">
-                        @endif
+                            @if ($user->foto)
+                                <img src="{{ asset('storage/' . $user->foto) }}" class="img-responsive rounded-circle" width="200" height="200">
+                            @else
+                                <img src="{{ asset('assets/img/foto_profile.png') }}" class="img-responsive rounded-circle" width="200" height="200">
+                            @endif
                         <div class="mt-3">
                           <h4>{{ $user->nama }}</h4>
                           <p class="text-secondary mb-1">{{ $user->role }}</p>
@@ -80,8 +78,6 @@
                             <div class="col-sm-12">
                             </div>
                             </div>
-                        </div>
-                    </div>
     
 
     {{-- <div class="row mt-3">

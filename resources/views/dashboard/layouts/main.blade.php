@@ -15,6 +15,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
         <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
 
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+
         <style>
             trix-toolbar [data-trix-button-group="file-tools"] {
               display:none;  
@@ -54,8 +56,16 @@
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script> --}}
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script> --}}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );
+        </script>
         
     </body>
 
