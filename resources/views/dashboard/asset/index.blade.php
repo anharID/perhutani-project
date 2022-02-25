@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
-<h1 class="mb-4">Data Asset</h1>
+<h1 class="mb-3">Data Asset</h1>
+{{ Breadcrumbs::render('assets') }}
   
   {{-- @if (session()->has('success'))
       <div class="alert alert-success" role="alert">

@@ -2,8 +2,9 @@
 
 @section('container')
 <body>
-    <a href="/dashboard/users" class="btn btn-primary mb-3">Kembali</a>
-    <h1 class="mb-4">Detail User</h1>
+    {{-- <a href="/dashboard/users" class="btn btn-primary mb-3">Kembali</a> --}}
+    <h1 class="mb-3">Detail User</h1>
+    {{ Breadcrumbs::render('user.show', $user) }}
 
     <div class="card shadow">
     <div class="p-3 mb-2">

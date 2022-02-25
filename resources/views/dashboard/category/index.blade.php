@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
-    <h1 class="mb-4">Data Kategori</h1>
+    <h1 class="mb-3">Data Kategori</h1>
+    {{ Breadcrumbs::render('category') }}
     <div class="card shadow">
     <div class="p-3"> 
     

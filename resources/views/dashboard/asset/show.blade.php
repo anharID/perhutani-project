@@ -2,8 +2,9 @@
 
 @section('container')
 <body>
-    <a href="/dashboard/assets" class="btn btn-primary">Kembali</a>
-    <h1 class="text-center mb-3">{{ $assets->name }}</h1>
+    {{-- <a href="/dashboard/assets" class="btn btn-primary">Kembali</a> --}}
+    <h1 class="mb-3">{{ $assets->name }}</h1>
+    {{ Breadcrumbs::render('assets.show', $assets) }}
     <div class="row justify-content-center">
     <div class="card shadow-sm col-md-8" style="width: 18rem;">
         @if ($assets->image)

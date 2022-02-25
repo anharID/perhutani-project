@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
-      <h1 class="mb-4">Edit Data KPH</h1>
+      <h1 class="mb-3">Edit Data KPH</h1>
+      {{ Breadcrumbs::render('kph.edit', $kph) }}
       <div class="card shadow">
         <form class="row g-3 p-3" action="/dashboard/kph/{{ $kph->id }}" method="POST">
           @method('put')

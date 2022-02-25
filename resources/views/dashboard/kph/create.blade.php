@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')     
-      <h1 class="mb-4">Tambah Data KPH</h1>
+      <h1 class="mb-3">Tambah Data KPH</h1>
+      {{ Breadcrumbs::render('kph.create') }}
       <div class="card shadow">
         <form class="row g-3 p-3 " action="/dashboard/kph" method="POST">
           @csrf

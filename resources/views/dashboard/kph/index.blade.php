@@ -2,7 +2,8 @@
 
 @section('container')
 
-  <h1 class="mb-4">Data KPH</h1>
+  <h1 class="mb-3">Data KPH</h1>
+  {{ Breadcrumbs::render('kph') }}
   
   {{-- @if (session()->has('success'))
       <div class="alert alert-success" role="alert">

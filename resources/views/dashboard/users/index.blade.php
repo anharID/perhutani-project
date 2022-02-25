@@ -2,7 +2,8 @@
 
 @section('container')
 
-  <h1 class="mb-4">Data Users</h1>
+  <h1 class="mb-3">Data Users</h1>
+  {{ Breadcrumbs::render('user') }}
   
   {{-- @if (session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -54,8 +55,8 @@
             
         @endforeach
       </tbody>
-      
     </table>
+    
   </div>
     
 @endsection

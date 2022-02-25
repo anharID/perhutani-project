@@ -91,7 +91,7 @@ class DashboardAssetController extends Controller
     public function edit(Asset $asset)
     {
         return view('dashboard.asset.edit',[
-            'asset' =>$asset,
+            'assets' =>$asset,
             'categories'=>Category::all(),
             'kphs' => Kph::all()
         ]);

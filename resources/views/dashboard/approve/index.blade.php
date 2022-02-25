@@ -1,7 +1,9 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="mb-4">Approve Asset</h1>
+<h1 class="mb-3">Approve Asset</h1>
+{{ Breadcrumbs::render('approve') }}
+
 <div class="card shadow">
 <div class="p-3">
   
