@@ -18,11 +18,11 @@
     <table id="example" class="table table-striped table-bordered table-sm table-hover">
       <thead>
         <th>No.</th>
-        <th>Code</th>
-        <th>Nama Asset</th>
+        <th>Kode</th>
+        <th>Nama Aset</th>
         <th>Kategori</th>
         <th>Ditambahkan oleh</th>
-        <th>Action</th>
+        <th>Aksi</th>
       </thead>
       <tbody>
         @foreach ($assets as $asset)

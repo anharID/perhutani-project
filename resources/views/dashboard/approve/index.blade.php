@@ -18,7 +18,7 @@
     <thead>
       <th>No.</th>
       <th>Kode</th>
-      <th>Nama Asset</th>
+      <th>Nama Aset</th>
       <th>Status</th>
       <th>Aksi</th>
     </thead>

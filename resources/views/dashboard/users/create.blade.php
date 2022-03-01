@@ -7,7 +7,7 @@
           @csrf
             <div class="col-12">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Inputkan username" required autofocus value="{{ old('username') }}">
+                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Username" required autofocus value="{{ old('username') }}">
                 @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -16,7 +16,7 @@
               </div>
               <div class="col-12">
                 <label for="nama" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Inputkan nama" required value="{{ old('nama') }}">
+                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" required value="{{ old('nama') }}">
                 @error('nama')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -25,7 +25,7 @@
               </div>
               <div class="col-12">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Inputkan email" required value="{{ old('email') }}">
+                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" required value="{{ old('email') }}">
                 @error('email')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -34,7 +34,7 @@
               </div>
               <div class="col-12">
                 <label for="no_karyawan" class="form-label">No. Karyawan</label>
-                <input type="text" name="no_karyawan" class="form-control @error('no_karyawan') is-invalid @enderror" id="no_karyawan" placeholder="Inputkan nomor karyawan" required value="{{ old('no_karyawan') }}">
+                <input type="text" name="no_karyawan" class="form-control @error('no_karyawan') is-invalid @enderror" id="no_karyawan" placeholder="Nomor Karyawan" required value="{{ old('no_karyawan') }}">
                 @error('no_karyawan')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -43,7 +43,7 @@
               </div>
               <div class="col-12">
                 <label for="no_hp" class="form-label">No. Hp</label>
-                <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Inputkan nomor hp" required value="{{ old('no_hp') }}">
+                <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Nomor Hp" required value="{{ old('no_hp') }}">
                 @error('no_hp')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -52,7 +52,7 @@
               </div>
               <div class="col-12">
                 <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="Inputkan alamat" required value="{{ old('alamat') }}">
+                <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="Alamat" required value="{{ old('alamat') }}">
                 @error('alamat')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -63,7 +63,7 @@
                 <label for="role" class="form-label">Pilih Role</label>
                 <input name="role" type="hidden" class="form-control @error('alamat') is-invalid @enderror">
                 <select name="role" class="form-select">
-                  <option disabled selected>Inputkan role</option>
+                  <option disabled selected>Role</option>
                   <option value="Admin">Admin</option>
                   <option value="Supervisor">Supervisor</option>
                   <option value="Operator">Operator</option>
@@ -83,7 +83,7 @@
             </div>
             <div class="col-md-6">
               <label for="password" class="form-label">Password</label>
-              <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Inputkan password" required autocomplete="new-password">
+              <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" required autocomplete="new-password">
               @error('password')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -92,7 +92,7 @@
             </div>
             <div class="col-md-6">
               <label for="password" class="form-label">Konfirmasi Password</label>
-              <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Inputkan konfirmasi password" required autocomplete="new-password">
+              <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Konfirmasi Password" required autocomplete="new-password">
               @error('password')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -100,7 +100,7 @@
                 @enderror
             </div>
             <div class="col-12 mt-3">
-                <button type="submit" class="btn btn-primary">Tambah User</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
       </form>
     
