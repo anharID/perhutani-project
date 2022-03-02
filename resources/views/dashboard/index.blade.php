@@ -16,7 +16,7 @@
                     <div class="col mr-2">
                         <div class="text-xs fw-bold text-primary text-capitalize mb-1">
                             KPH</div>
-                        <div class="h5 mb-0 fw-bold text-gray-800">$40,000</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">{{ $kph }}</div>
                         <a class="stretched-link" href="{{ route('kph') }}"></a>
                     </div>
                     <div class="col-auto">
@@ -33,7 +33,7 @@
                     <div class="col mr-2">
                         <div class="text-xs fw-bold text-primary text-capitalize mb-1">
                             Categories</div>
-                        <div class="h5 mb-0 fw-bold text-gray-800">$40,000</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">{{ $category }}</div>
                         <a class="stretched-link" href="{{ route('category') }}"></a> 
                     </div>
                     <div class="col-auto">
@@ -50,7 +50,7 @@
                     <div class="col mr-2">
                         <div class="text-xs fw-bold text-primary text-capitalize mb-1">
                             Users</div>
-                        <div class="h5 mb-0 fw-bold text-gray-800">$40,000</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">{{ $user }}</div>
                         <a class="stretched-link" href="{{ route('user') }}"></a>
                     </div>
                     <div class="col-auto">
@@ -69,7 +69,7 @@
                     <div class="col mr-2">
                         <div class="text-xs fw-bold text-primary text-capitalize mb-1">
                             Data Assets</div>
-                        <div class="h5 mb-0 fw-bold text-gray-800">$40,000</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">{{ $asset }}</div>
                         <a class="stretched-link" href="{{ route('assets') }}"></a>
                     </div>
                     <div class="col-auto">
@@ -87,7 +87,7 @@
                     <div class="col mr-2">
                         <div class="text-xs fw-bold text-primary text-capitalize mb-1">
                             Approve</div>
-                        <div class="h5 mb-0 fw-bold text-gray-800">$40,000</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">{{ $approve }}</div>
                         <a class="stretched-link" href="{{ route('approve') }}"></a>
                     </div>
                     <div class="col-auto">

@@ -8,76 +8,77 @@
 
     <div class="container">
         <div class="main-body">
-              <div class="row gutters-sm">
+            <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center">
-                            @if ($user->foto)
-                                <img src="{{ asset('storage/' . $user->foto) }}" class="img-responsive rounded-circle" width="200" height="200">
-                            @else
-                                <img src="{{ asset('assets/img/foto_profile.png') }}" class="img-responsive rounded-circle" width="200" height="200">
-                            @endif
-                        <div class="mt-3">
-                          <h4>{{ $user->nama }}</h4>
-                          <p class="text-secondary mb-1">{{ $user->role }}</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                @if ($user->foto)
+                                    <img src="{{ asset('storage/' . $user->foto) }}" class="img-responsive rounded-circle" width="200" height="200">
+                                @else
+                                    <img src="{{ asset('assets/img/foto_profile.png') }}" class="img-responsive rounded-circle" width="200" height="200">
+                                @endif
+                                    <div class="mt-3">
+                                        <h4>{{ $user->nama }}</h4>
+                                        <p class="text-secondary mb-1">{{ $user->role }}</p>
+                                    </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">
                         <div class="card-body">
                             <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Username</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->username }}
-                            </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->email }}
-                            </div>
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Username</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $user->username }}
+                                </div>
                             </div>
                             <hr>
                             <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">No. Karyawan</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->no_karyawan }}
-                            </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">No. Hp</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->no_hp }}
-                            </div>
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $user->email }}
+                                </div>
                             </div>
                             <hr>
                             <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Alamat</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ $user->alamat }}
-                            </div>
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">No. Karyawan</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $user->no_karyawan }}
+                                </div>
                             </div>
                             <hr>
                             <div class="row">
-                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">No. Hp</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $user->no_hp }}
+                                </div>
                             </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Alamat</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ $user->alamat }}
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
     {{-- <div class="row mt-3">
