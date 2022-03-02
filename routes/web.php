@@ -38,10 +38,13 @@ Route::get('/dashboard', [DashboardConroller::class, 'index'])->name('dashboard'
 
 Route::get('online-user', [DashboardUserController::class, 'index']);
 
+
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
 Route::post('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
+
 Route::get('/dashboard/user/setting', [UserController::class, 'setting'])->name('setting')->middleware('auth');
+Route::post('/dashboard/user/setting/update', [UserController::class, 'updateProfile'])->name('user.update')->middleware('auth');
 
 Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('admin');
 
