@@ -6,7 +6,7 @@
   <h1 class="mb-4">Ubah Data User</h1>
 
   <div class="container">
-    <div class="card">
+    <div class="card shadow">
     <div class="card-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3 p-3">
@@ -24,7 +24,7 @@
                                 @csrf
                                   <input type="hidden" name="oldImage" value="{{ $user->foto }}">
                                   <input type="file" name="foto" accept="image/*" id="foto" onchange="previewPhoto()" hidden>
-                                  <input type="button" value="Ganti Foto" class="btn btn-outline-secondary" onclick="document.getElementById('foto').click(); ">
+                                  <input type="button" value="Ubah Foto" class="btn btn-outline-secondary" onclick="document.getElementById('foto').click(); ">
                                 {{-- </form> --}}
 
                             </div>
