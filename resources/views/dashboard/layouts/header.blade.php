@@ -11,6 +11,7 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{ auth()->user()->nama }} </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ route('setting') }}">Settings</a></li>
+                <li><a class="dropdown-item" href="{{ route('password') }}">Ganti Password</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                     <form action="{{ route('logout') }}" method="POST">
