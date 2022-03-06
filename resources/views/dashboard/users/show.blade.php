@@ -5,6 +5,7 @@
     {{-- <a href="/dashboard/users" class="btn btn-primary mb-3">Kembali</a> --}}
     <h1 class="mb-3">Detail User</h1>
     {{ Breadcrumbs::render('user.show', $user) }}
+    
 
     <div class="container">
         <div class="main-body">

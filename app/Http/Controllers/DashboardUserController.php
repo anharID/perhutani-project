@@ -26,7 +26,8 @@ class DashboardUserController extends Controller
         //                     ->orderBy('last_seen', 'DESC');
 
         return view('dashboard.users.index',[
-            'users' => User::all()->except(auth()->user()->id)
+            'users' => User::all()
+            ->except(auth()->user()->id)
             
         ]);
     }
@@ -87,9 +88,8 @@ class DashboardUserController extends Controller
      */
     public function show(User $user)
     {
-        return view('dashboard.users.show',[
-            'user' => $user
-        ]);
+        $nonaktif = User::onlyTrashed()->get();
+        return view('dashboard.users.show',compact('user', 'nonaktif'));
     }
 
     /**
@@ -143,6 +143,22 @@ class DashboardUserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        // dd($user->id);
+        // User::where('id', $user->id)->delete();
+        return redirect('/dashboard/users')->with('success', 'User berhasil dinonaktifkan!');
+    }
+
+    public function trash(){
+        return view('dashboard.users.non-active', [
+            'users' => User::onlyTrashed()->get()
+        ]);
+    }
+
+    public function restore($username){
+        $restore = User::onlyTrashed()->where('username', $username)->first();
+        $restore->restore();
+
+        return redirect('/dashboard/users/non-active')->with('success', 'User berhasil diaktifkan!');
     }
 }

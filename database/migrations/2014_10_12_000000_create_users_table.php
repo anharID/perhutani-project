@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->enum('role',['Admin','Supervisor','Operator','User']);
             $table->rememberToken();
             $table->timestamp('last_seen')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

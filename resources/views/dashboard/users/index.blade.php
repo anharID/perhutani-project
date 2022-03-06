@@ -15,6 +15,7 @@
   <div class="table-responsive p-3">
   <div class="col-12">
     <a href="/dashboard/users/create" class="btn btn-primary mb-4">Tambah User</a>
+    <a href="/dashboard/users/non-active" class="btn btn-danger mb-4">User Dinonaktifkan</a>
   </div>
     <table id="example" class="table table-striped table-bordered table-sm table-hover">
       <thead>
@@ -42,18 +43,21 @@
           </td>
           <td>
             @if (Cache::has('user-is-online' . $user->id))
-              <span class="text-success">Online</span>
+              <span class="badge bg-success">Online</span>
             @else
-              <span class="text-secondary">Offline</span>
+              <span class="badge bg-secondary">Offline</span>
             @endif
           </td>
           <td>
             <a href="/dashboard/users/{{ $user->username }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="/dashboard/users/{{ $user->username }}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>
-            <a href="#" class="badge bg-danger"><i class="fas fa-times-circle"></i></a>
+            <form action="/dashboard/users/{{ $user->username }}" method="post" class="d-inline">
+              @method('delete')
+              @csrf
+              <button class="badge bg-danger border-0" onclick="return confirm('Tindakan ini akan menonaktifkan user, apakah Anda yakin?')"><i class="fas fa-times-circle"></i></button>
+            </form>
           </td>
         </tr>
-            
         @endforeach
       </tbody>
     </table>

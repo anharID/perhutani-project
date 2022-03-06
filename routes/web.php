@@ -43,6 +43,9 @@ Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash']
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
 Route::post('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
 
+Route::get('/dashboard/users/non-active', [DashboardUserController::class, 'trash'])->name('nonaktif')->middleware('auth');
+Route::post('/dashboard/users/{username}/restore', [DashboardUserController::class, 'restore'])->name('aktifkan')->middleware('auth');
+
 Route::get('/dashboard/user/setting', [UserAccountController::class, 'setting'])->name('setting')->middleware('auth');
 Route::post('/dashboard/user/setting/update', [UserAccountController::class, 'updateProfile'])->name('user.update')->middleware('auth');
 Route::get('/dashboard/user/change-password', [UserAccountController::class, 'password'])->name('password')->middleware('auth');

@@ -52,6 +52,11 @@ Breadcrumbs::for('user.edit', function ($trail, $user){
     $trail->push('Edit Data user' , route('users.edit', $user));
 });
 
+Breadcrumbs::for('user.nonaktif', function ($trail){
+    $trail->parent('user');
+    $trail->push('Nonaktif User', route('nonaktif'));
+});
+
 Breadcrumbs::for('assets', function ($trail){
     $trail->parent('dashboard');
     $trail->push('Data Assets' , route('assets'));
