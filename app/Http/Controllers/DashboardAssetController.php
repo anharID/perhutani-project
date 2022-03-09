@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use App\Models\Attachment;
 use App\Models\Category;
 use App\Models\Kph;
 use App\Models\User;
@@ -18,9 +19,9 @@ class DashboardAssetController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        // $users = User::all();
         $assets = Asset::all();
-        return view('dashboard.asset.index',compact('users', 'assets')
+        return view('dashboard.asset.index',compact('assets')
             // 'assets'=>Asset::where('status', true)->get()
         );
     }
@@ -45,8 +46,7 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->file('image'));
-
+        // dd($request->file('attachment'));
        $validatedData = $request->validate([
             'code' => 'required|min:3|max:10',
             'name' => 'required|max:255',
@@ -55,19 +55,45 @@ class DashboardAssetController extends Controller
             'price' => 'required|numeric',
             'book_value' => 'required|numeric',
             'depreciation' => 'required|numeric',
+            'description' => 'required',
             'image' => 'image|file|max:1024',
-            'description' => 'required'
+            // 'attachment' => 'mimes:pdf|max:2000',
         ]);
+
+       
 
         if ($request->file('image'))
         {
             $validatedData['image']= $request->file('image')->store('asset-images'); 
         }
 
+        // $attachment = array();
+        // if ($files = $request->file('attachment'))
+        // {
+        //     foreach ($files as $file){
+        //         $attachment[]= $request->file('attachment')
+        //         ->store('asset-attachments'); 
+        //     }
+        //     $validatedData['attachment']->implode('|', $attachment);
+        // }
+
         $validatedData['user_id'] = auth()->user()->id;
 
         Asset::create($validatedData);
 
+        // if ($request->hasAny('file')){
+            
+        //     foreach ($request->file('file') as $file){
+        //         $name = $file->getClientOriginalName();
+        //         $path = $file->store('asset-attachment');
+    
+        //         Attachment::create([
+        //             'asset_id'=> $new_asset->id,
+        //             'file' => $name,
+        //             'path' => $path
+        //         ]);
+        //     }
+        // }
         return redirect('/dashboard/assets')->with('success', 'Data berhasil ditambahkan!');
     }
 
@@ -79,7 +105,8 @@ class DashboardAssetController extends Controller
      */
     public function show(Asset $asset)
     {
-        return view('dashboard.asset.show',['assets'=>$asset]);
+        $count = Attachment::where('asset_id', $asset->id)->count();
+        return view('dashboard.asset.show',compact('asset', 'count'));
     }
 
     /**
@@ -141,13 +168,59 @@ class DashboardAssetController extends Controller
      */
     public function destroy(Asset $asset)
     {
-        // dd($asset->all());
         if ($asset->image){
             Storage::move($asset->image, 'trash/' . $asset->image);
         }
         
         Asset::destroy($asset->id);
         return redirect('/dashboard/assets')->with('success', 'Data berhasil dihapus!');
+    }
+
+    public function approve(){
+        return view('dashboard.approve.index', [
+            'assets' => Asset::where('status', false)->get()
+        ]);
+    }
+
+    public function approveShow($slug){
+        return view('dashboard.approve.show', [
+            'assets' => Asset::where('slug', $slug)->first()
+        ]);
+    }
+
+    public function approved(Request $request, $slug){
+
+        $asset = Asset::where('slug', $slug)->first();
+        $asset->status = 1;
+        $asset->approve_by = auth()->user()->nama;
+        $asset->save();
+
+        $request->validate([
+            'attachment.*' => 'mimes:pdf|max:2000'
+        ]);
+        
+        $attach = $request->file('attachment');
+        if($attach){
+
+            
+            foreach ($attach as $file){
+                $filename = $file->getClientOriginalName();
+                $path = $file->store('asset-attachments');
+
+                $attachment = new Attachment();
+                $attachment->asset_id = $asset->id;
+                $attachment->filename = $filename;
+                $attachment->path = $path;
+                $attachment->save();
+            }
+                
+        }
+        
+        
+
+        
+
+        return redirect('/dashboard/assets')->with('success', 'Aproval asset berhasil');
     }
     
     public function trash()
@@ -168,16 +241,6 @@ class DashboardAssetController extends Controller
              }
              $restore->restore();
          }
-        //  else
-        //  {
-        //     $imageFiles = Storage::files('trash/asset-images');
-        //     foreach ($imageFiles as $imageFile){
-        //         Storage::move($imageFile, 'asset-images/');
-        //     }
-        //     $restoreAll = Asset::onlyTrashed();
-        //     $restoreAll->restore();
-        //  }
-
          return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di restore!');
     }
 

@@ -22,12 +22,13 @@ class CreateAssetsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('image')->nullable();
-            $table->string('attach')->nullable();
+            $table->string('attachment')->nullable();
             $table->string('price');
             $table->string('book_value');
             $table->string('depreciation');
             $table->text('description');
             $table->boolean('status')->default(false);
+            $table->string('approve_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

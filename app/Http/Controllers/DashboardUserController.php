@@ -53,15 +53,15 @@ class DashboardUserController extends Controller
 
     public function store(Request $request)
     {
-
+        // dd($request);
         $validatedData = $request->validate([
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username',
             'nama' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'alamat' => 'required|string|max:255',
-            'no_karyawan' => 'required|numeric',
-            'no_hp' => 'required|numeric',
+            'no_karyawan' => 'required|numeric|unique:users,no_karyawan',
+            'no_hp' => 'required|numeric|unique:users,no_hp',
             'alamat' => 'required|string|max:255',
             'role' => 'required',
             'foto' => 'image|file|max:1024'

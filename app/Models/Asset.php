@@ -34,6 +34,9 @@ class Asset extends Model
     public function kph(){
         return $this->belongsTo(Kph::class, 'kph_id');
     }
+    public function attachments(){
+        return $this->hasMany(Attachment::class);
+    }
 
     public function getRouteKeyName()
     {

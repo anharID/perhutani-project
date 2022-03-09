@@ -67,9 +67,9 @@ Breadcrumbs::for('assets.create', function ($trail){
     $trail->push('Tambah Data Assets' , route('assets.create'));
 });
 
-Breadcrumbs::for('assets.show', function ($trail, $assets){
+Breadcrumbs::for('assets.show', function ($trail, $asset){
     $trail->parent('assets');
-    $trail->push($assets->name , route('assets.show', $assets));
+    $trail->push($asset->name , route('assets.show', $asset));
 });
 
 Breadcrumbs::for('assets.edit', function ($trail, $assets){
@@ -85,4 +85,9 @@ Breadcrumbs::for('assets.trash', function ($trail){
 Breadcrumbs::for('approve', function ($trail){
     $trail->parent('dashboard');
     $trail->push('Approve', route('approve'));
+});
+
+Breadcrumbs::for('approve.show', function ($trail, $assets){
+    $trail->parent('approve');
+    $trail->push($assets->name, route('approve.show', $assets));
 });

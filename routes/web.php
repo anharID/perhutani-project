@@ -39,6 +39,10 @@ Route::get('/dashboard', [DashboardConroller::class, 'index'])->name('dashboard'
 Route::get('online-user', [DashboardUserController::class, 'index']);
 
 
+Route::get('/dashboard/approve', [DashboardAssetController::class, 'approve'])->name('approve')->middleware('supervisor');
+Route::get('/dashboard/approve/{slug}', [DashboardAssetController::class, 'approveShow'])->name('approve.show')->middleware('supervisor');
+Route::post('/dashboard/approve/{slug}/approved', [DashboardAssetController::class, 'approved'])->name('approved')->middleware('supervisor');
+
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
 Route::post('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
@@ -59,4 +63,4 @@ Route::resource('/dashboard/users', DashboardUserController::class)->name('index
 
 Route::resource('/dashboard/assets', DashboardAssetController::class)->name('index', 'assets')->middleware('auth');
 
-Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('supervisor');
+// Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('supervisor');

@@ -5,45 +5,47 @@
 {{ Breadcrumbs::render('approve') }}
 
 <div class="card shadow">
-<div class="p-3">
   
-@if (session()->has('success'))
+{{-- @if (session()->has('success'))
     <div class="alert alert-success" role="alert">
     {{ session('success') }}
   </div>
-@endif
+@endif --}}
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-sm table-hover">
+<div class="table-responsive p-3">
+  <table id="example" class="table table-striped table-bordered table-sm table-hover">
     <thead>
       <th>No.</th>
       <th>Kode</th>
       <th>Nama Aset</th>
+      <th>Kategori</th>
       <th>Status</th>
+      <th>Ditambahkan oleh</th>
       <th>Aksi</th>
     </thead>
-    {{-- <tbody>
-      @foreach ($users as $user)
-      <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $user->username }}</td>
-        <td>{{ $user->name }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->no_karyawan }}</td>
-        <td>{{ $user->no_hp }}</td>
-        <td>{{ $user->alamat }}</td>
-        <td>{{ $user->role }}</td>
-        <td>
-          <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
-          <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
-          <a href="#" class="badge bg-danger"><i class="fas fa-times-circle"></i></a>
-        </td>
-      </tr>
-          
-      @endforeach
-    </tbody> --}}
+    <tbody>
+      @foreach ($assets as $asset)
+        <tr>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $asset->code }}</td>
+          <td>{{ $asset->name }}</td>
+          <td>{{ $asset->category->name }}</td>
+          @if ($asset->status)
+          <td><span class="badge bg-success">Sudah</span></td>
+          @else
+          <td><span class="badge bg-danger">Belum</span></td>
+          @endif
+          <td>{{ $asset->user->nama }}</td>
+          <td>
+            <a href="/dashboard/approve/{{ $asset->slug }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
+          </td>
+        </tr>
+            
+        @endforeach
+    </tbody>
     
   </table>
+</div>
 </div>
     
 @endsection

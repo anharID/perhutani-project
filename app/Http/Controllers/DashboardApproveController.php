@@ -14,7 +14,9 @@ class DashboardApproveController extends Controller
      */
     public function index()
     {
-        return view('dashboard.approve.index');
+        return view('dashboard.approve.index', [
+            'assets' => Asset::where('status', false)->get()
+        ]);
     }
 
     /**
@@ -44,9 +46,11 @@ class DashboardApproveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Asset $asset)
     {
-        //
+        return view('dashboard.approve.show', [
+            'assets' => $asset
+        ]);
     }
 
     /**
