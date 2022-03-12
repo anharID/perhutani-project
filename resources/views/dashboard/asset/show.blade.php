@@ -84,6 +84,26 @@
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Ditambahkan oleh</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{ $asset->user->nama }}
+                                    </div>
+                                </div>
+                                <hr>
+                                @if ($asset->status)
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Disetujui oleh</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{ $asset->approve_by }}
+                                    </div>
+                                </div>
+                                <hr>
+                                @endif
                             </div>
                         </div>
                     </div>

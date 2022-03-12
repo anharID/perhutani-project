@@ -83,7 +83,7 @@
                     </div>
                 @enderror
               </div>
-              {{-- <div class="form-group">
+              <div class="form-group">
                 <label for="attachment" class="form-label">File Lampiran</label>
                 <input 
                 class="form-control @error('attachment') is-invalid @enderror" 
@@ -96,7 +96,7 @@
                       {{ $message }}
                     </div>
                 @enderror
-              </div> --}}
+              </div>
               <div class="form-group">
                 <label for="description" class="form-label">Deskripsi</label>
                 <input id="description" type="hidden" name="description" value="{{ old('description') }}">

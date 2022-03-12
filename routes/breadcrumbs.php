@@ -87,7 +87,7 @@ Breadcrumbs::for('approve', function ($trail){
     $trail->push('Approve', route('approve'));
 });
 
-Breadcrumbs::for('approve.show', function ($trail, $assets){
+Breadcrumbs::for('approve.show', function ($trail, $asset){
     $trail->parent('approve');
-    $trail->push($assets->name, route('approve.show', $assets));
+    $trail->push($asset->name, route('approve.show', $asset));
 });
