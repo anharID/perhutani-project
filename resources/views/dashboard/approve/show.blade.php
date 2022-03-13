@@ -105,10 +105,13 @@
                                     @for ($i = 0; $i <$count ; $i++)
                                     <ul>
                                         <li>
-                                            <a href="#">{{ $asset->attachments[$i]->filename }}</a>
+                                            <form action="{{ route('download',  $asset->attachments[$i]->id) }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-link">{{ $asset->attachments[$i]->filename }}</button>
+                                            
+                                            </form>
                                         </li>
                                     </ul>
-                                        
                                     @endfor
                                 </div>
                             </div>

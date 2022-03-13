@@ -2,7 +2,6 @@
 
 @section('container')
 <body>
-    {{-- <a href="/dashboard/assets" class="btn btn-primary">Kembali</a> --}}
     <h1 class="mb-3">{{ $asset->name }}</h1>
     {{ Breadcrumbs::render('assets.show', $asset) }}
 
@@ -111,17 +110,18 @@
                         <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">
                             <div class="card-body">
                                 <div class="col-auto">
-                                    <h4 class="mb-3">Lampiran</h4>
+                                    <h4 class="mb-3">FIle Lampiran</h4>
                                     @for ($i = 0; $i <$count ; $i++)
                                     <ul>
                                         <li>
-                                            <a href="#">{{ $asset->attachments[$i]->filename }}</a>
+                                            <form action="{{ route('download',  $asset->attachments[$i]->id) }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-link">{{ $asset->attachments[$i]->filename }}</button>
+                                            
+                                            </form>
                                         </li>
                                     </ul>
-                                        
                                     @endfor
-                                    
-                                    
                                 </div>
                             </div>
                         </div>

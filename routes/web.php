@@ -46,6 +46,7 @@ Route::post('/dashboard/approve/{slug}/approved', [DashboardAssetController::cla
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
 Route::post('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
+Route::post('/attachment/download/{id}', [DashboardAssetController::class, 'downloadFile'])->name('download')->middleware('auth');
 
 Route::get('/dashboard/users/non-active', [DashboardUserController::class, 'trash'])->name('nonaktif')->middleware('auth');
 Route::post('/dashboard/users/{username}/restore', [DashboardUserController::class, 'restore'])->name('aktifkan')->middleware('auth');

@@ -213,10 +213,14 @@ class DashboardAssetController extends Controller
             }
                 
         }
-
-
-
         return redirect('/dashboard/assets')->with('success', 'Data berhasil diupdate!');
+    }
+
+    public function downloadFile($id)
+    {
+        $attach = Attachment::find($id);
+        return Storage::download($attach->path, $attach->filename);
+
     }
 
     /**
