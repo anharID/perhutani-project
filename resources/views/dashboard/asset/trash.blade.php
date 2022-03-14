@@ -22,7 +22,8 @@
     <button class="btn btn-primary mb-3">Restore Semua</button>
   </form> --}}
   <a href="/dashboard/assets/" class="btn btn-secondary mb-3">Back</a>
-  <div class="table-responsive">
+  <div class="card shadow">
+  <div class="table-responsive p-3">
     <table class="table table-striped table-bordered table-sm table-hover">
       <thead>
         <th>No.</th>

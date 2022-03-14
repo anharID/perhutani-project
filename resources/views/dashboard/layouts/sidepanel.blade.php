@@ -9,22 +9,22 @@
                 <ul class="nav nav-pills flex-column mb-auto mx-2">
                   <li class="nav-item">
                     <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
                   </li>
                   @can('admin')
                   <li class="sb-sidenav-menu-heading">Master</li>
                     <a class="nav-link {{ Request::is('dashboard/kph*') ? 'active' : '' }}" href="{{ route('kph') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tree"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-tree"></i></div>
                         KPH
                     </a>
                     <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : '' }}" href="{{ route('category') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-book-open"></i></div>
                         Categories
                     </a>
                     <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }} " href="{{ route('user') }}" >
-                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                         Users
                     </a>
                   </li>
@@ -32,15 +32,34 @@
 
                   <li class="sb-sidenav-menu-heading">Asset</li>
                     <a class="nav-link {{ Request::is('dashboard/assets*') ? 'active' : '' }}" href="{{ route('assets') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-area"></i></div>
                         Data Assets
+                    </a>
+                    <a class="nav-link {{ Request::is('dashboard/depreciation*') ? 'active' : '' }}" href="#">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-gantt"></i></div>
+                        Penyusutan
+                    </a>
+
+                    <li class="sb-sidenav-menu-heading">Customer</li>
+                    <a class="nav-link {{ Request::is('dashboard/prospective-customers*') ? 'active' : '' }}" href="#">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-user-friends"></i></div>
+                        Calon Customer
+                    </a>
+                    <a class="nav-link {{ Request::is('dashboard/customer-approved*') ? 'active' : '' }}" href="#">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-user-check"></i></div>
+                        Customer PKS
                     </a>
                     @can('supervisor')
                   </li>
                   <li>
+                    <li class="sb-sidenav-menu-heading">Approve</li>
                     <a class="nav-link {{ Request::is('dashboard/approve*') ? 'active' : '' }}" href="{{ route('approve') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-handshake"></i></div>
-                        Approve
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake"></i></div>
+                        Approve Asset
+                    </a>
+                    <a class="nav-link {{ Request::is('dashboard/approve-customer*') ? 'active' : '' }}" href="#">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake"></i></div>
+                        Approve Customer
                     </a>
                     @endcan
                   </li>
@@ -52,7 +71,7 @@
             {{-- <div class="sb-sidenav-menu">
                 <div class="nav">
                     <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
 
