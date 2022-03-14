@@ -36,12 +36,36 @@
             <a href="/dashboard/kph/{{ $kph->id }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
             <a href="/dashboard/kph/{{ $kph->id }}/edit" class="badge bg-warning"><i class="fas fa-pen"></i></a>
             {{-- <a href="/dashboard/kph/{{ $kph->id }}/confirm" class="badge bg-danger"><i class="fas fa-times-circle"></i></a> --}}
-            <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline">
+            <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline" id="actionDelete">
               @method('delete')
               @csrf
-              <button class="badge bg-danger border-0" onclick= "return confirm('Yakin ingin menghapus data?')">
+              {{-- <button class="badge bg-danger border-0" onclick= "return confirm('Yakin ingin menghapus data?')">
+                <i class="fas fa-times-circle"></i>
+              </button> --}}
+              
+              <!-- Button trigger modal -->
+              <button type="button" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick= "">
                 <i class="fas fa-times-circle"></i>
               </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Yakin ingin menghapus data?</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+                      <form>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                        <button type="button" class="btn btn-danger" data-bs-target="#staticBackdrop">Ya</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </form>
           </td>
         </tr>
