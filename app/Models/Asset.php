@@ -37,6 +37,9 @@ class Asset extends Model
     public function attachments(){
         return $this->hasMany(Attachment::class);
     }
+    public function customer(){
+        return $this->hasOne(Customer::class);
+    }
 
     public function getRouteKeyName()
     {

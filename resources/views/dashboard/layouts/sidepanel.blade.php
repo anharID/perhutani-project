@@ -35,17 +35,17 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-area"></i></div>
                         Data Assets
                     </a>
-                    <a class="nav-link {{ Request::is('dashboard/depreciation*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ Request::is('dashboard/asset/depreciation*') ? 'active' : '' }}" href="{{ route('depreciation') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-gantt"></i></div>
                         Penyusutan
                     </a>
 
                     <li class="sb-sidenav-menu-heading">Customer</li>
-                    <a class="nav-link {{ Request::is('dashboard/prospective-customers*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ Request::is('dashboard/customers/candidates*') ? 'active' : '' }}" href="{{ route('customer') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-user-friends"></i></div>
                         Calon Customer
                     </a>
-                    <a class="nav-link {{ Request::is('dashboard/customer-approved*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ Request::is('dashboard/customers/approved*') ? 'active' : '' }}" href="{{ route('customer.approved') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-user-check"></i></div>
                         Customer PKS
                     </a>
@@ -53,11 +53,11 @@
                   </li>
                   <li>
                     <li class="sb-sidenav-menu-heading">Approve</li>
-                    <a class="nav-link {{ Request::is('dashboard/approve*') ? 'active' : '' }}" href="{{ route('approve') }}">
+                    <a class="nav-link {{ Request::is('dashboard/asset/approve*') ? 'active' : '' }}" href="{{ route('approve') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake"></i></div>
                         Approve Asset
                     </a>
-                    <a class="nav-link {{ Request::is('dashboard/approve-customer*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ Request::is('dashboard/customer/approve*') ? 'active' : '' }}" href="{{ route('approve.customer') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake"></i></div>
                         Approve Customer
                     </a>

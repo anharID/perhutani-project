@@ -121,7 +121,7 @@
                         <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">
                             <div class="card-body">
                                 <div class="col-auto">
-                                    <form action="/dashboard/approve/{{ $asset->slug }}/approved" method="post" enctype="multipart/form-data">
+                                    <form action="/dashboard/asset/approve/{{ $asset->slug }}/approved" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin melanjutkan?')">Approve</button>
                                     </form>

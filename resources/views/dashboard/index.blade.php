@@ -20,7 +20,7 @@
                         <a class="stretched-link" href="{{ route('kph') }}"></a>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-tree fa-2x text-gray-300"></i>
+                        <i class="fa-solid fa-tree fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <a class="stretched-link" href="{{ route('category') }}"></a> 
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-book-open fa-2x text-gray-300"></i>
+                        <i class="fa-solid fa-book-open fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                         <a class="stretched-link" href="{{ route('user') }}"></a>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                        <i class="fa-solid fa-users fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         <a class="stretched-link" href="{{ route('assets') }}"></a>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+                        <i class="fa-solid fa-chart-area fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                         <a class="stretched-link" href="{{ route('approve') }}"></a>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-handshake fa-2x text-gray-300"></i>
+                        <i class="fa-solid fa-handshake fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>

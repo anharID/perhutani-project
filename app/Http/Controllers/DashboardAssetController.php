@@ -297,4 +297,9 @@ class DashboardAssetController extends Controller
          
          return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di delete permanent!');    
     }
+
+    public function depreciation()
+    {
+        return view('dashboard.asset.depreciation');
+    }
 }

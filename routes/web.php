@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
@@ -39,9 +40,10 @@ Route::get('/dashboard', [DashboardConroller::class, 'index'])->name('dashboard'
 Route::get('online-user', [DashboardUserController::class, 'index']);
 
 
-Route::get('/dashboard/approve', [DashboardAssetController::class, 'approve'])->name('approve')->middleware('supervisor');
-Route::get('/dashboard/approve/{slug}', [DashboardAssetController::class, 'approveShow'])->name('approve.show')->middleware('supervisor');
-Route::post('/dashboard/approve/{slug}/approved', [DashboardAssetController::class, 'approved'])->name('approved')->middleware('supervisor');
+Route::get('/dashboard/asset/approve', [DashboardAssetController::class, 'approve'])->name('approve')->middleware('supervisor');
+Route::get('/dashboard/asset/approve/{slug}', [DashboardAssetController::class, 'approveShow'])->name('approve.show')->middleware('supervisor');
+Route::post('/dashboard/asset/approve/{slug}/approved', [DashboardAssetController::class, 'approved'])->name('approved')->middleware('supervisor');
+Route::get('/dashboard/customer/approve', [CustomerController::class, 'approveCustomer'])->name('approve.customer')->middleware('supervisor');
 
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
@@ -64,4 +66,7 @@ Route::resource('/dashboard/users', DashboardUserController::class)->name('index
 
 Route::resource('/dashboard/assets', DashboardAssetController::class)->name('index', 'assets')->middleware('auth');
 
-// Route::resource('/dashboard/approve', DashboardApproveController::class)->name('index', 'approve')->middleware('supervisor');
+Route::resource('/dashboard/customers/candidates', CustomerController::class)->name('index', 'customer')->middleware('auth');
+Route::get('/dashboard/customers/approved', [CustomerController::class, 'customerApproved'])->name('customer.approved')->middleware('auth');
+
+Route::get('/dashboard/asset/depreciation', [DashboardAssetController::class, 'depreciation'])->name('depreciation')->middleware('auth');
