@@ -22,7 +22,6 @@ class DashboardAssetController extends Controller
         // $users = User::all();
         $assets = Asset::all();
         return view('dashboard.asset.index',compact('assets')
-            // 'assets'=>Asset::where('status', true)->get()
         );
     }
 
@@ -46,7 +45,6 @@ class DashboardAssetController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->file('attachment'));
        $validatedData = $request->validate([
             'code' => 'required|min:3|max:10',
             'name' => 'required|max:255',
@@ -60,13 +58,13 @@ class DashboardAssetController extends Controller
             'attachment.*' => 'mimes:pdf|max:5000',
         ]);
 
-       
         $image = $request->file('image');
         if ($image)
         {
             $imagePath = $image->store('asset-images'); 
         }
-        else{
+        else
+        {
             $imagePath = '';
         }
 
@@ -85,13 +83,11 @@ class DashboardAssetController extends Controller
             'image' => $imagePath
         ]);
 
-        // $request->validate([
-        //     'attachment.*' => 'mimes:pdf|max:2000'
-        // ]);
-        
         $attach = $request->file('attachment');
-        if($attach){
-            foreach ($attach as $file){
+        if($attach)
+        {
+            foreach ($attach as $file)
+            {
                 $filename = $file->getClientOriginalName();
                 $path = $file->store('asset-attachments');
 
@@ -101,7 +97,6 @@ class DashboardAssetController extends Controller
                 $attachment->path = $path;
                 $attachment->save();
             }
-                
         }
 
         return redirect('/dashboard/assets')->with('success', 'Data berhasil ditambahkan!');
@@ -144,7 +139,6 @@ class DashboardAssetController extends Controller
      */
     public function update(Request $request, Asset $asset)
     {
-        // dd($request->oldAttachment);
        $validatedData = $request->validate([
         'code' => 'required|min:3|max:10',
         'name' => 'required|max:255',
@@ -174,7 +168,6 @@ class DashboardAssetController extends Controller
             }
         }
         
-
         $validatedData['user_id'] = auth()->user()->id;
 
         Asset::where('id', $asset->id)->update([
@@ -194,14 +187,17 @@ class DashboardAssetController extends Controller
         $attachment = Attachment::where('asset_id', $asset->id);
         $count = $attachment->count();
         if($attach){
-            for ($i = 0; $i < $count; $i++){
-                if ($request->oldAttachment[$i]){
+            for ($i = 0; $i < $count; $i++)
+            {
+                if ($request->oldAttachment[$i])
+                {
                         Storage::delete($request->oldAttachment[$i]);
                 }
                 $attachment->delete();
-            
             }
-            foreach ($attach as $file){
+
+            foreach ($attach as $file)
+            {
                 $filename = $file->getClientOriginalName();
                 $path = $file->store('asset-attachments');
 
@@ -210,8 +206,7 @@ class DashboardAssetController extends Controller
                 $attachment->filename = $filename;
                 $attachment->path = $path;
                 $attachment->save();
-            }
-                
+            }  
         }
         return redirect('/dashboard/assets')->with('success', 'Data berhasil diupdate!');
     }
@@ -220,7 +215,6 @@ class DashboardAssetController extends Controller
     {
         $attach = Attachment::find($id);
         return Storage::download($attach->path, $attach->filename);
-
     }
 
     /**
@@ -231,7 +225,8 @@ class DashboardAssetController extends Controller
      */
     public function destroy(Asset $asset)
     {
-        if ($asset->image){
+        if ($asset->image)
+        {
             Storage::move($asset->image, 'trash/' . $asset->image);
         }
         
@@ -239,7 +234,8 @@ class DashboardAssetController extends Controller
         return redirect('/dashboard/assets')->with('success', 'Data berhasil dihapus!');
     }
 
-    public function approve(){
+    public function approve()
+    {
         return view('dashboard.approve.index', [
             'assets' => Asset::where('status', false)->get()
         ]);
@@ -263,8 +259,7 @@ class DashboardAssetController extends Controller
     
     public function trash()
     {
-        return view('dashboard.asset.trash',
-        [
+        return view('dashboard.asset.trash',[
             'assets'=>Asset::onlyTrashed()->get()
         ]);   
     }
@@ -274,7 +269,8 @@ class DashboardAssetController extends Controller
          if ($slug != null)
          {
              $restore = Asset::onlyTrashed()->where('slug', $slug)->first();
-             if ($restore->image){
+             if ($restore->image)
+             {
                  Storage::move('trash/' . $restore->image, $restore->image);
              }
              $restore->restore();
@@ -287,7 +283,8 @@ class DashboardAssetController extends Controller
         if ($slug != null)
         {
              $delete = Asset::onlyTrashed()->where('slug', $slug)->first();
-             if ($delete->image){
+             if ($delete->image)
+             {
                  Storage::delete('trash/' . $delete->image);
              }
              $delete->forceDelete();
@@ -297,7 +294,7 @@ class DashboardAssetController extends Controller
             Storage::deleteDirectory('trash');
             Asset::onlyTrashed()->forceDelete();
          }
-
+         
          return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di delete permanent!');    
     }
 }

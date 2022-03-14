@@ -90,8 +90,7 @@ class DashboardKphController extends Controller
         ];
         $validateData = $request->validate($rules);
     
-        Kph::where('id', $kph->id)
-            ->update($validateData);
+        Kph::where('id', $kph->id)->update($validateData);
 
         return redirect('/dashboard/kph')->with('success', 'Data berhasil diupdate!');
     }
@@ -108,30 +107,3 @@ class DashboardKphController extends Controller
         return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
     }
 }
-
-//     public function confirm($id)
-//     {
-
-//         alert()->question('Are you Sure?','Tindakan ini akan menghapus data')
-//                 ->showConfirmButton(
-//                     '
-//                     <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline">
-//                     @@method("post")
-//                     @@csrf
-//                     Hapus
-//                     ',
-
-//                     // '<a href="/dashboard/kph/' . $id . '/delete" method="post" class="text-white" style="text-decoration:none">Hapus</a>', 
-                    
-//                     '#ff0000')->toHtml()
-
-//                 ->showCancelButton('Batal', '#aaa')->reverseButtons();
-
-//         return redirect('/dashboard/kph');
-//     }
-
-//     public function delete($id)
-//     {
-//         Kph::destroy($id);
-//         return redirect('/dashboard/kph')->with('success', 'Data berhasil dihapus!');
-//     }

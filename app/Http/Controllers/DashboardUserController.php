@@ -21,14 +21,8 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        // $users = User::select("*")
-        //                     ->whereNotNull('last_seen')
-        //                     ->orderBy('last_seen', 'DESC');
-
         return view('dashboard.users.index',[
-            'users' => User::all()
-            ->except(auth()->user()->id)
-            
+            'users' => User::all()->except(auth()->user()->id)
         ]);
     }
 
@@ -53,7 +47,6 @@ class DashboardUserController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $validatedData = $request->validate([
             'username' => 'required|string|max:255|unique:users,username',
             'nama' => 'required|string|max:255',
@@ -76,8 +69,7 @@ class DashboardUserController extends Controller
         
         User::create($validatedData);
 
-        return redirect('dashboard/users')->with('success', 'Data berhasil ditambahkan!');
-        
+        return redirect('dashboard/users')->with('success', 'Data berhasil ditambahkan!');  
     }
 
     /**
@@ -123,8 +115,10 @@ class DashboardUserController extends Controller
             'foto' => 'image|file|max:1024'
         ]);
 
-        if ($request->hasFile('foto')){
-            if ($request->oldImage){
+        if ($request->hasFile('foto'))
+        {
+            if ($request->oldImage)
+            {
                 Storage::delete($request->oldImage);
             } 
             $validatedData['foto'] = $request->file('foto')->store('user-photos'); 
@@ -144,18 +138,18 @@ class DashboardUserController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        // dd($user->id);
-        // User::where('id', $user->id)->delete();
         return redirect('/dashboard/users')->with('success', 'User berhasil dinonaktifkan!');
     }
 
-    public function trash(){
+    public function trash()
+    {
         return view('dashboard.users.non-active', [
             'users' => User::onlyTrashed()->get()
         ]);
     }
 
-    public function restore($username){
+    public function restore($username)
+    {
         $restore = User::onlyTrashed()->where('username', $username)->first();
         $restore->restore();
 

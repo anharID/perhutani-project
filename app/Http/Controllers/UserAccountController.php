@@ -11,7 +11,6 @@ class UserAccountController extends Controller
 {
     public function setting()
     {
-        // $user = auth()->user();
         $id = auth()->user()->id;
         $user = User::where('id', $id)->first();
         return view('dashboard.settings.setting', compact('user'));
@@ -19,7 +18,6 @@ class UserAccountController extends Controller
 
     public function updateProfile(Request $request)
     {
-        // dd($request);
         $validatedData = $request->validate([
             'email' => 'required|string|email|max:255|unique:users,username,'. auth()->id(),
             'nama' => 'required|string|max:255',
@@ -48,26 +46,24 @@ class UserAccountController extends Controller
 
     public function passwordUpdate(Request $request)
     {
-        // dd('berhasil');
         $request->validate([
             'old_password' => 'required',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
+        
         $currentPassword = auth()->user()->password;
         $oldPassword = $request->old_password;
 
-        if (Hash::check($oldPassword,$currentPassword)){
-
+        if (Hash::check($oldPassword,$currentPassword))
+        {
             $id = auth()->user()->id;
-            
             User::where('id', $id)->update([
                 'password' => bcrypt($request->password)
             ]);
-
             return back()->with('success', 'Password has been changed'); 
         } 
-        else {
+        else 
+        {
             return back()->withErrors(['old_password' => 'You have to fill your old password']);
         }
     }
