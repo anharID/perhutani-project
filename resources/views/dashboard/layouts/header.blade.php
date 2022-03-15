@@ -12,7 +12,7 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ route('setting') }}">Settings</a></li>
                 <li><a class="dropdown-item" href="{{ route('password') }}">Ganti Password</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li><hr class="dropdown-divider"/></li>
                 <li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

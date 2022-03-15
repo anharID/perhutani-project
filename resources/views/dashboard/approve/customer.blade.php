@@ -15,24 +15,20 @@
                 <th>Aksi</th>
               </thead>
               <tbody>
-                {{-- @foreach ($assets as $asset)
+                @foreach ($customers as $customer)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $asset->code }}</td>
-                    <td>{{ $asset->name }}</td>
-                    <td>{{ $asset->category->name }}</td>
-                    @if ($asset->status)
-                    <td><span class="badge bg-success">Sudah</span></td>
-                    @else
-                    <td><span class="badge bg-danger">Belum</span></td>
-                    @endif
-                    <td>{{ $asset->user->nama }}</td>
+                    <td>{{ $customer->nama }}</td>
+                    <td>{{ $customer->alamat }}</td>
+                    <td>{{ $customer->asset->name }}</td>
+                    <td>{{ $customer->penawaran }}</td>
+                    <td>{{ $customer->user->nama }}</td>
                     <td>
-                      <a href="/dashboard/approve/{{ $asset->slug }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
+                      <a href="/dashboard/customers/approved/{{ $customer->id }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
                     </td>
                   </tr>
                       
-                  @endforeach --}}
+                  @endforeach
               </tbody>
             </table>
         </div>

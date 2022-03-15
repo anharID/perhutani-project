@@ -4,12 +4,12 @@
 {{-- {{ Breadcrumbs::render('assets.create') }} --}}
 
 <div class="card shadow">
-        <form class="row g-3 p-3">
+        <form class="row g-3 p-3" action="/dashboard/customers/candidates" method="post" >
           @csrf
             <div class="form-group">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nama" required autofocus value="{{ old('name') }}">
-                @error('name')
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" required autofocus value="{{ old('nama') }}">
+                @error('nama')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
@@ -17,7 +17,7 @@
               </div>
               <div class="form-group">
                 <label for="no_hp" class="form-label">No. Hp</label>
-                <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Nomor Hp" required value="{{ old('no_hp') }}">
+                <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" placeholder="Nomor Hp" onkeypress="return hanyaAngka(event)" required value="{{ old('no_hp') }}">
                 @error('no_hp')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -35,25 +35,20 @@
               </div>
               <div class="form-group">
                 <label for="organisasi" class="form-label">Badan/Individual</label>
-                <select name="organisasi" class="form-select" required>
-                  <option disabled selected>Badan/Individual</option>
-                {{-- @foreach ($kphs as $kph)
-                  <option value="{{ $kph->id }}">{{ $kph->name }}</option>
-                @endforeach --}}
-                </select>
+                <input type="text" name="organisasi" id="organisasi" class="form-control @error('organisasi') is-invalid @enderror" placeholder="Badan/Individual" required value="{{ old('organisasi') }}">
               </div>
               <div class="form-group">
-                <label for="category_id" class="form-label">Pilih Aset</label>
-                <select name="select_box" class="form-select" id="select_box">
-                  <option value="">Aset</option>
-                {{-- @foreach ($categories as $category)
-                  <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach --}}
+                <label for="asset_id" class="form-label">Pilih Aset</label>
+                <select name="asset_id" class="form-select" id="select_box">
+                  <option disabled selected>Aset</option>
+                  @foreach ($assets as $asset)
+                    <option value="{{ $asset->id }}">{{ $asset->name }}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="form-group">
                 <label for="penawaran" class="form-label">Penawaran Harga</label>
-                <input type="text" name="penawaran" class="form-control @error('penawaran') is-invalid @enderror" id="penawaran" placeholder="Penawaran Harga" required value="{{ old('penawaran') }}">
+                <input type="text" name="penawaran" class="form-control @error('penawaran') is-invalid @enderror" id="penawaran" placeholder="Penawaran Harga" onkeypress="return hanyaAngka(event)" required value="{{ old('penawaran') }}">
                 @error('penawaran')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -69,4 +64,15 @@
                 <button type="submit" class="btn btn-primary">Simpan</button>
               </div>
       </form>
+</div>
+
+<script>
+  function hanyaAngka(event) {
+        var angka = (event.which) ? event.which : event.keyCode
+        if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+          return false;
+        return true;
+      }
+</script>
+
 @endsection

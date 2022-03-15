@@ -43,6 +43,9 @@ class User extends Authenticatable
     public function assets(){
         return $this->hasMany(Asset::class);
     }
+    public function customer(){
+        return $this->hasOne(Customer::class);
+    }
 
     public function getRouteKeyName()
     {

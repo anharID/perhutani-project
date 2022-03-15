@@ -16,13 +16,15 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('asset_id');
+            $table->foreignId('user_id');
             $table->string('nama');
             $table->string('no_hp');
+            $table->string('alamat');
             $table->string('organisasi');
             $table->string('penawaran');
             $table->string('permintaan');
             $table->boolean('status')->default(false);
-            $table->string('pks');
+            $table->string('pks')->nullable();
             $table->timestamps();
         });
     }

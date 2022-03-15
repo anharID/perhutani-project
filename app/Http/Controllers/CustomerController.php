@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asset;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('dashboard.customer.index');
+        $customers = Customer::where('status', false)->get();
+        return view('dashboard.customer.index', compact('customers'));
     }
 
     /**
@@ -24,7 +26,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('dashboard.customer.create');
+        $assets = Asset::all();
+        return view('dashboard.customer.create', compact('assets'));
     }
 
     /**
@@ -35,7 +38,22 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'no_hp' => 'required|max:15',
+            'alamat' => 'required|max:255',
+            'organisasi' => 'required|max:255',
+            'asset_id' => 'required',
+            'penawaran' => 'required',
+            'permintaan' => 'required'
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Customer::create($validatedData);
+
+        return redirect('/dashboard/customers/candidates')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -90,7 +108,8 @@ class CustomerController extends Controller
 
     public function customerApproved()
     {
-        return view('dashboard.customer.approved');
+        $customers = Customer::where('status', true)->get();
+        return view('dashboard.customer.approved', compact('customers'));
     }
 
 }

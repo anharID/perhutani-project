@@ -16,23 +16,30 @@
               <th>Alamat</th>
               <th>Aset</th>
               <th>Penawaran Harga</th>
+              <th>Ditambahkan Oleh</th>
               <th>Aksi</th>
             </thead>
             <tbody>
-              {{-- @foreach ($assets as $asset)
-              <tr> 
+              @foreach ($customers as $customer)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $customer->nama }}</td>
+                <td>{{ $customer->alamat }}</td>
+                <td>{{ $customer->asset->name }}</td>
+                <td>{{ $customer->penawaran }}</td>
+                <td>{{ $customer->user->nama }}</td>
                 <td>
-                  <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
-                  <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
-                  <form action="/dashboard/assets/{{ $asset->slug }}" method="post" class="d-inline">
+                  <a href="#" class="badge bg-info"><i class="fa-solid fa-eye"></i></a>
+                  <a href="#" class="badge bg-warning"><i class="fa-solid fa-pen"></i></a>
+                  <form action="/dashboard/assets/{{ $customer->id }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf
-                    <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-times-circle"></i></button>
+                    <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fa-solid fa-times-circle"></i></button>
                   </form>
                 </td>
               </tr>
                   
-              @endforeach --}}
+              @endforeach
             </tbody>
             
           </table>
