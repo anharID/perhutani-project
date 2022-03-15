@@ -44,6 +44,7 @@ Route::get('/dashboard/approve/assets', [DashboardAssetController::class, 'appro
 Route::get('/dashboard/asset/approve/{slug}', [DashboardAssetController::class, 'approveShow'])->name('approve.show')->middleware('supervisor');
 Route::post('/dashboard/asset/approve/{slug}/approved', [DashboardAssetController::class, 'approved'])->name('approved')->middleware('supervisor');
 Route::get('/dashboard/approve/costumers', [CustomerController::class, 'approveCustomer'])->name('approve.customer')->middleware('supervisor');
+Route::get('/dashboard/approve/costumers/{id}', [CustomerController::class, 'approveCustomerShow'])->name('approve.customer.show')->middleware('supervisor');
 
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');

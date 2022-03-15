@@ -64,7 +64,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('dashboard.customer.show', compact('customer'));
     }
 
     /**
@@ -75,7 +75,8 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        
+        return view('dashboard.customer.edit', compact('customer'));
     }
 
     /**
@@ -106,6 +107,13 @@ class CustomerController extends Controller
         $customers = Customer::where('status', false)->get();
         return view('dashboard.approve.customer', compact('customers'));
     }
+
+    public function approveCustomerShow($id)
+    {
+        $customer = Customer::where('id', $id)->first();
+        return view('dashboard.approve.customer-show', compact('customer'));
+    }
+
 
     public function customerApproved()
     {

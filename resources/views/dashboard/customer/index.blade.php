@@ -29,9 +29,9 @@
                 <td>{{ $customer->penawaran }}</td>
                 <td>{{ $customer->user->nama }}</td>
                 <td>
-                  <a href="#" class="badge bg-info"><i class="fa-solid fa-eye"></i></a>
-                  <a href="#" class="badge bg-warning"><i class="fa-solid fa-pen"></i></a>
-                  <form action="/dashboard/assets/{{ $customer->id }}" method="post" class="d-inline">
+                  <a href="/dashboard/customers/candidates/{{ $customer->id }}" class="badge bg-info"><i class="fa-solid fa-eye"></i></a>
+                  <a href="/dashboard/customers/candidates/{{ $customer->id }}/edit" class="badge bg-warning"><i class="fa-solid fa-pen"></i></a>
+                  <form action="/dashboard/customers/candidates{{ $customer->id }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf
                     <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fa-solid fa-times-circle"></i></button>

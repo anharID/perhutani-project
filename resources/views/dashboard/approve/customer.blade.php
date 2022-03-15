@@ -24,7 +24,7 @@
                     <td>{{ $customer->penawaran }}</td>
                     <td>{{ $customer->user->nama }}</td>
                     <td>
-                      <a href="/dashboard/customers/approved/{{ $customer->id }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
+                      <a href="{{ route('approve.customer.show', $customer->id) }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
                     </td>
                   </tr>
                       
