@@ -35,7 +35,7 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-area"></i></div>
                         Data Assets
                     </a>
-                    <a class="nav-link {{ Request::is('dashboard/asset/depreciation*') ? 'active' : '' }}" href="{{ route('depreciation') }}">
+                    <a class="nav-link {{ Request::is('dashboard/depreciation*') ? 'active' : '' }}" href="{{ route('depreciation') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-gantt"></i></div>
                         Penyusutan
                     </a>
@@ -53,11 +53,11 @@
                   </li>
                   <li>
                     <li class="sb-sidenav-menu-heading">Approve</li>
-                    <a class="nav-link {{ Request::is('dashboard/asset/approve*') ? 'active' : '' }}" href="{{ route('approve') }}">
+                    <a class="nav-link {{ Request::is('dashboard/approve/assets*') ? 'active' : '' }}" href="{{ route('approve') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake"></i></div>
                         Approve Asset
                     </a>
-                    <a class="nav-link {{ Request::is('dashboard/customer/approve*') ? 'active' : '' }}" href="{{ route('approve.customer') }}">
+                    <a class="nav-link {{ Request::is('dashboard/approve/costumers*') ? 'active' : '' }}" href="{{ route('approve.customer') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake"></i></div>
                         Approve Customer
                     </a>

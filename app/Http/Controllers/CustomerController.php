@@ -103,13 +103,14 @@ class CustomerController extends Controller
 
     public function approveCustomer()
     {
-        return view('dashboard.approve.customer');
+        $customers = Customer::where('status', false)->get();
+        return view('dashboard.approve.customer', compact('customers'));
     }
 
     public function customerApproved()
     {
         $customers = Customer::where('status', true)->get();
-        return view('dashboard.customer.approved', compact('customers'));
+        return view('dashboard.customer.approved');
     }
 
 }

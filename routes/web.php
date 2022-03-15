@@ -40,10 +40,10 @@ Route::get('/dashboard', [DashboardConroller::class, 'index'])->name('dashboard'
 Route::get('online-user', [DashboardUserController::class, 'index']);
 
 
-Route::get('/dashboard/asset/approve', [DashboardAssetController::class, 'approve'])->name('approve')->middleware('supervisor');
+Route::get('/dashboard/approve/assets', [DashboardAssetController::class, 'approve'])->name('approve')->middleware('supervisor');
 Route::get('/dashboard/asset/approve/{slug}', [DashboardAssetController::class, 'approveShow'])->name('approve.show')->middleware('supervisor');
 Route::post('/dashboard/asset/approve/{slug}/approved', [DashboardAssetController::class, 'approved'])->name('approved')->middleware('supervisor');
-Route::get('/dashboard/customer/approve', [CustomerController::class, 'approveCustomer'])->name('approve.customer')->middleware('supervisor');
+Route::get('/dashboard/approve/costumers', [CustomerController::class, 'approveCustomer'])->name('approve.customer')->middleware('supervisor');
 
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
@@ -58,6 +58,10 @@ Route::post('/dashboard/user/setting/update', [UserAccountController::class, 'up
 Route::get('/dashboard/user/change-password', [UserAccountController::class, 'password'])->name('password')->middleware('auth');
 Route::post('/dashboard/user/change-password', [UserAccountController::class, 'passwordUpdate'])->name('password.update')->middleware('auth');
 
+Route::get('/dashboard/customers/approved', [CustomerController::class, 'customerApproved'])->name('customer.approved')->middleware('auth');
+
+Route::get('/dashboard/depreciation', [DashboardAssetController::class, 'depreciation'])->name('depreciation')->middleware('auth');
+
 Route::resource('/dashboard/kph', DashboardKphController::class)->name('index', 'kph')->middleware('admin');
 
 Route::resource('/dashboard/category', DashboardCategoryController::class)->name('index', 'category')->middleware('admin');
@@ -67,6 +71,3 @@ Route::resource('/dashboard/users', DashboardUserController::class)->name('index
 Route::resource('/dashboard/assets', DashboardAssetController::class)->name('index', 'assets')->middleware('auth');
 
 Route::resource('/dashboard/customers/candidates', CustomerController::class)->name('index', 'customer')->middleware('auth');
-Route::get('/dashboard/customers/approved', [CustomerController::class, 'customerApproved'])->name('customer.approved')->middleware('auth');
-
-Route::get('/dashboard/asset/depreciation', [DashboardAssetController::class, 'depreciation'])->name('depreciation')->middleware('auth');
