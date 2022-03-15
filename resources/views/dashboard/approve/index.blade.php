@@ -20,7 +20,7 @@
       <th>Nama Aset</th>
       <th>Kategori</th>
       <th>Status</th>
-      <th>Ditambahkan oleh</th>
+      <th>Ditambahkan Oleh</th>
       <th>Aksi</th>
     </thead>
     <tbody>

@@ -21,9 +21,9 @@
         <th>Kode</th>
         <th>Nama Aset</th>
         <th>Kategori</th>
-        <th>Ditambahkan oleh</th>
+        <th>Ditambahkan Oleh</th>
         <th>Status Approval</th>
-        <th>Disetujui oleh</th>
+        <th>Disetujui Oleh</th>
         <th>Aksi</th>
       </thead>
       <tbody>
