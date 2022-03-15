@@ -51,7 +51,32 @@
             <form action="/dashboard/users/{{ $user->username }}/restore" method="post" class="d-inline">
               @method('post')
               @csrf
-              <button class="badge bg-info border-0" onclick="return confirm('Tindakan ini akan mengaktifkan user kembali, yakin ingin melanjutkan?')">Aktifkan</button>
+              
+              <!-- Button trigger modal -->
+              <button type="button" class="badge bg-info border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Aktifkan
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Peringatan</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p class="fs-5">Tindakan ini akan mengaktifkan kembali akun. Yakin ingin melanjutkan?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <form>
+                        <button type="button" class="btn btn-secondary col-2" data-bs-dismiss="modal">Tidak</button>
+                        <button type="submit" class="btn btn-danger col-2" data-bs-target="#staticBackdrop">Ya</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </form>
           </td>
           

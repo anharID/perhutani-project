@@ -14,13 +14,31 @@
   <form action="/dashboard/assets/delete" method="post" class="d-inline">
     @method('post')
     @csrf
-    <button class="btn btn-danger mb-3" onclick="return confirm('Anda yakin ingin menghapus?')">Hapus Semua</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Hapus Semua
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Peringatan</h4>
+          </div>
+          <div class="modal-body">
+            <p class="fs-5">Tindakan ini akan menghapus <span class="text-danger">permanen</span> semua data aset pada trash! Yakin ingin melanjutkan?</p>
+          </div>
+          <div class="modal-footer">
+            <form>
+              <button type="button" class="btn btn-secondary col-2" data-bs-dismiss="modal">Tidak</button>
+              <button type="submit" class="btn btn-danger col-2" data-bs-target="#staticBackdrop">Ya</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </form>
-  {{-- <form action="/dashboard/assets/restore" method="post" class="d-inline">
-    @method('post')
-    @csrf
-    <button class="btn btn-primary mb-3">Restore Semua</button>
-  </form> --}}
   <a href="/dashboard/assets/" class="btn btn-secondary mb-3">Back</a>
   <div class="card shadow">
   <div class="table-responsive p-3">
@@ -43,12 +61,37 @@
             <form action="/dashboard/assets/restore/{{ $asset->slug }}" method="post" class="d-inline">
               @method('post')
               @csrf
-              <button class="badge bg-info border-0"><i class="fas fa-undo"></i></button>
+              <button class="badge bg-info border-0"><i class="fa-solid fa-undo"></i></button>
             </form>
+            
             <form action="/dashboard/assets/delete/{{ $asset->slug }}" method="post" class="d-inline">
               @method('post')
               @csrf
-              <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-trash"></i></button>
+
+              <!-- Button trigger modal -->
+              <button type="button" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Peringatan</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p class="fs-5">Tindakan ini akan menghapus <span class="text-danger">permanen</span> data aset! Yakin ingin melanjutkan?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <form>
+                        <button type="button" class="btn btn-secondary col-2" data-bs-dismiss="modal">Tidak</button>
+                        <button type="submit" class="btn btn-danger col-2" data-bs-target="#staticBackdrop">Ya</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
           </td>
         </tr>
