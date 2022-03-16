@@ -2,6 +2,7 @@
 
 @section('container')
     <h1 class="mb-3">Data Customer</h1>
+    {{ Breadcrumbs::render('customers.candidates') }}
 
     <div class="card shadow">
         <div class="table-responsive p-3">

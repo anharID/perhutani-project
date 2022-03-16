@@ -6,11 +6,10 @@
     {{-- {{ Breadcrumbs::render('assets.show', $asset) }} --}}
 
     <div class="col-md-8">
-    {{-- <div class="card shadow"> --}}
         <div class="card mb-3 shadow-sm p-3 bg-body rounded">
             <div class="card-body">
             <div class="col-sm-3">
-                <h4 class="mb-0">Detail {{ $customer->nama }}</h4>
+                <h4 class="mb-0">Detail {{ $candidate->nama }}</h4>
             </div>
             <hr>
                 <div class="row mb-3">
@@ -18,7 +17,7 @@
                         <h6 class="mb-0">Nama</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{-- {{ $asset->code }} --}}
+                        {{ $candidate->nama }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -26,7 +25,7 @@
                         <h6 class="mb-0">No. Hp</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{-- {{ $asset->kph->name }} --}}
+                        {{ $candidate->no_hp }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -34,7 +33,7 @@
                         <h6 class="mb-0">Alamat</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{-- {{ $asset->category->name }} --}}
+                        {{ $candidate->alamat }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -42,7 +41,7 @@
                         <h6 class="mb-0">Badan/Individual</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{-- {{ $asset->price }} --}}
+                        {{ $candidate->organisasi }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -50,7 +49,7 @@
                         <h6 class="mb-0">Aset dipilih</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{-- {{ $asset->book_value }} --}}
+                        {{ $candidate->asset->name }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -58,7 +57,7 @@
                         <h6 class="mb-0">Penawaran Harga</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{-- {{ $asset->depreciation }} --}}
+                        {{ $candidate->penawaran }}
                     </div>
                 </div>
                 <div class="row">
@@ -66,23 +65,11 @@
                         <h6 class="mb-0">Permintaan</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{-- {{ $asset->user->nama }} --}}
+                        {!! $candidate->permintaan !!}
                     </div>
                 </div>
-                {{-- @if ($asset->status)
-                <div class="row">
-                    <div class="col-sm-3">
-                        <h6 class="mb-0">Disetujui Oleh</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                        {{ $asset->approve_by }}
-                    </div>
-                </div>
-                @endif --}}
             </div>
         </div>
-    {{-- </div> --}}
-</div>
-
+    </div>
 </body>
 @endsection

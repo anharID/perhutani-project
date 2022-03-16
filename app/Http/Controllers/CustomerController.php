@@ -62,9 +62,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Customer $candidate)
     {
-        return view('dashboard.customer.show', compact('customer'));
+        return view('dashboard.customer.show', compact('candidate'));
     }
 
     /**
@@ -73,10 +73,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Customer $candidate)
     {
-        
-        return view('dashboard.customer.edit', compact('customer'));
+        $assets = Asset::all();
+        return view('dashboard.customer.edit', compact('candidate', 'assets'));
     }
 
     /**
@@ -86,9 +86,24 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Customer $candidate)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'no_hp' => 'required|max:15',
+            'alamat' => 'required|max:255',
+            'organisasi' => 'required|max:255',
+            'asset_id' => 'required',
+            'penawaran' => 'required',
+            'permintaan' => 'required'
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Customer::where('id', $candidate->id)
+        ->update($validatedData);
+
+        return redirect('/dashboard/customers/candidates')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
