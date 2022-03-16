@@ -11,26 +11,28 @@
             <thead>
               <th>No.</th>
               <th>Nama</th>
+              <th>Alamat</th>
               <th>Aset</th>
-              <th>PKS</th> 
-              <th>Nilai</th>
+              <th>Biaya Sewa</th>
+              <th>Tanggal Sewa</th>
               <th>Aksi</th> 
             </thead>
             <tbody>
-              {{-- @foreach ($assets as $asset)
-              <tr> 
+              @foreach ($customers as $customer)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $customer->nama }}</td>
+                <td>{{ $customer->alamat }}</td>
+                <td>{{ $customer->asset->name }}</td>
+                <td>{{ $customer->biayasewa }}</td>
+                <td>{{ $customer->tanggalsewa }}</td>
                 <td>
                   <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
                   <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
-                  <form action="/dashboard/assets/{{ $asset->slug }}" method="post" class="d-inline">
-                    @method('delete')
-                    @csrf
-                    <button class="badge bg-danger border-0" onclick="return confirm('Anda yakin ingin menghapus?')"><i class="fas fa-times-circle"></i></button>
-                  </form>
                 </td>
               </tr>
                   
-              @endforeach --}}
+              @endforeach
             </tbody>
             
           </table>

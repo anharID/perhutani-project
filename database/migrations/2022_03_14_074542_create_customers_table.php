@@ -21,10 +21,14 @@ class CreateCustomersTable extends Migration
             $table->string('no_hp');
             $table->string('alamat');
             $table->string('organisasi');
-            $table->string('penawaran');
+            $table->string('penawaran');    
             $table->string('permintaan');
             $table->boolean('status')->default(false);
             $table->string('pks')->nullable();
+            $table->string('pks_path')->nullable();
+            $table->string('biayasewa')->nullable();
+            $table->string('tanggalsewa')->nullable();
+            $table->string('approve_by')->nullable();
             $table->timestamps();
         });
     }

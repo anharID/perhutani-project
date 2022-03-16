@@ -116,7 +116,7 @@
                     </div>
                     <div class="row">
                         <div class="col-auto">
-                            <form action="/dashboard/asset/approve/{{ $asset->slug }}/approved" method="post" enctype="multipart/form-data">
+                            <form action="/dashboard/approve/assets/{{ $asset->slug }}/approved" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin melanjutkan?')">Approve</button>
                             </form>

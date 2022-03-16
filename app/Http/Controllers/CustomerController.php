@@ -130,10 +130,35 @@ class CustomerController extends Controller
     }
 
 
+    public function customerApprovedProcess(Request $request, $id)
+    {
+        // dd($request);
+        $validatedData = $request->validate([
+            'biayasewa' => 'required',
+            'tanggalsewa' => 'required',
+            'pks.*' => 'required|mimes:pdf|max:5000'
+        ]);
+
+        if ($request->file('pks'))
+        {
+            $validatedData['pks'] = $request->file('pks')->getClientOriginalName(); 
+            $validatedData['pks_path'] = $request->file('pks')->store('customers-pks'); 
+        }
+
+        $validatedData['status'] = true;
+        $validatedData['approve_by'] = auth()->user()->id;
+        
+        Customer::where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/customers/approved')->with('success', 'Aproval customer berhasil');
+        
+                
+    }
+
     public function customerApproved()
     {
         $customers = Customer::where('status', true)->get();
-        return view('dashboard.customer.approved');
+        return view('dashboard.customer.approved', compact('customers'));
     }
 
 }
