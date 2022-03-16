@@ -30,7 +30,11 @@
                 <div class="col-md-8">
                     <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">
                         <div class="card-body">
-                            <div class="row">
+                            <div class="col-12">
+                                <h4 class="mb-0">Biodata {{ $user->nama }}</h4>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Username</h6>
                                 </div>
@@ -38,8 +42,7 @@
                                     {{ $user->username }}
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Email</h6>
                                 </div>
@@ -47,8 +50,7 @@
                                     {{ $user->email }}
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">No. Karyawan</h6>
                                 </div>
@@ -56,8 +58,7 @@
                                     {{ $user->no_karyawan }}
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">No. Hp</h6>
                                 </div>
@@ -65,7 +66,6 @@
                                     {{ $user->no_hp }}
                                 </div>
                             </div>
-                            <hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Alamat</h6>
