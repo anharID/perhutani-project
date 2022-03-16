@@ -86,9 +86,61 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs fw-bold text-primary text-capitalize mb-1">
-                            Approve</div>
-                        <div class="h5 mb-0 fw-bold text-gray-800">{{ $approve }}</div>
-                        <a class="stretched-link" href="{{ route('approve') }}"></a>
+                            Penyusutan</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">1</div>
+                        <a class="stretched-link" href="#"></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-chart-gantt fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endcan
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs fw-bold text-primary text-capitalize mb-1">
+                            Calon Customer</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">2</div>
+                        <a class="stretched-link" href="#"></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-user-friends fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs fw-bold text-primary text-capitalize mb-1">
+                            Customer PKS</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">3</div>
+                        <a class="stretched-link" href="#"></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-user-check fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs fw-bold text-primary text-capitalize mb-1">
+                            Approve Asset</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">4</div>
+                        <a class="stretched-link" href="#"></a>
                     </div>
                     <div class="col-auto">
                         <i class="fa-solid fa-handshake fa-2x text-gray-300"></i>
@@ -97,7 +149,23 @@
             </div>
         </div>
     </div>
-    @endcan
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs fw-bold text-primary text-capitalize mb-1">
+                            Approve Customer</div>
+                        <div class="h5 mb-0 fw-bold text-gray-800">5</div>
+                        <a class="stretched-link" href="#"></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fa-solid fa-handshake fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
 
