@@ -2,7 +2,7 @@
 @section('container')
     <h1 class="mb-3">Data Kategori</h1>
     {{ Breadcrumbs::render('category') }}
-    <div class="card shadow">
+    <div class="card shadow col-md-6">
     <div class="p-3"> 
     
     {{-- @if (session()->has('success'))
@@ -11,7 +11,7 @@
       </div>
     @endif --}}
 
-    <form class="col-lg-4" action="/dashboard/category" method="POST">
+    <form class="col-lg-6" action="/dashboard/category" method="POST">
       @csrf
         <div class="input-group mb-3">
             <input type="text" name="name" class="form-control" placeholder="Tambah kategori baru">

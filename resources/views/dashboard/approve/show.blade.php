@@ -30,8 +30,11 @@
                     <div class="row">
                         <div class="card mb-3 shadow-sm p-3 mb-4 bg-body rounded">
                             <div class="card-body">
-                                <h4 class="mb-3">Detail Aset</h4>
-                                <div class="row">
+                                <div class="col-sm-3">
+                                    <h4 class="mb-0">Detail Aset</h4>
+                                </div>
+                                <hr>
+                                <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Kode</h6>
                                     </div>
@@ -39,8 +42,7 @@
                                         {{ $asset->code }}
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Kepemilikan</h6>
                                     </div>
@@ -48,8 +50,7 @@
                                         {{ $asset->kph->name }}
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Kategori</h6>
                                     </div>
@@ -57,8 +58,7 @@
                                         {{ $asset->category->name }}
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Harga</h6>
                                     </div>
@@ -66,8 +66,7 @@
                                         {{ $asset->price }}
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Nilai Buku</h6>
                                     </div>
@@ -75,8 +74,7 @@
                                         {{ $asset->book_value }}
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Penyusutan Barang</h6>
                                     </div>
@@ -84,7 +82,6 @@
                                         {{ $asset->depreciation }}
                                     </div>
                                 </div>
-                                <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Ditambahkan oleh</h6>
@@ -93,7 +90,6 @@
                                         {{ $asset->user->nama }}
                                     </div>
                                 </div>
-                                <hr>
                             </div>
                         </div>
                     </div>
@@ -102,6 +98,7 @@
                             <div class="card-body">
                                 <div class="col-auto">
                                     <h4 class="mb-3">File Lampiran</h4>
+                                    <hr>
                                     @for ($i = 0; $i <$count ; $i++)
                                     <ul>
                                         <li>
@@ -118,15 +115,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">
-                            <div class="card-body">
-                                <div class="col-auto">
-                                    <form action="/dashboard/asset/approve/{{ $asset->slug }}/approved" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin melanjutkan?')">Approve</button>
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="col-auto">
+                            <form action="/dashboard/asset/approve/{{ $asset->slug }}/approved" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin melanjutkan?')">Approve</button>
+                            </form>
                         </div>
                     </div>
                 </div>

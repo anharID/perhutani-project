@@ -37,7 +37,7 @@
           @endif
           <td>{{ $asset->user->nama }}</td>
           <td>
-            <a href="/dashboard/asset/approve/{{ $asset->slug }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
+            <a href="/dashboard/approve/assets/{{ $asset->slug }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
           </td>
         </tr>
             

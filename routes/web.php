@@ -41,8 +41,8 @@ Route::get('online-user', [DashboardUserController::class, 'index']);
 
 
 Route::get('/dashboard/approve/assets', [DashboardAssetController::class, 'approve'])->name('approve')->middleware('supervisor');
-Route::get('/dashboard/asset/approve/{slug}', [DashboardAssetController::class, 'approveShow'])->name('approve.show')->middleware('supervisor');
-Route::post('/dashboard/asset/approve/{slug}/approved', [DashboardAssetController::class, 'approved'])->name('approved')->middleware('supervisor');
+Route::get('/dashboard/approve/assets/{slug}', [DashboardAssetController::class, 'approveShow'])->name('approve.show')->middleware('supervisor');
+Route::post('/dashboard/approve/assets/{slug}/approved', [DashboardAssetController::class, 'approved'])->name('approved')->middleware('supervisor');
 Route::get('/dashboard/approve/costumers', [CustomerController::class, 'approveCustomer'])->name('approve.customer')->middleware('supervisor');
 Route::get('/dashboard/approve/costumers/{id}', [CustomerController::class, 'approveCustomerShow'])->name('approve.customer.show')->middleware('supervisor');
 
