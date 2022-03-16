@@ -85,7 +85,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Ditambahkan oleh</h6>
+                                        <h6 class="mb-0">Ditambahkan Oleh</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         {{ $asset->user->nama }}
@@ -95,7 +95,7 @@
                                 @if ($asset->status)
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Disetujui oleh</h6>
+                                        <h6 class="mb-0">Disetujui Oleh</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         {{ $asset->approve_by }}
@@ -110,7 +110,7 @@
                         <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">
                             <div class="card-body">
                                 <div class="col-auto">
-                                    <h4 class="mb-3">FIle Lampiran</h4>
+                                    <h4 class="mb-3">File Lampiran</h4>
                                     @for ($i = 0; $i <$count ; $i++)
                                     <ul>
                                         <li>

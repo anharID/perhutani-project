@@ -13,6 +13,7 @@
               <th>Nama</th>
               <th>Aset</th>
               <th>PKS</th> 
+              <th>Nilai</th>
               <th>Aksi</th> 
             </thead>
             <tbody>
