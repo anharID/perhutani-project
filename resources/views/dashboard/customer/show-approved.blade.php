@@ -112,6 +112,11 @@
                             <div class="col-auto">
                                 <h4 class="mb-3">File Lampiran</h4>
                                 <hr>
+                                <form action="/dashboard/customers/approved/{{ $customer->id }}/download" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link">{{ $customer->pks }}</button>
+                                
+                                </form>
                             </div>
                         </div>
                     </div>

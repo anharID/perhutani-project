@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Asset;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerController extends Controller
 {
@@ -151,8 +152,6 @@ class CustomerController extends Controller
         Customer::where('id', $id)->update($validatedData);
 
         return redirect('/dashboard/customers/approved')->with('success', 'Aproval customer berhasil');
-        
-                
     }
 
     public function customerApproved()
@@ -163,8 +162,14 @@ class CustomerController extends Controller
 
     public function customerApprovedShow($id)
     {
-        $customer = Customer::where('id', $id)->first();
+        $customer = Customer::find($id);
         return view('dashboard.customer.show-approved', compact('customer'));
+    }
+
+    public function customerFileDownload($id)
+    {
+        $customer = Customer::find($id);
+        return Storage::download($customer->pks_path, $customer->pks);
     }
 
 }

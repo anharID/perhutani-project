@@ -50,6 +50,7 @@ Route::post('/dashboard/approve/costumers/{id}/approved', [CustomerController::c
 Route::get('/dashboard/assets/trash', [DashboardAssetController::class, 'trash'])->name('trash')->middleware('auth');
 Route::post('/dashboard/assets/restore/{slug?}', [DashboardAssetController::class, 'restore'])->name('restore')->middleware('auth');
 Route::post('/dashboard/assets/delete/{slug?}', [DashboardAssetController::class, 'delete'])->name('delete')->middleware('auth');
+ 
 Route::post('/attachment/download/{id}', [DashboardAssetController::class, 'downloadFile'])->name('download')->middleware('auth');
 
 Route::get('/dashboard/users/non-active', [DashboardUserController::class, 'trash'])->name('nonaktif')->middleware('auth');
@@ -62,6 +63,7 @@ Route::post('/dashboard/user/change-password', [UserAccountController::class, 'p
 
 Route::get('/dashboard/customers/approved', [CustomerController::class, 'customerApproved'])->name('customer.approved')->middleware('auth');
 Route::get('/dashboard/customers/approved/{id}', [CustomerController::class, 'customerApprovedShow'])->name('customer.approved.show')->middleware('auth');
+Route::post('/dashboard/customers/approved/{id}/download', [CustomerController::class, 'customerFileDownload'])->name('customer.approved.show')->middleware('auth');
 
 
 Route::get('/dashboard/depreciation', [DashboardAssetController::class, 'depreciation'])->name('depreciation')->middleware('auth');
