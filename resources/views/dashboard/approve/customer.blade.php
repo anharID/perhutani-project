@@ -2,6 +2,7 @@
 
 @section('container')
 <h1 class="mb-3">Approve Customer</h1>
+{{ Breadcrumbs::render('approve.customer') }}
     <div class="card shadow">
         <div class="table-responsive p-3">
             <table id="example" class="table table-striped table-bordered table-sm table-hover">

@@ -2,6 +2,8 @@
 
 @section('container')
     <h1 class="mb-3">Customer PKS</h1>
+    {{ Breadcrumbs::render('customers.approved') }}
+    
     <div class="card shadow">
         <div class="table-responsive p-3">
         <div class="col-12">

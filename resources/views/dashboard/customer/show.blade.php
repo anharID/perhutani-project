@@ -2,13 +2,13 @@
 
 @section('container')
 <body>
-    <h1 class="mb-3">Show Customer</h1>
-    {{-- {{ Breadcrumbs::render('assets.show', $asset) }} --}}
+    <h1 class="mb-3">Calon Customer : {{ $candidate->nama }}</h1>
+    {{ Breadcrumbs::render('customers.candidates.show', $candidate) }}
 
     <div class="col-md-8">
         <div class="card mb-3 shadow-sm p-3 bg-body rounded">
             <div class="card-body">
-            <div class="col-sm-3">
+            <div class="col-sm-12">
                 <h4 class="mb-0">About Customer</h4>
             </div>
             <hr>

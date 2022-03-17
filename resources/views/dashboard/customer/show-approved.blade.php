@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <h1 class="mb-3">Detail Customer</h1>
-    {{-- {{ Breadcrumbs::render('assets.show', $asset) }} --}}
+    {{ Breadcrumbs::render('customers.approved.show', $customer) }}
 
     <div class="container">
         <div class="main-body">

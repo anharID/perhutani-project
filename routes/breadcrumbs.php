@@ -53,7 +53,7 @@ Breadcrumbs::for('user.nonaktif', function ($trail){
     $trail->push('Nonaktif User', route('nonaktif'));
 });
 
-//asset
+// data asset
 Breadcrumbs::for('assets', function ($trail){
     $trail->parent('dashboard');
     $trail->push('Data Assets' , route('assets'));
@@ -75,7 +75,33 @@ Breadcrumbs::for('assets.trash', function ($trail){
     $trail->push('Trash', route('trash'));
 });
 
-//approve
+//penyusutan
+Breadcrumbs::for('depreciation', function ($trail){
+    $trail->parent('dashboard');
+    $trail->push('Penyusutan Aset', route('depreciation'));
+});
+
+// calon customer
+Breadcrumbs::for('customers.candidates', function ($trail){
+    $trail->parent('dashboard');
+    $trail->push('Calon Customer', route('customer'));
+});
+Breadcrumbs::for('customers.candidates.show', function ($trail, $candidate){
+    $trail->parent('customers.candidates');
+    $trail->push($candidate->nama, route('candidates.show', $candidate));
+});
+
+//customer pks
+Breadcrumbs::for('customers.approved', function ($trail){
+    $trail->parent('dashboard');
+    $trail->push('Customer', route('customer.approved'));
+});
+Breadcrumbs::for('customers.approved.show', function ($trail, $customer){
+    $trail->parent('customers.approved');
+    $trail->push($customer->nama, route('candidates.show', $customer));
+});
+
+//approve asset
 Breadcrumbs::for('approve', function ($trail){
     $trail->parent('dashboard');
     $trail->push('Approve', route('approve'));
@@ -85,8 +111,12 @@ Breadcrumbs::for('approve.show', function ($trail, $asset){
     $trail->push($asset->name, route('approve.show', $asset));
 });
 
-//customer
-Breadcrumbs::for('customers.candidates', function ($trail){
+//approve customer
+Breadcrumbs::for('approve.customer', function ($trail){
     $trail->parent('dashboard');
-    $trail->push('Calon Customer', route('customer'));
+    $trail->push('Approve Customer', route('approve.customer'));
+});
+Breadcrumbs::for('approve.customer.show', function ($trail, $customer){
+    $trail->parent('approve.customer');
+    $trail->push($customer->nama, route('approve.customer.show', $customer));
 });
