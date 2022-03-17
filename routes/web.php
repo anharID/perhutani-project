@@ -61,6 +61,8 @@ Route::get('/dashboard/user/change-password', [UserAccountController::class, 'pa
 Route::post('/dashboard/user/change-password', [UserAccountController::class, 'passwordUpdate'])->name('password.update')->middleware('auth');
 
 Route::get('/dashboard/customers/approved', [CustomerController::class, 'customerApproved'])->name('customer.approved')->middleware('auth');
+Route::get('/dashboard/customers/approved/{id}', [CustomerController::class, 'customerApprovedShow'])->name('customer.approved.show')->middleware('auth');
+
 
 Route::get('/dashboard/depreciation', [DashboardAssetController::class, 'depreciation'])->name('depreciation')->middleware('auth');
 

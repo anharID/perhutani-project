@@ -9,7 +9,7 @@
         <div class="card mb-3 shadow-sm p-3 bg-body rounded">
             <div class="card-body">
             <div class="col-sm-3">
-                <h4 class="mb-0">Detail Customer</h4>
+                <h4 class="mb-0">About Customer</h4>
             </div>
             <hr>
                 <div class="row mb-3">

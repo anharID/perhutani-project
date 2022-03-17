@@ -101,7 +101,6 @@
                                 @endif
                             </div>
                         </div>
-                    
                     </div>
                     <div class="row">
                         <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">

@@ -27,7 +27,7 @@
                 <td>{{ $customer->biayasewa }}</td>
                 <td>{{ $customer->tanggalsewa }}</td>
                 <td>
-                  <a href="#" class="badge bg-info"><i class="fas fa-eye"></i></a>
+                  <a href="/dashboard/customers/approved/{{ $customer->id }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
                   <a href="#" class="badge bg-warning"><i class="fas fa-pen"></i></a>
                 </td>
               </tr>

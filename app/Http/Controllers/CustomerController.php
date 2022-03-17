@@ -146,7 +146,7 @@ class CustomerController extends Controller
         }
 
         $validatedData['status'] = true;
-        $validatedData['approve_by'] = auth()->user()->id;
+        $validatedData['approve_by'] = auth()->user()->nama;
         
         Customer::where('id', $id)->update($validatedData);
 
@@ -159,6 +159,12 @@ class CustomerController extends Controller
     {
         $customers = Customer::where('status', true)->get();
         return view('dashboard.customer.approved', compact('customers'));
+    }
+
+    public function customerApprovedShow($id)
+    {
+        $customer = Customer::where('id', $id)->first();
+        return view('dashboard.customer.show-approved', compact('customer'));
     }
 
 }

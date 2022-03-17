@@ -1,5 +1,4 @@
 @extends('dashboard.layouts.main')
-
 @section('container')
 <h1 class="mb-3">Detail Customer</h1>
     {{-- {{ Breadcrumbs::render('assets.show', $asset) }} --}}
@@ -38,7 +37,7 @@
                                     {{ $customer->alamat }}
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row">
                                 <div class="col-sm-4">
                                     <h6 class="mb-0">Badan/Individual</h6>
                                 </div>
@@ -46,6 +45,18 @@
                                     {{ $customer->organisasi }}
                                 </div>
                             </div>
+                            
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card mb-3 shadow-sm p-3 bg-body rounded">
+                        <div class="card-body">
+                            <div class="col-12">
+                                <h4 class="mb-0">Approval</h4>
+                            </div>
+                            <hr>
                             <div class="row mb-3">
                                 <div class="col-sm-4">
                                     <h6 class="mb-0">Aset</h6>
@@ -70,65 +81,38 @@
                                     {!! $customer->permintaan !!}
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-sm-4">
-                                    <h6 class="mb-0">Ditambahkan Oleh</h6>
+                                    <h6 class="mb-0">Biaya sewa/bulan</h6>
                                 </div>
                                 <div class="col-sm-8 text-secondary">
-                                    {{ $customer->user->nama }}
+                                    {{ $customer->biayasewa }}
                                 </div>
                             </div>
-                        </div> 
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-3 shadow-sm p-3 bg-body rounded">
-                        <div class="card-body">
-                            <div class="col-12">
-                                <h4 class="mb-0">Approval</h4>
-                            </div>
-                            <hr>
-                            <form class="row g-3" action="{{ route('approve.customer.approved', $customer->id) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                            <div class="form-group">
-                                <label for="biayasewa" class="form-label">Biaya sewa/bulan</label>
-                                <input type="text" name="biayasewa" class="form-control @error('biayasewa') is-invalid @enderror" id="biayasewa" placeholder="Biaya sewa/bulan" required autofocus value="{{ old('biayasewa') }}">
-                                @error('biayasewa')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggalsewa" class="form-label">Tanggal mulai sewa</label>
-                                <input type="date" name="tanggalsewa" class="form-control @error('tanggalsewa') is-invalid @enderror" id="tanggalsewa" placeholder="Tanggal jatuh tempo" required autofocus value="{{ old('tanggalsewa') }}">
-                                @error('tanggalsewa')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-4">
-                                <label for="pks" class="form-label">File Lampiran</label>
-                                <input 
-                                class="form-control @error('pks') is-invalid @enderror" 
-                                type="file" 
-                                name="pks"
-                                >
-                                @error('pks')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <h6 class="mb-0">Tanggal mulai sewa</h6>
                                 </div>
-
+                                <div class="col-sm-8 text-secondary">
+                                    {{ $customer->tanggalsewa }}
+                                </div>
+                            </div>
                             <div class="row">
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin melanjutkan?')">Approve</button>
+                                <div class="col-sm-4">
+                                    <h6 class="mb-0">Disetujui Oleh</h6>
+                                </div>
+                                <div class="col-sm-8 text-secondary">
+                                    {{ $customer->approve_by }}
                                 </div>
                             </div>
-                            </form>
+                        </div>
+                    </div>
+                    <div class="card mb-3 shadow-sm p-3 mb-5 bg-body rounded">
+                        <div class="card-body">
+                            <div class="col-auto">
+                                <h4 class="mb-3">File Lampiran</h4>
+                                <hr>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,4 +120,5 @@
         </div>
     </div>
 </body>
+    
 @endsection
