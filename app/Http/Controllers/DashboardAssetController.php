@@ -7,6 +7,7 @@ use App\Models\Attachment;
 use App\Models\Category;
 use App\Models\Kph;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -51,8 +52,9 @@ class DashboardAssetController extends Controller
             'kph_id' => 'required',
             'category_id' => 'required',
             'price' => 'required|numeric',
-            'book_value' => 'required|numeric',
-            'depreciation' => 'required|numeric',
+            'year_acquisition' => 'required|numeric',
+            'lifetime' => 'required|numeric',
+            'depreciation_year' => 'required|numeric',
             'description' => 'required',
             'image' => 'image|file|max:1024',
             'attachment.*' => 'mimes:pdf|max:5000',
@@ -70,6 +72,22 @@ class DashboardAssetController extends Controller
 
         $validatedData['user_id'] = auth()->user()->id;
 
+        $tahun_sekarang = Carbon::now()->format('Y');
+        $tahun_perolehan = $request->year_acquisition;
+        $masa_pakai = $request->lifetime;
+        $penyusutan = $request->depreciation_year;
+        $harga = $request->price;
+        if ($tahun_sekarang - $tahun_perolehan > $masa_pakai){
+            $nilai_buku = '1'; 
+        }
+        else {
+            $masa_pakai_sekarang = $tahun_sekarang - $tahun_perolehan;
+            $penyusutan_sekarang = $penyusutan * $masa_pakai_sekarang;
+            $nilai_buku = $harga - $penyusutan_sekarang;
+        }
+
+        // dd($nilai_buku);
+
         $asset = Asset::create([
             'code' => $validatedData['code'],
             'name' => $validatedData['name'],
@@ -77,8 +95,10 @@ class DashboardAssetController extends Controller
             'category_id' => $validatedData['category_id'],
             'user_id' => $validatedData['user_id'],
             'price' => $validatedData['price'],
-            'book_value' => $validatedData['book_value'],
-            'depreciation' => $validatedData['depreciation'],
+            'year_acquisition' => $validatedData['year_acquisition'],
+            'lifetime' => $validatedData['lifetime'],
+            'depreciation_year' => $validatedData['depreciation_year'],
+            'book_value' => strval($nilai_buku),
             'description' => $validatedData['description'],
             'image' => $imagePath
         ]);
@@ -145,8 +165,9 @@ class DashboardAssetController extends Controller
         'kph_id' => 'required',
         'category_id' => 'required',
         'price' => 'required|numeric',
-        'book_value' => 'required|numeric',
-        'depreciation' => 'required|numeric',
+        'year_acquisition' => 'required|numeric',
+        'lifetime' => 'required|numeric',
+        'depreciation_year' => 'required|numeric',
         'description' => 'required',
         'image' => 'image|file|max:1024',
         'attachment.*' => 'mimes:pdf|max:5000'
@@ -170,6 +191,20 @@ class DashboardAssetController extends Controller
         
         $validatedData['user_id'] = auth()->user()->id;
 
+        $tahun_sekarang = Carbon::now()->format('Y');
+        $tahun_perolehan = $request->year_acquisition;
+        $masa_pakai = $request->lifetime;
+        $penyusutan = $request->depreciation_year;
+        $harga = $request->price;
+        if ($tahun_sekarang - $tahun_perolehan > $masa_pakai){
+            $nilai_buku = '1'; 
+        }
+        else {
+            $masa_pakai_sekarang = $tahun_sekarang - $tahun_perolehan;
+            $penyusutan_sekarang = $penyusutan * $masa_pakai_sekarang;
+            $nilai_buku = $harga - $penyusutan_sekarang;
+        }
+
         Asset::where('id', $asset->id)->update([
             'code' => $validatedData['code'],
             'name' => $validatedData['name'],
@@ -177,8 +212,10 @@ class DashboardAssetController extends Controller
             'category_id' => $validatedData['category_id'],
             'user_id' => $validatedData['user_id'],
             'price' => $validatedData['price'],
-            'book_value' => $validatedData['book_value'],
-            'depreciation' => $validatedData['depreciation'],
+            'year_acquisition' => $validatedData['year_acquisition'],
+            'lifetime' => $validatedData['lifetime'],
+            'depreciation_year' => $validatedData['depreciation_year'],
+            'book_value' => strval($nilai_buku),
             'description' => $validatedData['description'],
             'image' => $validatedData['image']
         ]);
@@ -300,6 +337,8 @@ class DashboardAssetController extends Controller
 
     public function depreciation()
     {
-        return view('dashboard.asset.depreciation');
+        return view('dashboard.asset.depreciation', [
+            'assets' => Asset::all()
+        ]);
     }
 }

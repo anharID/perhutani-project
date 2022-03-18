@@ -60,6 +60,24 @@
                 @enderror
               </div>
               <div class="form-group">
+                <label for="year_acquisition" class="form-label">Tahun Perolehan</label>
+                <input type="number" name="year_acquisition" class="form-control @error('year_acquisition') is-invalid @enderror" id="year_acquisition" required value="{{ old('year_acquisition', $assets->year_acquisition) }}">
+                @error('year_acquisition')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="lifetime" class="form-label">Masa Pakai (dalam tahun)</label>
+                <input type="number" name="lifetime" class="form-control @error('lifetime') is-invalid @enderror" id="lifetime" required value="{{ old('lifetime', $assets->lifetime) }}">
+                @error('lifetime')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                @enderror
+              </div>
+              {{-- <div class="form-group">
                 <label for="book_value" class="form-label">Nilai Buku</label>
                 <input type="text" name="book_value" class="form-control @error('book_value') is-invalid @enderror" id="book_value" placeholder="Nilai Buku" required value="{{ old('book_value', $assets->book_value) }}">
                 @error('book_value')
@@ -67,11 +85,11 @@
                       {{ $message }}
                     </div>
                 @enderror
-              </div>
+              </div> --}}
               <div class="form-group">
-                <label for="depreciation" class="form-label">Penyusutan Barang</label>
-                <input type="text" name="depreciation" class="form-control @error('depreciation') is-invalid @enderror" id="depreciation" placeholder="Penyusutan Barang" required value="{{ old('depreciation', $assets->depreciation) }}">
-                @error('depreciation')
+                <label for="depreciation_year" class="form-label">Penyusutan Barang</label>
+                <input type="text" name="depreciation_year" class="form-control @error('depreciation_year') is-invalid @enderror" id="depreciation_year" placeholder="Penyusutan Barang" required value="{{ old('depreciation_year', $assets->depreciation_year) }}">
+                @error('depreciation_year')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>

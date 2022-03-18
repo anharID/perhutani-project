@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'username' => 'administrator',
             'nama' => 'Administrator',
-            'email' => 'admin_manset@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
             'no_karyawan' => '21120119120012',
             'no_hp' => '088812345678',
