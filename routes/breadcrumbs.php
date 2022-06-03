@@ -86,9 +86,17 @@ Breadcrumbs::for('customers.candidates', function ($trail){
     $trail->parent('dashboard');
     $trail->push('Calon Customer', route('customer'));
 });
+Breadcrumbs::for('customers.candidates.create', function ($trail){
+    $trail->parent('customers.candidates');
+    $trail->push('Tambah Calon Customer', route('candidates.create'));
+});
 Breadcrumbs::for('customers.candidates.show', function ($trail, $candidate){
     $trail->parent('customers.candidates');
     $trail->push($candidate->nama, route('candidates.show', $candidate));
+});
+Breadcrumbs::for('customers.candidates.edit', function ($trail, $candidate){
+    $trail->parent('customers.candidates');
+    $trail->push($candidate->nama, route('candidates.edit', $candidate));
 });
 
 //customer pks
