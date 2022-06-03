@@ -33,7 +33,7 @@
           <td>{{ $kph->name }}</td>
           <td>{{ $kph->address }}</td>
           <td>
-            <a href="/dashboard/kph/{{ $kph->id }}" class="badge bg-info"><i class="fa-solid fa-eye"></i></a>
+            {{-- <a href="/dashboard/kph/{{ $kph->id }}" class="badge bg-info"><i class="fa-solid fa-eye"></i></a> --}}
             <a href="/dashboard/kph/{{ $kph->id }}/edit" class="badge bg-warning"><i class="fa-solid fa-pen"></i></a>
             <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline" id="actionDelete">
               @method('delete')

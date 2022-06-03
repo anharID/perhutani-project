@@ -19,7 +19,7 @@
               <th>Masa Pakai</th>
               <th>Penyusutan Rata-rata/Tahun</th>
               <th>Nilai buku tahun ini</th>
-              <th>Aksi</th>
+              {{-- <th>Aksi</th> --}}
             </thead>
             <tbody>
               @foreach ($assets as $asset)
@@ -31,8 +31,8 @@
                 <td>{{ $asset->lifetime }}</td>
                 <td>{{ $asset->depreciation_year }}</td>
                 <td>{{ $asset->book_value }}</td>
-                <td>
-                  <a href="#" class="badge bg-info"><i class="fa-solid fa-eye"></i></a>
+                {{-- <td>
+                  <a href="#" class="badge bg-info"><i class="fa-solid fa-eye"></i></a> --}}
                   {{-- <a href="/dashboard/kph/{{ $kph->id }}/edit" class="badge bg-warning"><i class="fa-solid fa-pen"></i></a> --}}
                   {{-- <form action="/dashboard/kph/{{ $kph->id }}" method="POST" class="d-inline" id="actionDelete">
                     @method('delete')
@@ -63,7 +63,7 @@
                       </div>
                     </div>
                   </form> --}}
-                </td>
+                {{-- </td> --}}
               </tr>
               @endforeach
             </tbody>
