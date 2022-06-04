@@ -78,7 +78,7 @@
                                         <h6 class="mb-0">Penyusutan Barang</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        {{ $asset->depreciation }}
+                                        {{ $asset->depreciation_year }} / tahun
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -114,7 +114,6 @@
                                             <form action="{{ route('download',  $asset->attachments[$i]->id) }}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn btn-link">{{ $asset->attachments[$i]->filename }}</button>
-                                            
                                             </form>
                                         </li>
                                     </ul>
