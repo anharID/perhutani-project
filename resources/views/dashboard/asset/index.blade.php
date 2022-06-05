@@ -20,8 +20,8 @@
         <th>No.</th>
         <th>Kode</th>
         <th>Nama Aset</th>
+        <th>Kepemilikan</th>
         <th>Kategori</th>
-        <th>Ditambahkan Oleh</th>
         <th>Status Approval</th>
         <th>Disetujui Oleh</th>
         <th>Aksi</th>

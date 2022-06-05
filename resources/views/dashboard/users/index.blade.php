@@ -23,7 +23,7 @@
         <th>Username</th>
         <th>Nama</th>
         <th>Role</th>
-        <th>Last Seen</th>
+        <th>Terakhir Aktif</th>
         <th>Status</th>
         <th>Aksi</th>
       </thead>
