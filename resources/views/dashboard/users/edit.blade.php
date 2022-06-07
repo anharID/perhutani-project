@@ -24,15 +24,6 @@
                     </div>
                 @enderror
               </div>
-              {{-- <div class="col-12">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Inputkan email" required value="{{ old('email', $user->email) }}">
-                @error('email')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                @enderror
-              </div> --}}
               <div class="col-12">
                 <label for="no_karyawan" class="form-label">No. Karyawan</label>
                 <input type="text" name="no_karyawan" class="form-control @error('no_karyawan') is-invalid @enderror" id="no_karyawan" placeholder="Nomor Karyawan" required value="{{ old('no_karyawan',$user->no_karyawan) }}">

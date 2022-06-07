@@ -6,7 +6,6 @@ use App\Models\Asset;
 use App\Models\Attachment;
 use App\Models\Category;
 use App\Models\Kph;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -85,9 +84,7 @@ class DashboardAssetController extends Controller
             $penyusutan_sekarang = $penyusutan * $masa_pakai_sekarang;
             $nilai_buku = $harga - $penyusutan_sekarang;
         }
-
-        // dd($nilai_buku);
-
+        
         $asset = Asset::create([
             'code' => $validatedData['code'],
             'name' => $validatedData['name'],
@@ -266,16 +263,79 @@ class DashboardAssetController extends Controller
         {
             Storage::move($asset->image, 'trash/' . $asset->image);
         }
-        
+        $attachment = Attachment::where('asset_id', $asset->id)->get();
+        $count = $attachment->count();
+        if($attachment)
+        {
+            for ($i = 0; $i < $count; $i++)
+            {
+                Storage::move($attachment[$i]->path, 'trash/' . $attachment[$i]->path);
+            }
+        }
         Asset::destroy($asset->id);
         return redirect('/dashboard/assets')->with('success', 'Data berhasil dihapus!');
     }
 
+    public function trash()
+    {
+        return view('dashboard.asset.trash',[
+            'assets'=>Asset::onlyTrashed()->get()
+        ]);   
+    }
+
+    public function restore($slug)
+    {
+        $asset = Asset::onlyTrashed()->where('slug', $slug)->first();
+        if ($asset->image)
+        {
+            Storage::move('trash/' . $asset->image, $asset->image);
+        }
+        $attachment = Attachment::where('asset_id', $asset->id)->get();
+        $count = $attachment->count();
+        if($attachment)
+        {
+            for ($i = 0; $i < $count; $i++)
+            {
+                Storage::move('trash/' . $attachment[$i]->path, $attachment[$i]->path);
+            }
+        }
+        $asset->restore();
+        return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di restore!');
+    }
+
+    public function delete($slug = null)
+    {
+        if ($slug != null)
+        {
+             $asset = Asset::onlyTrashed()->where('slug', $slug)->first();
+             if ($asset->image)
+             {
+                 Storage::delete('trash/' . $asset->image);
+             }
+             $attachment = Attachment::where('asset_id', $asset->id)->get();
+            $count = $attachment->count();
+            if($attachment)
+            {
+                for ($i = 0; $i < $count; $i++)
+                {
+                    Storage::delete('trash/' . $attachment[$i]->path, $attachment[$i]->path);
+                }
+            }
+             $asset->forceDelete();
+         }
+         else
+         {
+            Storage::deleteDirectory('trash');
+            Asset::onlyTrashed()->forceDelete();
+         }
+         
+         return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di delete permanent!');    
+    }
+
     public function approve()
     {
-        return view('dashboard.approve.index', [
-            'assets' => Asset::where('status', false)->get()
-        ]);
+        $assets = Asset::where('status', false)->get();
+        return view('dashboard.approve.index',compact('assets'));
     }
 
     public function approveShow($slug){
@@ -294,46 +354,6 @@ class DashboardAssetController extends Controller
         return redirect('/dashboard/assets')->with('success', 'Aproval asset berhasil');
     }
     
-    public function trash()
-    {
-        return view('dashboard.asset.trash',[
-            'assets'=>Asset::onlyTrashed()->get()
-        ]);   
-    }
-
-    public function restore($slug = null)
-    {
-         if ($slug != null)
-         {
-             $restore = Asset::onlyTrashed()->where('slug', $slug)->first();
-             if ($restore->image)
-             {
-                 Storage::move('trash/' . $restore->image, $restore->image);
-             }
-             $restore->restore();
-         }
-         return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di restore!');
-    }
-
-    public function delete($slug = null)
-    {
-        if ($slug != null)
-        {
-             $delete = Asset::onlyTrashed()->where('slug', $slug)->first();
-             if ($delete->image)
-             {
-                 Storage::delete('trash/' . $delete->image);
-             }
-             $delete->forceDelete();
-         }
-         else
-         {
-            Storage::deleteDirectory('trash');
-            Asset::onlyTrashed()->forceDelete();
-         }
-         
-         return redirect('/dashboard/assets/trash')->with('success', 'Data berhasil di delete permanent!');    
-    }
 
     public function depreciation()
     {

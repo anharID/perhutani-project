@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Auth\ConfirmsPasswords;
 use Illuminate\Support\Facades\Storage;
 
 class DashboardUserController extends Controller
 {
     
-    use RegistersUsers;
-    use ConfirmsPasswords;
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +37,6 @@ class DashboardUserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     * @return \Illuminate\Foundation\Auth\ConfirmsPasswords;
      * @return \Illuminate\Support\Facades\Hash;
      */
 
@@ -55,7 +50,6 @@ class DashboardUserController extends Controller
             'alamat' => 'required|string|max:255',
             'no_karyawan' => 'required|numeric|unique:users,no_karyawan',
             'no_hp' => 'required|numeric|unique:users,no_hp',
-            'alamat' => 'required|string|max:255',
             'role' => 'required',
             'foto' => 'image|file|max:1024'
         ]);
@@ -80,8 +74,7 @@ class DashboardUserController extends Controller
      */
     public function show(User $user)
     {
-        $nonaktif = User::onlyTrashed()->get();
-        return view('dashboard.users.show',compact('user', 'nonaktif'));
+        return view('dashboard.users.show',compact('user'));
     }
 
     /**
@@ -92,9 +85,7 @@ class DashboardUserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('dashboard.users.edit',[
-            'user' => $user
-        ]);
+        return view('dashboard.users.edit',compact('user'));
     }
 
     /**

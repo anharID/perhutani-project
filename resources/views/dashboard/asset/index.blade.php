@@ -32,8 +32,8 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $asset->code }}</td>
           <td>{{ $asset->name }}</td>
+          <td>{{ $asset->kph->name }}</td>
           <td>{{ $asset->category->name }}</td>
-          <td>{{ $asset->user->nama }}</td>
           @if ($asset->status)
           <td><span class="badge bg-success">Sudah</span></td>
           <td>{{ $asset->approve_by }}</td>
@@ -48,12 +48,12 @@
               @method('delete')
               @csrf
               <!-- Button trigger modal -->
-              <button type="button" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <button type="button" class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$asset->slug}}">
                 <i class="fa-solid fa-times-circle"></i>
               </button>
 
               <!-- Modal -->
-              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal fade" id="staticBackdrop-{{ $asset->slug }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -65,7 +65,7 @@
                     <div class="modal-footer">
                       <form>
                         <button type="button" class="btn btn-secondary col-2" data-bs-dismiss="modal">Tidak</button>
-                        <button type="submit" class="btn btn-danger col-2" data-bs-target="#staticBackdrop">Ya</button>
+                        <button type="submit" class="btn btn-danger col-2" data-bs-target="#staticBackdrop-{{ $asset->slug }}">Ya</button>
                       </form>
                     </div>
                   </div>

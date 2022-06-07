@@ -39,7 +39,6 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'no_hp' => 'required|max:15',
@@ -113,9 +112,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(Customer $candidate)
     {
-        //
+        Customer::destroy($candidate->id);
+        return redirect('/dashboard/customers/candidates')->with('success', 'Data berhasil dihapus!');
     }
 
     public function approveCustomer()
@@ -133,7 +133,6 @@ class CustomerController extends Controller
 
     public function customerApprovedProcess(Request $request, $id)
     {
-        // dd($request);
         $validatedData = $request->validate([
             'biayasewa' => 'required',
             'tanggalsewa' => 'required',

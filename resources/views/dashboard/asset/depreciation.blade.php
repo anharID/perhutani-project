@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h1 class="mb-3">Halaman Penyusutan</h1>
+    <h1 class="mb-3">Penyusutan Aset</h1>
     {{ Breadcrumbs::render('depreciation') }}
 
     <div class="card shadow">

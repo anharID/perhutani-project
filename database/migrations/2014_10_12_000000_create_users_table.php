@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('no_karyawan')->nullable()->unique();
             $table->string('no_hp')->unique();
             $table->string('alamat');
-            $table->enum('role',['Admin','Supervisor','Operator','User']);
+            $table->enum('role',['Administrator','Supervisor','Operator','User']);
             $table->rememberToken();
             $table->timestamp('last_seen')->nullable();
             $table->softDeletes();

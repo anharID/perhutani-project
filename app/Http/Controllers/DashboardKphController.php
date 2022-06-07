@@ -58,7 +58,7 @@ class DashboardKphController extends Controller
      */
     public function show(Kph $kph)
     {
-        return view('dashboard.kph.show', ['kph'=> $kph]);
+        
     }
 
     /**

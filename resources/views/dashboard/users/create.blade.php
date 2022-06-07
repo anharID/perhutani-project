@@ -64,7 +64,7 @@
                 <input name="role" type="hidden" class="form-control @error('alamat') is-invalid @enderror">
                 <select name="role" class="form-select">
                   <option disabled selected>Role</option>
-                  <option value="Admin">Admin</option>
+                  <option value="Administrator">Administrator</option>
                   <option value="Supervisor">Supervisor</option>
                   <option value="Operator">Operator</option>
                 </select>

@@ -26,5 +26,13 @@ class CategoryTableSeeder extends Seeder
             'name' => 'Kendaraan',
             'slug' => 'kendaraan'
         ]);
+        Category::create([
+            'name' => 'Dokumen',
+            'slug' => 'dokumen'
+        ]);
+        Category::create([
+            'name' => 'Perangkat elektronik',
+            'slug' => 'perangkat-elektronik'
+        ]);
     }
 }

@@ -79,7 +79,7 @@
                                         <h6 class="mb-0">Penyusutan Barang</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        {{ $asset->depreciation }}
+                                        {{ $asset->depreciation_year }} / tahun
                                     </div>
                                 </div>
                                 <div class="row">
@@ -119,10 +119,10 @@
                             <form action="/dashboard/approve/assets/{{ $asset->slug }}/approved" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Approve</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $asset->slug }}">Approve</button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal fade" id="staticBackdrop-{{ $asset->slug }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -134,7 +134,7 @@
                                             <div class="modal-footer">
                                                 <form>
                                                     <button type="button" class="btn btn-secondary col-2" data-bs-dismiss="modal">Tidak</button>
-                                                    <button type="submit" class="btn btn-danger col-2" data-bs-target="#staticBackdrop">Ya</button>
+                                                    <button type="submit" class="btn btn-danger col-2" data-bs-target="#staticBackdrop-{{ $asset->slug }}">Ya</button>
                                                 </form>
                                             </div>
                                         </div>
