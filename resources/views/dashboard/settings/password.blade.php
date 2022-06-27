@@ -9,7 +9,7 @@
           <div class="row g-3">
                 <div class="col-sm-4 ">
                     <label for="old_password" class="form-label">Password Lama</label>
-                    <input type="password" name="old_password" class="form-control" id="old_password" placeholder="Masukkan password lama Anda" required>
+                    <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" placeholder="Masukkan password lama Anda" >
                     @error('old_password')
                         <div class="invalid-feedback">
                         {{ $message }}
@@ -20,7 +20,7 @@
             <div class="row g-3 mt-2">
                 <div class="col-sm-4 ">
                     <label for="password" class="form-label">Password Baru</label>
-                    <input type="password" name="password" class="form-control " id="new_password" placeholder="Masukkan password baru Anda" required>
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="new_password" placeholder="Masukkan password baru Anda" required>
                     @error('password')
                         <div class="invalid-feedback">
                         {{ $message }}

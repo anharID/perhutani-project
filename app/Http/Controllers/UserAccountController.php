@@ -60,11 +60,11 @@ class UserAccountController extends Controller
             User::where('id', $id)->update([
                 'password' => bcrypt($request->password)
             ]);
-            return back()->with('success', 'Password has been changed'); 
+            return back()->with('success', 'Password berhasil diubah'); 
         } 
         else 
         {
-            return back()->withErrors(['old_password' => 'You have to fill your old password']);
+            return back()->with('warning', 'Password tidak sesuai');
         }
     }
 }
